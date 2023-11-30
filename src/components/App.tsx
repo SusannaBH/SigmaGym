@@ -1,5 +1,4 @@
 import './App.css'
-import React from 'react';
 import LoginForm from './login/LoginForm';
 
 const App: React.FC = () => {
