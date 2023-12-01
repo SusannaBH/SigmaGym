@@ -1,4 +1,4 @@
-
+import styles from './styles.module.css'
 
 interface MyComponentProps {
   textButton: string;
@@ -6,8 +6,8 @@ interface MyComponentProps {
 
 export default function ButtonsInicio(props: MyComponentProps) {
   return (
-    <div className="buttons">
-    <button className='buttonsInicio'>{props.textButton}</button>
+    <div className={styles.buttons}>
+    <button className={styles.button}>{props.textButton}</button>
   </div>
   )
 }

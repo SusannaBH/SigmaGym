@@ -1,5 +1,5 @@
 import { ChangeEvent, MouseEvent, useState } from "react"
-
+import styles from './styles.module.css'
 
 export default function LoginForm() {
 
@@ -22,10 +22,13 @@ export default function LoginForm() {
   
   return (
     <div>
-      <form className="formInicio">
-        <label>Username:<input type="text" className="username" value={username} onChange={(e) => handleUsername(e)}/></label>
-        <label>Password:<input type="password" className="password" value={password} onChange={(e) => handlePassword(e)}/></label>
-        <button type="submit" className="submit" onClick={(e) => handleSubmit(e)}>LOGIN</button>
+      <h1>♾️ LOGIN ♾️</h1>
+      <form className={styles.form}>
+        <label>Username</label>
+        <input type="text" className="username" value={username} onChange={(e) => handleUsername(e)}/>
+        <label>Password</label>
+        <input type="password" className="password" value={password} onChange={(e) => handlePassword(e)}/>
+        <button type="submit" className={styles.button} onClick={(e) => handleSubmit(e)}>LOGIN</button>
       </form>
     </div>
   )
