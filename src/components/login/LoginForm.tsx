@@ -1,5 +1,5 @@
 import { ChangeEvent, MouseEvent, useState } from "react"
-import Foto from "/src/assets/INICIO.jpeg"
+
 
 export default function LoginForm() {
 
@@ -22,17 +22,11 @@ export default function LoginForm() {
   
   return (
     <div>
-      <img src={Foto} alt="inicio" width={300}/>
-      <h1>~ LOGIN ~</h1>
-      <form>
+      <form className="formInicio">
         <label>Username:<input type="text" className="username" value={username} onChange={(e) => handleUsername(e)}/></label>
         <label>Password:<input type="password" className="password" value={password} onChange={(e) => handlePassword(e)}/></label>
-        <button type="submit" className="login" onClick={(e) => handleSubmit(e)}>LOGIN</button>
+        <button type="submit" className="submit" onClick={(e) => handleSubmit(e)}>LOGIN</button>
       </form>
-      <div className='buttons'>
-        <button>Forget Password</button>
-        <button>New Registration</button>
-      </div>
     </div>
   )
 }

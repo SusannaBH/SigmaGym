@@ -1,12 +1,12 @@
 import './App.css'
-import LoginForm from './login/LoginForm';
+import Inicio from './login/Inicio';
 
 const App: React.FC = () => {
   // IMPLEMENTAR AQUÍ LA LOGICA
 
   return (
     <div>
-      <LoginForm />
+      <Inicio />
     </div>
   );
 };
