@@ -1,5 +1,4 @@
-import Login from './Login'
-import ImageInicio from './ImageInicio'
+import {Login, ImageInicio} from "./index"
 import styles from './styles.module.css'
 
 export default function Inicio() {

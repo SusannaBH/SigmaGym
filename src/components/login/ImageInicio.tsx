@@ -5,6 +5,6 @@ export default function Image() {
   return (
     <div>
       <img src={Foto} alt="inicio" className={styles.imageInicio}/>
-      </div>
+    </div>
   )
 }

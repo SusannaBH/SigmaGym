@@ -25,9 +25,9 @@ export default function LoginForm() {
       <h1>♾️ LOGIN ♾️</h1>
       <form className={styles.form}>
         <label>Username</label>
-        <input type="text" className="username" value={username} onChange={(e) => handleUsername(e)}/>
+        <input type="text" className="username" value={username} onChange={(e) => handleUsername(e)} required/>
         <label>Password</label>
-        <input type="password" className="password" value={password} onChange={(e) => handlePassword(e)}/>
+        <input type="password" className="password" value={password} onChange={(e) => handlePassword(e)} required/>
         <button type="submit" className={styles.button} onClick={(e) => handleSubmit(e)}>LOGIN</button>
       </form>
     </div>

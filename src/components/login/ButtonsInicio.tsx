@@ -1,16 +1,13 @@
 import styles from './styles.module.css'
 
-interface MyComponentProps {
-  textButton: string;
+interface Props {
+  text: string;
 }
 
-export default function ButtonsInicio(props: MyComponentProps) {
+export default function ButtonsInicio({ text }: Props) {
   return (
     <div className={styles.buttons}>
-    <button className={styles.button}>{props.textButton}</button>
-  </div>
+      <button className={styles.button}>{text}</button>
+    </div>
   )
 }
-
-
-
