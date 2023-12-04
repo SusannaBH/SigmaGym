@@ -1,7 +1,7 @@
 import styles from './styles.module.css'
 
 interface Props {
-  text: string;
+  text: string
 }
 
 export default function ButtonsInicio({ text }: Props) {

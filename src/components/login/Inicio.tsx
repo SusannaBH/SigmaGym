@@ -1,12 +1,11 @@
-import {Login, ImageInicio} from "./index"
+import { Login, ImageInicio } from './index'
 import styles from './styles.module.css'
 
-export default function Inicio() {
-  
+export default function Inicio () {
   return (
     <div className={styles.inicio}>
-      <div><ImageInicio /></div>
-      <div><Login /></div>
+      <div className={styles.imageContainer}><ImageInicio /></div>
+      <Login />
     </div>
   )
 }

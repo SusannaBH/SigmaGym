@@ -1,10 +1,8 @@
-import Foto from "/src/assets/INICIO.jpeg"
+import Foto from '../../assets/INICIO.jpeg'
 import styles from './styles.module.css'
 
-export default function Image() {
+export default function Image () {
   return (
-    <div>
-      <img src={Foto} alt="inicio" className={styles.imageInicio}/>
-    </div>
+    <img src={Foto} alt="inicio" className={styles.imageInicio}/>
   )
 }

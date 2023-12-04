@@ -46,7 +46,6 @@
 }
 
 .inicio{
-  position: relative;
   background: linear-gradient(to bottom right,  rgb(1, 59, 59),aquamarine, #236e79 );
   height: 100vh;
   display: flex;
@@ -54,15 +53,29 @@
   align-items: center;
 }
 
+.imageContainer {
+  flex-grow: 0;
+  width: 40%;
+}
+
 .imageInicio{
-  height: 95vh;
+  width: 100%;  
   border-radius: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+  .inicio {
+    flex-direction: column;
+  }
+  
+  .imageInicio {
+    width: 100%;
+  }
 }
 
 .Login {
   color: aquamarine;
-  width: 20vw;
-  height: 70vh;
+  flex-grow: 0;
   padding: 20px;
   background-color: darkcyan;
   border-radius: 40px;

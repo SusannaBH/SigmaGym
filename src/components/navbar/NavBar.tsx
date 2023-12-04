@@ -1,34 +1,46 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Avatar from '@mui/material/Avatar';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
-import Logout from '@mui/icons-material/Logout';
+import * as React from 'react'
+import Avatar from '@mui/material/Avatar'
+import Menu from '@mui/material/Menu'
+import MenuItem from '@mui/material/MenuItem'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import Divider from '@mui/material/Divider'
+import IconButton from '@mui/material/IconButton'
+import Typography from '@mui/material/Typography'
+import Tooltip from '@mui/material/Tooltip'
+import PersonAdd from '@mui/icons-material/PersonAdd'
+import Settings from '@mui/icons-material/Settings'
+import Logout from '@mui/icons-material/Logout'
+import { Link as RRLink } from 'react-router-dom'
+import { Button } from '@mui/material'
+import Box from '@mui/material/Box'
 
-export default function AccountMenu() {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+export default function AccountMenu () {
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const open = Boolean(anchorEl)
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
   const handleClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center', justifyContent: 'center' }}>
-        <Typography sx={{ minWidth: 100 }}>HOME</Typography>
-        <Typography sx={{ minWidth: 100 }}>PLANS</Typography>
-        <Typography sx={{ minWidth: 100 }}>GYMS</Typography>
-        <Typography sx={{ minWidth: 100 }}>CLASS</Typography>
-        <Typography sx={{ minWidth: 100 }}>TOURNAMENTS</Typography>
+        <Button variant="contained"><RRLink to="/">
+          <Typography sx={{ minWidth: 100 }}>HOME</Typography>
+        </RRLink></Button>
+        <RRLink to="/">
+          <Typography sx={{ minWidth: 100 }}>PLANS</Typography>
+        </RRLink>
+        <RRLink to="/">
+          <Typography sx={{ minWidth: 100 }}>GYMS</Typography>
+        </RRLink>
+        <RRLink to="/">
+          <Typography sx={{ minWidth: 100 }}>CLASS</Typography>
+        </RRLink>
+        <RRLink to="/">
+          <Typography sx={{ minWidth: 100 }}>TOURNAMENTS</Typography>
+        </RRLink>
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
@@ -58,7 +70,7 @@ export default function AccountMenu() {
               width: 32,
               height: 32,
               ml: -0.5,
-              mr: 1,
+              mr: 1
             },
             '&:before': {
               content: '""',
@@ -70,9 +82,9 @@ export default function AccountMenu() {
               height: 10,
               bgcolor: 'background.paper',
               transform: 'translateY(-50%) rotate(45deg)',
-              zIndex: 0,
-            },
-          },
+              zIndex: 0
+            }
+          }
         }}
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
@@ -104,5 +116,5 @@ export default function AccountMenu() {
         </MenuItem>
       </Menu>
     </React.Fragment>
-  );
+  )
 }
