@@ -1,0 +1,204 @@
+drop database if exists prueba;
+Create database prueba;
+use prueba;
+
+CREATE TABLE plan (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(10),
+    price DECIMAL(10, 2)
+);
+CREATE TABLE gym (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(40) NOT NULL,
+    address VARCHAR(50),
+    phone VARCHAR(15),
+    email VARCHAR(45),
+    horary VARCHAR(60)
+);
+CREATE TABLE gym_rol (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    rols VARCHAR(45) NOT NULL,
+    gym_id INT,
+    FOREIGN KEY (gym_id) REFERENCES gym(id)
+);
+
+CREATE TABLE sports (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(45),
+    description VARCHAR(150)
+);
+
+CREATE TABLE federation (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(60),
+    region VARCHAR(20),
+    num_members INT,
+    type_sport_federation VARCHAR(45)
+);
+
+CREATE TABLE federation_rol (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    rols VARCHAR(45),
+    federation_id INT,
+    FOREIGN KEY (federation_id) REFERENCES federation(id)
+);
+
+CREATE TABLE IF NOT EXISTS user (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(45) NOT NULL,
+  surname VARCHAR(100),
+  username VARCHAR(20) NOT NULL UNIQUE,
+  password VARCHAR(30) NOT NULL,
+  address VARCHAR(150),
+  type TINYINT,
+  status TINYINT,
+  gender VARCHAR(15),
+  email VARCHAR(50) UNIQUE,
+  worker_id INT,
+  dni VARCHAR(15) UNIQUE,
+  job_title_worker VARCHAR(45),
+  phone_num VARCHAR(15),
+  client_id INT NOT NULL,
+  credit_card VARCHAR(45),
+  birthday DATE,
+  plan_id INT NOT NULL,
+  FOREIGN KEY (`plan_id`) REFERENCES `prueba`.`plan` (`id`)
+);
+
+
+CREATE TABLE gym_has_user (
+    user_id INT,
+    gym_id INT,
+    PRIMARY KEY (user_id, gym_id),
+    FOREIGN KEY (user_id) REFERENCES user(id),
+    FOREIGN KEY (gym_id) REFERENCES gym(id)
+);
+
+CREATE TABLE gym_has_sports (
+    sports_id INT,
+    gym_id INT,
+    PRIMARY KEY (sports_id, gym_id),
+    FOREIGN KEY (sports_id) REFERENCES sports(id),
+    FOREIGN KEY (gym_id) REFERENCES gym(id)
+);
+
+CREATE TABLE class (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    coach VARCHAR(45),
+    max_students INT,
+    sports_id INT,
+    FOREIGN KEY (sports_id) REFERENCES sports(id)
+);
+
+CREATE TABLE sports_has_federation (
+    sports_id INT,
+    federation_id INT,
+    PRIMARY KEY (sports_id, federation_id),
+    FOREIGN KEY (sports_id) REFERENCES sports(id),
+    FOREIGN KEY (federation_id) REFERENCES federation(id)
+);
+INSERT INTO plan (Title, price)
+VALUES
+('Free', 00.00),
+('Bronce', 14.99),
+('Silver', 29.99),
+('Gold', 49.99),
+('Premium', 79.99);
+
+INSERT INTO user (name, surname, username, password, address, type, status, gender, email, worker_id, dni, job_title_worker, phone_num, client_id, credit_card, birthday, plan_id)
+VALUES
+('John', 'Doe', 'johndoe', 'password123', '123 Oak Street, City', 1, 1, 'Male', 'john@example.com', 1, '123456789', 'Administrator', '+111 222 333', 1, '1234-5678-9012-3456', '1990-01-15', 1),
+('Jane', 'Smith', 'janesmith', 'pass456', '456 Maple Avenue, Town', 2, 1, 'Female', 'jane@example.com', 2, '987354321', 'Trainer', '+222 333 444', 2, '2345-6789-0123-4567', '1995-05-20', 2),
+('Alice', 'Johnson', 'alicejohn', 'secure789', '789 Pine Road, Village', 1, 1, 'Female', 'alice@example.com', NULL, NULL, NULL, NULL, 3, '3456-7890-1234-5678', '1988-08-10', 3),
+('Bob', 'Williams', 'bobwill', 'key432', '321 Cedar Lane, Countryside', 2, 1, 'Male', 'bob@example.com', 4, '444555666', 'Trainer', '+777 888 999', 4, '4567-8901-2345-6789', '1992-04-25', 4),
+('Eva', 'Jones', 'evaj', 'pw987', '567 Elm Court, Park', 1, 1, 'Female', 'eva@example.com', NULL, NULL, NULL, NULL, 5, '5678-9012-3456-7890', '1998-11-30', 5),
+('Michael', 'Brown', 'michaelb', 'pass789', '890 Oak Avenue, City', 2, 1, 'Male', 'michael@example.com', 6, '987654321', 'Trainer', '+333 444 555', 6, '6789-0123-4567-8901', '1985-09-12', 1),
+('Emma', 'Davis', 'emmad', 'secure123', '111 Pine Street, Town', 1, 1, 'Female', 'emma@example.com', NULL, NULL, NULL, NULL, 7, '7890-1234-5678-9012', '1993-02-28', 2),
+('Daniel', 'Clark', 'danclark', 'key567', '456 Maple Lane, Village', 2, 1, 'Male', 'daniel@example.com', 8, '111223344', 'Trainer', '+444 555 666', 8, '0123-4567-8901-2345', '1987-07-18', 3),
+('Olivia', 'Miller', 'oliviam', 'pw345', '789 Oak Road, Countryside', 1, 1, 'Female', 'olivia@example.com', NULL, NULL, NULL, NULL, 9, '2345-6789-0123-4567', '1996-04-03', 4),
+('Ryan', 'Wilson', 'ryanw', 'pass567', '321 Cedar Court, Park', 2, 1, 'Male', 'ryan@example.com', 10, '555666777', 'Trainer', '+777 888 999', 10, '3456-7890-1234-5678', '1991-11-05', 5),
+('Sophia', 'Moore', 'sophiam', 'secure234', '567 Elm Avenue, City', 1, 1, 'Female', 'sophia@example.com', NULL, NULL, NULL, NULL, 11, '4567-8901-2345-6789', '1989-06-22', 1),
+('David', 'Jones', 'davidj', 'key789', '890 Pine Boulevard, Town', 2, 1, 'Male', 'david@example.com', 12, '999000111', 'Trainer', '+888 999 000', 12, '5678-9012-3456-7890', '1994-03-15', 2),
+('Chloe', 'Evans', 'chloee', 'pw456', '111 Oak Lane, Village', 1, 1, 'Female', 'chloe@example.com', NULL, NULL, NULL, NULL, 13, '6789-0123-4567-8901', '1997-08-08', 3),
+('Matthew', 'Thomas', 'matthewt', 'pass789', '456 Maple Road, Countryside', 2, 1, 'Male', 'matthew@example.com', 14, '333444555', 'Trainer', '+222 333 444', 14, '7890-1234-5678-9012', '1986-12-10', 4),
+('Lily', 'Johnson', 'lilyj', 'secure567', '789 Pine Avenue, Park', 1, 1, 'Female', 'lily@example.com', NULL, NULL, NULL, NULL, 15, '444555666', '1999-05-25', 5),
+('Christopher', 'Martin', 'chrism', 'key123', '321 Cedar Street, City', 2, 1, 'Male', 'christopher@example.com', 16, '111222333', 'Trainer', '+111 222 333', 16, '0123-4567-8901-2345', '1984-07-30', 1);
+
+INSERT INTO gym (name, address, phone, email, horary)
+VALUES
+('Fitness World', '123 Main Street, Cityville', '+123 456 7890', 'info@fitnessworld.com', '8:00 AM - 10:00 PM'),
+('Power Gym', '456 Oak Avenue, Townsville', '+987 654 3210', 'info@powergym.com', '9:00 AM - 11:00 PM'),
+('Active Life Center', '789 Elm Boulevard, Villagetown', '+111 222 3333', 'info@activelife.com', '10:00 AM - 12:00 PM'),
+('Vitality Fitness', '321 Maple Lane, Countryside', '+444 555 6666', 'info@vitalityfitness.com', '7:00 AM - 9:00 PM'),
+('Energize Gym', '567 Pine Road, Parksburg', '+777 888 9999', 'info@energizegym.com', '6:00 AM - 8:00 PM');
+
+INSERT INTO gym_rol (rols, gym_id)
+VALUES 
+('Administrador', 1),
+('Entrenador', 2),
+('Recepcionista', 3);
+
+INSERT INTO sports (name, description)
+VALUES 
+('Boxeo', 'Deporte de combate en el que dos personas luchan entre sí utilizando solo sus puños.'),
+('Judo', 'Deporte de combate japonés que se basa en técnicas de lanzamiento y control del oponente.'),
+('Karate', 'Arte marcial de origen japonés que se enfoca en golpes con manos y pies.'),
+('Muay Thai', 'Arte marcial tailandés conocido como "el arte de las ocho extremidades" por su uso de manos, piernas, codos y rodillas.'),
+('Lucha libre', 'Deporte de combate en el que dos luchadores compiten entre sí utilizando técnicas de lucha.'),
+('Kickboxing', 'Deporte de combate que combina técnicas de boxeo con patadas de artes marciales.'),
+('Taekwondo', 'Arte marcial coreano que se caracteriza por sus patadas altas y técnicas de pierna.'),
+('Artes marciales mixtas (MMA)', 'Deporte de combate que permite el uso de técnicas de diferentes disciplinas marciales.'),
+('Sumo', 'Deporte de lucha tradicional japonés en el que dos luchadores intentan sacarse mutuamente del ring.'),
+('Wushu', 'Término chino para las artes marciales y deportes de combate.');
+
+INSERT INTO gym_has_sports (gym_id, sports_id)
+VALUES
+(1, 1),
+(1, 3),
+(2, 2),
+(2, 5),
+(3, 4),
+(3, 6),
+(4, 7),
+(4, 9),
+(5, 8),
+(5, 10);
+
+INSERT INTO class (coach, max_students, sports_id)
+VALUES
+('Alex Smith', 20, 1),  
+('Emily Johnson', 15, 2),
+('Daniel Martinez', 10, 3),
+('Sophia Brown', 18, 4),
+('Matthew Taylor', 25, 5),
+('Olivia White', 12, 6),
+('David Anderson', 15, 7),
+('Emma Davis', 10, 8),
+('Christopher Wilson', 20, 9),
+('Ava Thompson', 15, 10);
+
+INSERT INTO federation (name, region, num_members, type_sport_federation)
+VALUES
+('Federación Mundial de Boxeo', 'Internacional', 100, 'Boxeo'),
+('Federación Internacional de Judo', 'Internacional', 5000, 'Judo'),
+('Federación Mundial de Karate', 'Internacional', 200, 'Karate'),
+('Federación Internacional de Muay Thai', 'Internacional', 300, 'Muay Thai'),
+('Federación Internacional de Lucha Libre', 'Internacional', 150, 'Lucha Libre'),
+('Federación Mundial de Kickboxing', 'Internacional', 400, 'Kickboxing'),
+('Federación Mundial de Taekwondo', 'Internacional', 2500, 'Taekwondo'),
+('Federación Internacional de Artes Marciales Mixtas (MMA)', 'Internacional', 1800, 'Artes Marciales Mixtas (MMA)'),
+('Federación Internacional de Sumo', 'Internacional', 1200, 'Sumo'),
+('Federación Mundial de Wushu', 'Internacional', 800, 'Wushu');
+
+INSERT INTO sports_has_federation (sports_id, federation_id)
+VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6),
+(7, 7),
+(8, 8),
+(9, 9),
+(10, 10);
