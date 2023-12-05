@@ -1,0 +1,15 @@
+button.button {
+    background-color: darkcyan;
+    border: 2px solid aquamarine;
+    margin: 10px;
+}
+
+.enlace {
+    color: aquamarine;
+    
+}
+
+.backgroundNav{
+    background-color: darkcyan;
+    border-bottom: black 2px solid;
+}

@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom"
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Layout from './Layout';
+import Registration from './pages/Registration';
 
 const App = () => {
   // IMPLEMENTAR AQUÍ LA LOGICA
@@ -14,6 +15,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
         </Route>
         <Route path='/login' element={<Login />} />
+        <Route path='/registration' element={<Registration />} />
       </Routes>
     </div>
   );

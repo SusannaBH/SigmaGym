@@ -1,3 +1,5 @@
+import Styles from './styles.module.css';
+
 import * as React from 'react'
 import Avatar from '@mui/material/Avatar'
 import Menu from '@mui/material/Menu'
@@ -5,9 +7,7 @@ import MenuItem from '@mui/material/MenuItem'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
 import Tooltip from '@mui/material/Tooltip'
-import PersonAdd from '@mui/icons-material/PersonAdd'
 import Settings from '@mui/icons-material/Settings'
 import Logout from '@mui/icons-material/Logout'
 import { Link as RRLink } from 'react-router-dom'
@@ -24,23 +24,13 @@ export default function AccountMenu () {
     setAnchorEl(null)
   }
   return (
-    <React.Fragment>
-      <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center', justifyContent: 'center' }}>
-        <Button variant="contained"><RRLink to="/">
-          <Typography sx={{ minWidth: 100 }}>HOME</Typography>
-        </RRLink></Button>
-        <RRLink to="/">
-          <Typography sx={{ minWidth: 100 }}>PLANS</Typography>
-        </RRLink>
-        <RRLink to="/">
-          <Typography sx={{ minWidth: 100 }}>GYMS</Typography>
-        </RRLink>
-        <RRLink to="/">
-          <Typography sx={{ minWidth: 100 }}>CLASS</Typography>
-        </RRLink>
-        <RRLink to="/">
-          <Typography sx={{ minWidth: 100 }}>TOURNAMENTS</Typography>
-        </RRLink>
+    <>
+      <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center', justifyContent: 'center'}}  className={Styles.backgroundNav}>
+        <Button variant="contained" className={Styles.button}><RRLink to="/" className={Styles.enlace} style={{ textDecoration: 'none' }}>HOME 🏠</RRLink></Button>
+        <Button variant="contained" className={Styles.button}><RRLink to="/" className={Styles.enlace} style={{ textDecoration: 'none' }}>PLANS 💲</RRLink></Button>
+        <Button variant="contained" className={Styles.button}><RRLink to="/" className={Styles.enlace} style={{ textDecoration: 'none' }}>GYMS 🏋️‍♀️</RRLink></Button>
+        <Button variant="contained" className={Styles.button}><RRLink to="/" className={Styles.enlace} style={{ textDecoration: 'none' }}>CLASS 🗓️</RRLink></Button>
+        <Button variant="contained" className={Styles.button}><RRLink to="/" className={Styles.enlace} style={{ textDecoration: 'none' }}>TOURNAMENTS 🏆</RRLink></Button>
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
@@ -66,6 +56,8 @@ export default function AccountMenu () {
             overflow: 'visible',
             filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
             mt: 1.5,
+            bgcolor: 'aquamarine',
+            color: 'darkcyan',
             '& .MuiAvatar-root': {
               width: 32,
               height: 32,
@@ -80,7 +72,7 @@ export default function AccountMenu () {
               right: 14,
               width: 10,
               height: 10,
-              bgcolor: 'background.paper',
+              bgcolor: 'aquamarine',
               transform: 'translateY(-50%) rotate(45deg)',
               zIndex: 0
             }
@@ -90,18 +82,9 @@ export default function AccountMenu () {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem onClick={handleClose}>
-          <Avatar /> Profile
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <Avatar /> My account
+          <Avatar sx={{ bgcolor: 'darkcyan'}} /> My account
         </MenuItem>
         <Divider />
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <PersonAdd fontSize="small" />
-          </ListItemIcon>
-          Add another account
-        </MenuItem>
         <MenuItem onClick={handleClose}>
           <ListItemIcon>
             <Settings fontSize="small" />
@@ -115,6 +98,6 @@ export default function AccountMenu () {
           Logout
         </MenuItem>
       </Menu>
-    </React.Fragment>
+    </>
   )
 }
