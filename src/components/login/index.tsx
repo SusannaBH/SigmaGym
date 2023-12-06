@@ -1,4 +1,4 @@
-import ButtonsInicio from './ButtonsInicio'
+import ButtonsInicio from '../componentsGeneric/ButtonsInicio'
 import ImageInicio from './ImageInicio'
 import Inicio from './Inicio'
 import Login from './Login'

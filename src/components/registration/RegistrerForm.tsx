@@ -1,27 +1,67 @@
+import { useState } from 'react';
 import styles from './styles.module.css'
+import { Customer, Worker, BottonsInicio } from './index'
 
-export default function RegistrerForm () {
+export default function RegistrerForm() {
+
+  const [selectOptions, setOptions] = useState('customer')
+  const [genre, setGenre] = useState('')
+  const [dni, setDNI] = useState('')
+  const [number, setNumber] = useState('')
+
+  function handleOptions(e: any) {
+    setOptions(e.target.value)
+  }
+
+  function handleGenre(genre: string) {
+    setGenre(genre)
+  }
+
+  function handleDNI(dni: string) {
+    setDNI(dni)
+  }
+
+  function handleNumber(number: string) {
+    setNumber(number)
+  }
+
+  function handleSubmit(e: any) {
+    e.preventDefault()
+    console.log({
+      [e.target]: e.target,
+      genre,
+      dni,
+      number
+    })
+  }
+
   return (
     <div className={styles.containerReg}>
-      <h1>- REGISTRATION -</h1>
-      <form className={styles.formReg}>
-        <label>Name</label>
+      <h1>- REGISTRO -</h1>
+      <form className={styles.formReg} onSubmit={(e) => handleSubmit(e)}>
+        <label>Email</label>
+        <input type="email" style={{ maxWidth: 200 }} required />
+        <label>Nombre</label>
         <input type="text" style={{ maxWidth: 200 }} required />
-        <label>Surname</label>
+        <label>Apellidos</label>
         <input type="text" style={{ maxWidth: 200 }} />
-        <label>Username</label>
+        <label>Usuario</label>
         <input type="text" style={{ maxWidth: 200 }} required />
-        <label>Password</label>
+        <label>Contraseña</label>
         <input type="password" style={{ maxWidth: 200 }} required />
-        <label>Repeat Password</label>
+        <label>Repetir Contraseña</label>
         <input type="password" style={{ maxWidth: 200 }} required />
-        <label>Address</label>
+        <label>Dirección</label>
         <input type="text" style={{ maxWidth: 200 }} />
-        <label htmlFor="opcions">Type</label>
-        <select>
-          <option value="opcion1">Cliente</option>
-          <option value="opcion2">Trabajador</option>
+        <label htmlFor="opcions">Tipo Usuario</label>
+        <select value={selectOptions} onChange={(e) => handleOptions(e)}>
+          <option value="customer">Cliente</option>
+          <option value="worker">Trabajador</option>
         </select>
+        {
+          selectOptions === ("customer") ? <Customer handleGenre={handleGenre} /> : <Worker handleDNI={handleDNI} handleNumber={handleNumber} />
+        }
+        <BottonsInicio text='ENVIAR'></BottonsInicio>
       </form>
     </div>
   );
