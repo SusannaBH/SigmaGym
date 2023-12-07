@@ -16,42 +16,20 @@ import com.backend.entities.GymEntity;
 import com.backend.services.GymService;
 
 @RestController
-@RequestMapping("gyms")
-public class GymController {
-	private GymService gymService;
+@RequestMapping("news")
+public class NewsController {
+	private NewsService newsService;
 
-	GymController(GymService gymService) {
-		this.gymService = gymService;
+	NewsController(NewsService newsService) {
+		this.newsService = newsService;
 	}
 	
-	// Obtenemos todos los usuarios 
+	// Obtenemos todas las noticias 
 	@GetMapping
-	public List<GymEntity> getAllGyms() {
-		return gymService.findAllGyms();
+	public LisNewsEntity> getAllNews() {
+		return newsService.findAllNews();
 	}
 	
-	// Retornamos un gym por id:
-	@GetMapping("/{id}")
-	public ResponseEntity<GymEntity> getGymById(@PathVariable Integer id) {
-	    Optional<GymEntity> result = gymService.findGymById(id);
-	    
-	    return result.map(gym -> ResponseEntity.ok().body(gym))
-	                 .orElse(ResponseEntity.notFound().build());
-	}
 	
-	// Inserta un gym
-	@PutMapping()
-	public ResponseEntity<String> insertGym(@RequestBody GymEntity gymEntity) {
-		System.out.println(gymEntity.toString()); //data
-		gymService.addGym(gymEntity);
-		return ResponseEntity.ok("Usuario insertado correctamente");
-	}
-
-	// Elimina un usuario
-	@DeleteMapping("/{id}")
-	public  ResponseEntity<?> deleteGym(@PathVariable Integer id) {
-		boolean result = gymService.deleteGym(id);
-		return (result) ? ResponseEntity.status(HttpStatus.OK).body("Gym eliminado") : 
-			ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existe ese gym") ;
-	}
+	// Hace falta hacer metodos para modificar noticias
 }
