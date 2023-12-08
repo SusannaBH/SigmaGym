@@ -28,7 +28,7 @@ public class GymEntity implements Serializable {
 	String phone;
 	String email;
 	String horary;
-	String gym_roll;
+	//String gym_roll;
 	
 	// Foraing Key:
 	//Integer sports_id;

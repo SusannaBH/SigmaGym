@@ -12,11 +12,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "gym") // nombre de la tabla
-@Data 
+@Table(name = "federation")
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class NewsEntity implements Serializable {
+public class FederacionEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -24,9 +24,12 @@ public class NewsEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
 	String name;
-	String address;
-	String phone;
-	String email;
-	String horary;
-	String gym_roll;
+	String region;
+	Integer num_members;
+	String type_sport_federation;
+	//String gym_roll;
+	
+	// Foraing Key:
+	//Integer sports_id;
+	//Integer gym_id;
 }
