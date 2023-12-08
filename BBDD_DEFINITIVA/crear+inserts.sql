@@ -210,7 +210,7 @@ VALUES
 (5, 10);
 
 
-
+SELECT * FROM db_gym_app.user;
 
 
 
