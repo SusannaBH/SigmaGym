@@ -1,3 +1,4 @@
+/*
 package com.backend.controllers;
 
 import java.util.List;
@@ -55,3 +56,5 @@ public class NewsController {
 			ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existe ese gym") ;
 	}
 }
+
+*/

@@ -10,7 +10,7 @@ import com.backend.entities.GymEntity;
 import com.backend.entities.UserEntity;
 
 @Repository
-public interface GymRepository extends JpaRepository<GymEntity, Integer>{
+public interface FederacionRepository extends JpaRepository<FederacionEntity, Integer>{
 
 
 }
