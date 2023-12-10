@@ -6,7 +6,7 @@ type Props = {}
 export default function HomeNews({ }: Props) {
     return (
         <div>
-            <h1 className={Styles.title}>NOVEDADES</h1>
+            <h1 className={Styles.title}>- NOVEDADES -</h1>
             <New/>
             <New/>
             <New/>

@@ -14,7 +14,7 @@ import { Link as RRLink } from 'react-router-dom'
 import { Button } from '@mui/material'
 import Box from '@mui/material/Box'
 
-export default function AccountMenu () {
+export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -25,9 +25,9 @@ export default function AccountMenu () {
   }
   return (
     <>
-      <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center', justifyContent: 'center'}}  className={Styles.backgroundNav}>
+      <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center', justifyContent: 'center' }} className={Styles.backgroundNav}>
         <Button variant="contained" className={Styles.button}><RRLink to="/" className={Styles.enlace} style={{ textDecoration: 'none' }}>HOME 🏠</RRLink></Button>
-        <Button variant="contained" className={Styles.button}><RRLink to="/" className={Styles.enlace} style={{ textDecoration: 'none' }}>PLANS 💲</RRLink></Button>
+        <Button variant="contained" className={Styles.button}><RRLink to="/plans" className={Styles.enlace} style={{ textDecoration: 'none' }}>PLANS 💲</RRLink></Button>
         <Button variant="contained" className={Styles.button}><RRLink to="/" className={Styles.enlace} style={{ textDecoration: 'none' }}>GYMS 🏋️‍♀️</RRLink></Button>
         <Button variant="contained" className={Styles.button}><RRLink to="/" className={Styles.enlace} style={{ textDecoration: 'none' }}>CLASS 🗓️</RRLink></Button>
         <Button variant="contained" className={Styles.button}><RRLink to="/" className={Styles.enlace} style={{ textDecoration: 'none' }}>TOURNAMENTS 🏆</RRLink></Button>
@@ -40,7 +40,7 @@ export default function AccountMenu () {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 40, height: 40, bgcolor: 'darkcyan' , border: '2px solid aquamarine'}}></Avatar>
+            <Avatar sx={{ width: 40, height: 40, bgcolor: 'darkcyan', border: '2px solid aquamarine' }}></Avatar>
           </IconButton>
         </Tooltip>
       </Box>
@@ -82,7 +82,7 @@ export default function AccountMenu () {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem onClick={handleClose}>
-          <Avatar sx={{ bgcolor: 'darkcyan'}} /> My account
+          <Avatar sx={{ bgcolor: 'darkcyan' }} /> My account
         </MenuItem>
         <Divider />
         <MenuItem onClick={handleClose}>

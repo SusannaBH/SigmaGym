@@ -1,18 +1,18 @@
 
-interface IGenre {
-  handleGenre: (genre: string) => void
+interface IGender {
+  handleGender: (gender: string) => void
 }
 
-export default function Customer({ handleGenre }: IGenre) {
+export default function Customer({ handleGender }: IGender) {
 
   return (
     <div>
-      <label>Genre</label>
+      <label>Género</label>
       <label>
-        <input type="radio" name="genre" value="male" onChange={(e) => handleGenre(e.target.value)} /> M
+        <input type="radio" name="gender" value="male" onChange={(e) => handleGender(e.target.value)} /> M
       </label>
       <label>
-        <input type="radio" name="genre" value="female" onChange={(e) => handleGenre(e.target.value)} /> F
+        <input type="radio" name="gender" value="female" onChange={(e) => handleGender(e.target.value)} /> F
       </label>
     </div>
   )

@@ -5,7 +5,7 @@ import { Customer, Worker, BottonsInicio } from './index'
 export default function RegistrerForm() {
 
   const [selectOptions, setOptions] = useState('customer')
-  const [genre, setGenre] = useState('')
+  const [gender, setGender] = useState('')
   const [dni, setDNI] = useState('')
   const [number, setNumber] = useState('')
 
@@ -13,8 +13,8 @@ export default function RegistrerForm() {
     setOptions(e.target.value)
   }
 
-  function handleGenre(genre: string) {
-    setGenre(genre)
+  function handleGender(gender: string) {
+    setGender(gender)
   }
 
   function handleDNI(dni: string) {
@@ -29,7 +29,7 @@ export default function RegistrerForm() {
     e.preventDefault()
     console.log({
       [e.target]: e.target,
-      genre,
+      gender,
       dni,
       number
     })
@@ -51,6 +51,8 @@ export default function RegistrerForm() {
         <input type="password" style={{ maxWidth: 200 }} required />
         <label>Repetir Contraseña</label>
         <input type="password" style={{ maxWidth: 200 }} required />
+        <label>Fecha de Nacimiento</label>
+        <input type="date" style={{ maxWidth: 200 }} required/>
         <label>Dirección</label>
         <input type="text" style={{ maxWidth: 200 }} />
         <label htmlFor="opcions">Tipo Usuario</label>
@@ -59,7 +61,7 @@ export default function RegistrerForm() {
           <option value="worker">Trabajador</option>
         </select>
         {
-          selectOptions === ("customer") ? <Customer handleGenre={handleGenre} /> : <Worker handleDNI={handleDNI} handleNumber={handleNumber} />
+          selectOptions === ("customer") ? <Customer handleGender={handleGender} /> : <Worker handleDNI={handleDNI} handleNumber={handleNumber} />
         }
         <BottonsInicio text='ENVIAR'></BottonsInicio>
       </form>

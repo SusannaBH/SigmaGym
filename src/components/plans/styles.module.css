@@ -1,0 +1,70 @@
+.estructure {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+}
+
+.card {
+  margin: 20px;
+  border: black 5px solid;
+  border-radius: 10px;
+  overflow: visible;
+  transition: box-shadow 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0px 0px 20px 20px rgba(5, 138, 118, 0.5);
+  transform: translateY(-10px);
+  filter: brightness(1.2);
+}
+
+.container {
+  margin: 0 auto;
+  width: 70%;
+  background-color: darkcyan;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+  margin-top: -50px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: aquamarine;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 2rem;
+  color: aquamarine;
+}
+
+.information {
+  padding: 15px;
+  color: black;
+}
+
+.buttonChange {
+  padding: 10px 20px;
+  background-color: aquamarine;
+  color: darkcyan;
+  border: black 1px solid;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.buttonChange:hover {
+  background-color: darkcyan;
+  color: aquamarine;
+}
+
+.image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.65;
+}
