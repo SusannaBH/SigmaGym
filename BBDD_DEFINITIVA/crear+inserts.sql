@@ -5,6 +5,7 @@ USE db_gym_app;
 CREATE TABLE Plan (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(20),
+    info VARCHAR(150),
     price DECIMAL(10, 2)
 );
 
