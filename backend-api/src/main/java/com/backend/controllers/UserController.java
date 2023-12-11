@@ -23,7 +23,7 @@ public class UserController {
 	UserController(UserService userService) {
 		this.userService = userService;
 	}
-	
+
 	// Obtenemos todos los usuarios 
 	@GetMapping
 	public List<UserEntity> getAllUsers() {
@@ -56,3 +56,50 @@ public class UserController {
 			ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existe ese usuario") ;
 	}
 }
+//el dto pero no se si funciona
+/*@RestController
+@RequestMapping("users")
+public class UserController {
+    private final UserService userService;
+    private final UserConversionService userConversionService;
+
+    @Autowired
+    public UserController(UserService userService, UserConversionService userConversionService) {
+        this.userService = userService;
+        this.userConversionService = userConversionService;
+    }
+
+    // Obtenemos todos los usuarios
+    @GetMapping
+    public List<UserEntity> getAllUsers() {
+        return userService.findAllUsers();
+    }
+
+    // Retornamos un user por id:
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getUserById(@PathVariable Integer id) {
+        Optional<UserEntity> result = userService.findUserById(id);
+
+        return result.map(user -> ResponseEntity.ok().body(user))
+                     .orElse(ResponseEntity.notFound().build());
+    }
+
+    // Inserta un user
+    @PutMapping()
+    public ResponseEntity<String> insertUser(@RequestBody UserDTO userDTO) {
+        System.out.println(userDTO.toString());
+        UserEntity userEntity = userConversionService.convertToEntity(userDTO);
+        userService.addUser(userEntity);
+        return ResponseEntity.ok("Usuario insertado correctamente");
+    }
+
+    // Elimina un usuario
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable Integer id) {
+        boolean result = userService.deleteUser(id);
+
+        return (result) ? ResponseEntity.status(HttpStatus.OK).body("Usuario eliminado") :
+                          ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existe ese usuario");
+    }
+}
+*/

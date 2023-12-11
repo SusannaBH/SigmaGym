@@ -11,6 +11,7 @@ import com.backend.entities.UserEntity;
 import com.backend.repository.UserRepository;
 
 @Service
+@Transactional
 public class UserService {
     private final UserRepository userRepository;
 
