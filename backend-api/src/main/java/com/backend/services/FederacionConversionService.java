@@ -1,8 +1,6 @@
 package com.backend.services;
 
 import com.backend.dtos.FederacionDto;
-
-
 import com.backend.entities.FederacionEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -24,3 +22,4 @@ public class FederacionConversionService {
         return modelMapper.map(federacionDto, FederacionEntity.class);
     }
 }
+ 
