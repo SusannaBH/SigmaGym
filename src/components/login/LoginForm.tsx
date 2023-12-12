@@ -1,6 +1,7 @@
 import { type ChangeEvent, useState } from 'react'
 import styles from './styles.module.css'
 import { ButtonsInicio } from './index'
+import { ENDPOINTS } from "../../constants";
 
 export default function LoginForm() {
   const [username, setUsername] = useState('')
@@ -15,8 +16,20 @@ export default function LoginForm() {
   }
 
   function handleSubmit(e: any) {
-    // Falta relacionar con los end points
     e.preventDefault()
+
+    fetch(`${ENDPOINTS.LOGIN}?username=${username}&password=${password}`, {
+      method: 'POST',
+      redirect: 'follow',
+      // FALTA HABILITAR CORS EN SERVIDOR
+      // https://www.baeldung.com/spring-cors
+      // https://spring.io/guides/gs/rest-service-cors/
+      headers: {
+        "Access-Control-Allow-Origin": "*"
+      }
+    }).then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('ERROR', error));
   }
 
   return (
