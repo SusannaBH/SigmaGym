@@ -62,7 +62,7 @@ public class UserController {
 }*/
 //el dto pero no se si funciona
 @RestController
-@RequestMapping("users")
+@RequestMapping("/users")
 public class UserController {
     private final UserService userService;
     private final UserConversionService userConversionService;
