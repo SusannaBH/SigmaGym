@@ -38,11 +38,4 @@ public class GymEntity implements Serializable {
 	//Integer sports_id;
 	//Integer gym_id;
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 }
