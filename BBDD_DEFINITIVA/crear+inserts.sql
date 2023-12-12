@@ -5,6 +5,7 @@ USE db_gym_app;
 CREATE TABLE Plan (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(20),
+    info VARCHAR(150),
     price DECIMAL(10, 2)
 );
 
@@ -210,7 +211,10 @@ VALUES
 (5, 10);
 
 
-SELECT * FROM db_gym_app.user;
+DROP DATABASE IF EXISTS db_gym_app;
+CREATE DATABASE db_gym_app;
+USE db_gym_app;
+
 
 
 
