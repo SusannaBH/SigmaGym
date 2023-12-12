@@ -9,7 +9,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "gym")
@@ -33,4 +35,5 @@ public class GymEntity implements Serializable {
 	// Foraing Key:
 	//Integer sports_id;
 	//Integer gym_id;
+
 }

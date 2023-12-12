@@ -9,13 +9,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "user")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class UserEntity implements Serializable{
 	private static final long serialVersionUID = -502753434853358270L;
 
@@ -38,5 +42,9 @@ public class UserEntity implements Serializable{
 	private Integer client_id;
 	private String credit_card;
 	private String birthday;
+	private String url_img;
+	
 //	private Integer plan_id; // Foreing Key hara falta hacer un join para obtener el id
+	
+	
 }

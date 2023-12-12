@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import styles from './styles.module.css'
-import { Customer, Worker, BottonsInicio } from './index'
+import { Worker, BottonsInicio } from './index'
 
 export default function RegistrerForm() {
 
   const [selectOptions, setOptions] = useState('customer')
   const [gender, setGender] = useState('')
-  const [dni, setDNI] = useState('')
-  const [number, setNumber] = useState('')
+  const [job, setJob] = useState('')
 
   function handleOptions(e: any) {
     setOptions(e.target.value)
@@ -17,12 +16,8 @@ export default function RegistrerForm() {
     setGender(gender)
   }
 
-  function handleDNI(dni: string) {
-    setDNI(dni)
-  }
-
-  function handleNumber(number: string) {
-    setNumber(number)
+  function handleJob(job: string) {
+    setJob(job)
   }
 
   function handleSubmit(e: any) {
@@ -30,8 +25,7 @@ export default function RegistrerForm() {
     console.log({
       [e.target]: e.target,
       gender,
-      dni,
-      number
+      job,
     })
   }
 
@@ -51,18 +45,29 @@ export default function RegistrerForm() {
         <input type="password" style={{ maxWidth: 200 }} required />
         <label>Repetir Contraseña</label>
         <input type="password" style={{ maxWidth: 200 }} required />
-        <label>Fecha de Nacimiento</label>
-        <input type="date" style={{ maxWidth: 200 }} required/>
         <label>Dirección</label>
         <input type="text" style={{ maxWidth: 200 }} />
+        <label>Género</label>
+        <label>
+          <input type="radio" name="gender" value="male" onChange={(e) => handleGender(e.target.value)} /> M
+        </label>
+        <label>
+          <input type="radio" name="gender" value="female" onChange={(e) => handleGender(e.target.value)} /> F
+        </label>
         <label htmlFor="opcions">Tipo Usuario</label>
         <select value={selectOptions} onChange={(e) => handleOptions(e)}>
           <option value="customer">Cliente</option>
           <option value="worker">Trabajador</option>
         </select>
         {
-          selectOptions === ("customer") ? <Customer handleGender={handleGender} /> : <Worker handleDNI={handleDNI} handleNumber={handleNumber} />
+          selectOptions === ("worker") ? <Worker handleJob={handleJob} /> : null
         }
+        <label>Fecha de Nacimiento</label>
+        <input type="date" style={{ maxWidth: 200 }} required/>
+        <label>DNI</label>
+        <input type="text" style={{ maxWidth: 200 }} required/>
+        <label>Número de teléfono</label>
+        <input type="text" style={{ maxWidth: 200 }} required/>
         <BottonsInicio text='ENVIAR'></BottonsInicio>
       </form>
     </div>
