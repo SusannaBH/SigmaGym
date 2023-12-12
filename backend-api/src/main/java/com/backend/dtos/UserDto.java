@@ -23,5 +23,6 @@ public class UserDto implements Serializable {
     private String jobTitleWorker;
     private String phoneNum;
     private String birthday;
+    private String url_img;
 
 }
