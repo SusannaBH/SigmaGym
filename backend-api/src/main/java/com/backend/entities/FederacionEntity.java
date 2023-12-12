@@ -37,12 +37,4 @@ public class FederacionEntity implements Serializable {
     // Foraing Key:
     //Integer sports_id;
     //Integer gym_id;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
