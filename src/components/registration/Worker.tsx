@@ -1,16 +1,13 @@
 
 interface IWorker{
-  handleDNI: (dni: string) => void
-  handleNumber: (number: string) => void
+  handleJob: (job: string) => void
 }
 
-export default function Worker({handleDNI, handleNumber}: IWorker) {
+export default function Worker({handleJob}: IWorker) {
   return (
     <div>
-        <label>DNI</label>
-        <input type="text" style={{ maxWidth: 200 }} onChange={(e) => handleDNI(e.target.value)} required />
-        <label>Number Phone</label>
-        <input type="text" style={{ maxWidth: 200 }} onChange={(e) => handleNumber(e.target.value)} required />
+        <label>Puesto de trabajo</label>
+        <input type="text" style={{ maxWidth: 200 }} onChange={(e) => handleJob(e.target.value)} required />
     </div>
   )
 }
