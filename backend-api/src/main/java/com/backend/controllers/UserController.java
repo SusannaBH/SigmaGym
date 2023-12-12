@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.backend.dtos.UserDto;
 import com.backend.entities.UserEntity;
+import com.backend.services.UserConversionService;
 import com.backend.services.UserService;
-
+/*
 @RestController
 @RequestMapping("users")
 public class UserController {
@@ -55,9 +57,9 @@ public class UserController {
 		return (result) ? ResponseEntity.status(HttpStatus.OK).body("Usuario eliminado") : 
 			ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existe ese usuario") ;
 	}
-}
+}*/
 //el dto pero no se si funciona
-/*@RestController
+@RestController
 @RequestMapping("users")
 public class UserController {
     private final UserService userService;
@@ -86,9 +88,9 @@ public class UserController {
 
     // Inserta un user
     @PutMapping()
-    public ResponseEntity<String> insertUser(@RequestBody UserDTO userDTO) {
-        System.out.println(userDTO.toString());
-        UserEntity userEntity = userConversionService.convertToEntity(userDTO);
+    public ResponseEntity<String> insertUser(@RequestBody UserDto userDto) {
+        System.out.println(userDto.toString());
+        UserEntity userEntity = userConversionService.convertToEntity(userDto);
         userService.addUser(userEntity);
         return ResponseEntity.ok("Usuario insertado correctamente");
     }
@@ -102,4 +104,4 @@ public class UserController {
                           ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existe ese usuario");
     }
 }
-*/
+

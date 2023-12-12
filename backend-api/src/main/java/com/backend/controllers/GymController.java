@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.backend.dtos.GymDto;
 import com.backend.entities.GymEntity;
+import com.backend.services.GymConversionService;
 import com.backend.services.GymService;
-
+/*
 @RestController
 @RequestMapping("gyms")
 public class GymController {
@@ -54,4 +56,51 @@ public class GymController {
 		return (result) ? ResponseEntity.status(HttpStatus.OK).body("Gym eliminado") : 
 			ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existe ese gym") ;
 	}
+}*/
+
+@RestController
+@RequestMapping("gyms")
+public class GymController {
+	private final GymService gymService;
+	private final GymConversionService gymConversionService;
+
+	GymController(GymService gymService, GymConversionService gymConversionService) {
+		this.gymService = gymService;
+		this.gymConversionService = gymConversionService;
+	}
+
+	@GetMapping
+	public List<GymDto> getAllGyms() {
+		List<GymEntity> gyms = gymService.findAllGyms();
+		return gyms.stream()
+				.map(gymConversionService::convertToDTO)
+				.collect(Collectors.toList());
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<GymDto> getGymById(@PathVariable Integer id) {
+		Optional<GymEntity> result = gymService.findGymById(id);
+
+		return result.map(gym -> ResponseEntity.ok().body(gymConversionService.convertToDTO(gym)))
+				.orElse(ResponseEntity.notFound().build());
+	}
+
+	@PutMapping
+	public ResponseEntity<String> insertGym(@RequestBody GymDto gymDto) {
+		GymEntity gymEntity = gymConversionService.convertToEntity(gymDto);
+		boolean result = gymService.addGym(gymEntity);
+
+		return result ?
+				ResponseEntity.ok("Gym insertado correctamente") :
+				ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Gym no válido");
+	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deleteGym(@PathVariable Integer id) {
+		boolean result = gymService.deleteGym(id);
+		return result ?
+				ResponseEntity.status(HttpStatus.OK).body("Gym eliminado") :
+				ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existe ese gym");
+	}
 }
+
