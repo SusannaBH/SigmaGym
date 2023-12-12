@@ -1,1 +1,0 @@
-INDEX VERSION 1.134+C:\Users\ferna\OneDrive\Desktop\Curso SOC - Fundacio Esplai\9. Proyecto Final\SigmaGym\demo\.metadata\.plugins\org.eclipse.jdt.core

@@ -16,7 +16,7 @@ import com.backend.entities.UserEntity;
 import com.backend.services.UserService;
 
 @RestController
-@RequestMapping("users")
+@RequestMapping("users") // localhost:XXXX/users
 public class UserController {
 	private UserService userService;
 
@@ -44,7 +44,7 @@ public class UserController {
 	public ResponseEntity<String> insertUser(@RequestBody UserEntity userEntity) {
 		System.out.println(userEntity.toString()); //data
 		userService.addUser(userEntity);
-		return ResponseEntity.ok("Usuario insertado correctamente");
+		return ResponseEntity.ok("Usuario insertado correctamente.");
 	}
 
 	// Elimina un usuario
