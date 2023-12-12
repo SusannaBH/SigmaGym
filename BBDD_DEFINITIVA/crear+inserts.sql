@@ -6,7 +6,8 @@ CREATE TABLE Plan (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(20),
     info VARCHAR(150),
-    price DECIMAL(10, 2)
+    price DECIMAL(10, 2),
+    image VARCHAR(150)
 );
 
 CREATE TABLE User (
@@ -96,8 +97,8 @@ CREATE TABLE federation_rol (
 
 CREATE TABLE novedades (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    titulo VARCHAR(45),
-    gym_name VARCHAR(45),
+    titulo VARCHAR(80),
+    gym_name VARCHAR(85),
     fecha DATE,
     informacion VARCHAR(200)
 );
@@ -126,13 +127,13 @@ INSERT INTO novedades (titulo, gym_name, fecha, informacion) VALUES
 
 
 
-INSERT INTO plan (title, price)
+INSERT INTO plan (title, price, info, image)
 VALUES
-('Free', 00.00),
-('Bronce', 14.99),
-('Silver', 29.99),
-('Gold', 49.99),
-('Premium', 79.99);
+('Free', 0.00, 'Acceso básico de forma gratuita para siempre. ¡Descubre las funciones esenciales de nuestro servicio hoy!', '/src/assets/image_free.jpg'),
+('Bronze', 14.99, 'Plan Bronze con duración mensual. Nuevas funciones cada mes. ¡Mejora ahora!', '/src/assets/image_bronze.jpg'),
+('Silver', 29.99, 'Plan Silver con duración trimestral. Más tiempo, más ventajas. ¡Únete a la exclusividad!', '/src/assets/image_silver.jpg'),
+('Gold', 49.99, 'Experimenta la grandeza con nuestro plan Gold con duración semestral. Funciones avanzadas y soporte prioritario. ¡Hazte Gold hoy mismo!', '/src/assets/image_gold.jpg'),
+('Premium', 79.99, 'La cima de la experiencia. Nuestro plan Premium con duración anual te brinda acceso a todas las características. ¡Vive la excelencia con Premium!', '/src/assets/image_premium.jpgl');
 
 
 INSERT INTO gym (name, address, phone, email, horary)
@@ -242,11 +243,6 @@ VALUES
 (3, 8),
 (4, 9),
 (5, 10);
-
-DROP DATABASE IF EXISTS db_gym_app;
-CREATE DATABASE db_gym_app;
-USE db_gym_app;
-
 
 
 
