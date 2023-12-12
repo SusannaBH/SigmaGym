@@ -9,13 +9,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "gym")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class GymEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -33,4 +37,12 @@ public class GymEntity implements Serializable {
 	// Foraing Key:
 	//Integer sports_id;
 	//Integer gym_id;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 }

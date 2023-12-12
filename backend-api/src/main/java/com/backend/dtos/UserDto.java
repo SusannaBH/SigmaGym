@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDTO implements Serializable {
+public class UserDto implements Serializable {
     private static final long serialVersionUID = -502753434853358270L;
 
     private String name;
@@ -23,5 +23,5 @@ public class UserDTO implements Serializable {
     private String jobTitleWorker;
     private String phoneNum;
     private String birthday;
-}
+
 }
