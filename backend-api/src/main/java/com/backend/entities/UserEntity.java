@@ -42,6 +42,8 @@ public class UserEntity implements Serializable{
 	private Integer client_id;
 	private String credit_card;
 	private String birthday;
+	private String url_img;
+	
 //	private Integer plan_id; // Foreing Key hara falta hacer un join para obtener el id
 	
 	public String getDni() {
