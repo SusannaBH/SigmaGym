@@ -18,8 +18,6 @@ import lombok.Setter;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 public class GymEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -38,11 +36,4 @@ public class GymEntity implements Serializable {
 	//Integer sports_id;
 	//Integer gym_id;
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 }
