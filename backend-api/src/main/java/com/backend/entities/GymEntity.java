@@ -18,8 +18,6 @@ import lombok.Setter;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 public class GymEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
