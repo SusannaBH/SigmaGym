@@ -96,8 +96,8 @@ CREATE TABLE federation_rol (
 
 CREATE TABLE novedades (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    titulo VARCHAR(45),
-    gym_name VARCHAR(45),
+    titulo VARCHAR(90),
+    gym_name VARCHAR(90),
     fecha DATE,
     informacion VARCHAR(200)
 );
@@ -126,13 +126,13 @@ INSERT INTO novedades (titulo, gym_name, fecha, informacion) VALUES
 
 
 
-INSERT INTO plan (title, price)
+INSERT INTO plan (title, price, info)
 VALUES
-('Free', 00.00),
-('Bronce', 14.99),
-('Silver', 29.99),
-('Gold', 49.99),
-('Premium', 79.99);
+('Free', 00.00, "Este plan es simple para quien no quiere gastar"),
+('Bronce', 14.99, "Te da acceso al contenido con cobro mensual"),
+('Silver', 29.99, "Te da acceso al contenido con cobro trimestral"),
+('Gold', 49.99, "Te da acceso al contenido con cobro semestral"),
+('Premium', 79.99, "Te da acceso al contenido con cobro anual");
 
 
 INSERT INTO gym (name, address, phone, email, horary)
