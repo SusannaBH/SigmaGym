@@ -17,7 +17,8 @@ import com.backend.entities.GymEntity;
 import com.backend.services.GymService;
 
 @RestController
-@RequestMapping("gyms")
+@RequestMapping("/gyms")
+@CrossOrigin(origins = "http://localhost:5173")
 public class NewsController {
 	private GymService gymService;
 
@@ -58,3 +59,5 @@ public class NewsController {
 }
 
 */
+
+import org.springframework.web.bind.annotation.CrossOrigin;
