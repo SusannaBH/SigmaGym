@@ -29,4 +29,5 @@ public class PlanEntity implements Serializable {
     private Integer id;
     private String title;
     private Float price;
+    private String info;
 }
