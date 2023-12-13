@@ -60,4 +60,3 @@ public class NewsController {
 
 */
 
-import org.springframework.web.bind.annotation.CrossOrigin;
