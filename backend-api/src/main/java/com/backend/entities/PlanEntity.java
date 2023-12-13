@@ -1,5 +1,5 @@
 package com.backend.entities;
-import jakarta.persistence.Column;
+
 import java.io.Serializable;
 
 import jakarta.persistence.Entity;
@@ -14,28 +14,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "gym")
+@Table(name = "plan")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class GymEntity implements Serializable {
+public class PlanEntity implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Integer id;
-	String name;
-	String address;
-	String phone;
-	String email;
-	String horary;
-	//String gym_roll;
-	
-	// Foraing Key:
-	//Integer sports_id;
-	//Integer gym_id;
+    private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String title;
+    private Float price;
 }
