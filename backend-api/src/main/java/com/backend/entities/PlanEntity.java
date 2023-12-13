@@ -14,27 +14,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "federation")
+@Table(name = "plan")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class FederacionEntity implements Serializable {
+public class PlanEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    private String name;
-    private String region;
-    private Integer num_members;
-    private String type_sport_federation;
-    //String gym_roll;
-
-    // Foraing Key:
-    private Integer sports_id;
-    private Integer gym_id;
+    private String title;
+    private Float price;
 }
