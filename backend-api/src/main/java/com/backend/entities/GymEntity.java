@@ -33,7 +33,7 @@ public class GymEntity implements Serializable {
 	//String gym_roll;
 	
 	// Foraing Key:
-	Integer sports_id;
-	Integer gym_id;
+	//Integer sports_id;
+	//Integer gym_id;
 
 }
