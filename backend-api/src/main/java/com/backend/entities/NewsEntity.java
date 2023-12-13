@@ -30,5 +30,5 @@ public class NewsEntity implements Serializable {
 	String titulo;
 	String gym_name;
 	String fecha;
-	String information;
+	String informacion;
 }
