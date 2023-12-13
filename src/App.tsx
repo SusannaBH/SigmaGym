@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Layout from './Layout';
 import Registration from './pages/Registration';
 import Plans from './pages/Plans';
+import Gyms from './pages/Gyms'
 
 const App = () => {
   // IMPLEMENTAR AQUÍ LA LOGICA
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/" element={<Layout />}>
           <Route path="" element={<Home />} />
           <Route path="/plans" element={<Plans />} />
+          <Route path="/gyms" element={<Gyms />} />
         </Route>
         <Route path='/login' element={<Login />} />
         <Route path='/registration' element={<Registration />} />

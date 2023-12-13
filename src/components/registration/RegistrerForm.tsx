@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './styles.module.css'
+import Style from './styles.module.css'
 import { Worker, BottonsInicio } from './index'
 
 export default function RegistrerForm() {
@@ -30,9 +30,9 @@ export default function RegistrerForm() {
   }
 
   return (
-    <div className={styles.containerReg}>
+    <div className={Style.containerReg}>
       <h1>- REGISTRO -</h1>
-      <form className={styles.formReg} onSubmit={(e) => handleSubmit(e)}>
+      <form className={Style.formReg} onSubmit={(e) => handleSubmit(e)}>
         <label>Email</label>
         <input type="email" style={{ maxWidth: 200 }} required />
         <label>Nombre</label>
@@ -48,12 +48,12 @@ export default function RegistrerForm() {
         <label>Dirección</label>
         <input type="text" style={{ maxWidth: 200 }} />
         <label>Género</label>
-        <label>
-          <input type="radio" name="gender" value="male" onChange={(e) => handleGender(e.target.value)} /> M
-        </label>
-        <label>
-          <input type="radio" name="gender" value="female" onChange={(e) => handleGender(e.target.value)} /> F
-        </label>
+        <div className={Style.gender}>
+          <label>M</label>
+          <input type="radio" name="gender" value="male" onChange={(e) => handleGender(e.target.value)} />
+          <label className={Style.female}>F</label>
+          <input type="radio" name="gender" value="female" onChange={(e) => handleGender(e.target.value)} />
+        </div>
         <label htmlFor="opcions">Tipo Usuario</label>
         <select value={selectOptions} onChange={(e) => handleOptions(e)}>
           <option value="customer">Cliente</option>
