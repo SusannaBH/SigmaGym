@@ -14,7 +14,7 @@ h1{
     text-align: center;
 }
 
-input{
+input, select {
     margin-bottom: 10px;
 }
 
@@ -37,4 +37,18 @@ input{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.worker{
+    display: flex;
+    flex-direction: column;
+}
+
+.gender{
+    display: flex;
+    flex-direction: row;
+}
+
+.female{
+    margin-left: 20px; /* Ajusta el valor según sea necesario */
 }

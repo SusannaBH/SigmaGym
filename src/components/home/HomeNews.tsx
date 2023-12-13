@@ -1,17 +1,20 @@
 import { New } from "./index";
 import Styles from "./styles.module.css"
+import dataNews from "../../data/news.json"
 
 type Props = {}
 
 export default function HomeNews({ }: Props) {
     return (
-        <div>
+        <div className={Styles.estructure}>
             <h1 className={Styles.title}>- NOVEDADES -</h1>
-            <New/>
-            <New/>
-            <New/>
-            <New/>
-            <New/>
+            {dataNews.novedades.map((novedad) => {
+                const {titulo, gym_name, fecha, informacion } = novedad
+                return (
+                    <New  title={titulo} gym_name={gym_name} date={fecha} info={informacion} />
+                )
+            })}
+            
         </div>
     )
 }

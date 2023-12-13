@@ -59,7 +59,7 @@ public class UserController {
 		System.out.println(userDto.toString());
 		UserEntity userEntity = userConversionService.convertToEntity(userDto);
 		userService.addUser(userEntity);
-		return ResponseEntity.ok("Usuario insertado correctamente");
+		return ResponseEntity.ok("Usuario insertado correctamente.");
 	}
 
 	// Elimina un usuario
