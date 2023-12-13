@@ -9,9 +9,9 @@ export default function HomeNews({ }: Props) {
         <div className={Styles.estructure}>
             <h1 className={Styles.title}>- NOVEDADES -</h1>
             {dataNews.novedades.map((novedad) => {
-                const {titulo, gym_name, fecha, informacion } = novedad
+                const {id, titulo, gym_name, fecha, informacion } = novedad
                 return (
-                    <New  title={titulo} gym_name={gym_name} date={fecha} info={informacion} />
+                    <New key={id} title={titulo} gym_name={gym_name} date={fecha} info={informacion} />
                 )
             })}
             

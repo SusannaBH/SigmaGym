@@ -8,7 +8,18 @@ interface Props {
   imageSrc?: string
 }
 
+
 export default function Plan({ title, price, info, imageSrc }: Props) {
+
+  
+  fetch("http://localhost:8080/plans", {
+    method: 'GET',
+    redirect: 'follow'
+  })
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+
   return (
     <div className={Style.card}>
       <div className={Style.container}>
