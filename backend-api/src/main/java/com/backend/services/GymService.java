@@ -1,23 +1,26 @@
 package com.backend.services;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.backend.dtos.GymDto;
 import com.backend.entities.GymEntity;
-import com.backend.entities.UserEntity;
+import com.backend.repository.GymDtoRepository;
 import com.backend.repository.GymRepository;
-import com.backend.repository.UserRepository;
 
 @Service
 public class GymService {
     private final GymRepository gymRepository;
+	private GymDtoRepository gymDtoRepository;
 
-    public GymService(GymRepository gymRepository) {
+
+    public GymService(GymRepository gymRepository, GymDtoRepository gymDtoRepository) {
         this.gymRepository = gymRepository;
+		this.gymDtoRepository = gymDtoRepository;
+
     }
     
     /**
@@ -25,10 +28,12 @@ public class GymService {
      * @param  none 
      * @return list of gymentity
      */
+    public List<GymDto> findAllGymsDto() {
+        return gymDtoRepository.findAll();
+    }
     public List<GymEntity> findAllGyms() {
         return gymRepository.findAll();
     }
-    
     
     public Optional<GymEntity> findGymById(Integer id) {
     	return  gymRepository.findById(id);

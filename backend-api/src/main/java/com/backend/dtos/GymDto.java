@@ -28,8 +28,8 @@ public class GymDto implements Serializable {
     @ManyToMany
 	@JoinTable(
 	    name = "gym_has_class", // Nombre de la tabla intermedia
-	    joinColumns = @JoinColumn(name = "gym_id"), // Columna que hace referencia a UserEntity
-	    inverseJoinColumns = @JoinColumn(name = "class_id") // Columna que hace referencia a GymEntity
+	    joinColumns = @JoinColumn(name = "class_id"), // Columna que hace referencia a UserEntity
+	    inverseJoinColumns = @JoinColumn(name = "gym_id") // Columna que hace referencia a GymEntity
 	)
 	List<ClassEntity> lista_classes;
 }
