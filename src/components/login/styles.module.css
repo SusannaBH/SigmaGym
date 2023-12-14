@@ -19,20 +19,12 @@
   border-radius: 10px;
 }
 
-@media screen and (max-width: 1024px) {
-  .inicio {
+@media screen and (max-width: 700px) {
+  .inicio{
     flex-direction: column;
   }
-}
-
-@media screen and (max-width: 900px) {
-  .inicio {
-    flex-direction: column;
-  }
-  
   .imageInicio {
     display: none;
-    
   }
 }
 

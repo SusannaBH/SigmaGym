@@ -26,11 +26,11 @@ export default function AccountMenu() {
   return (
     <>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center', justifyContent: 'center' }} className={Styles.backgroundNav}>
-        <Button variant="contained" className={Styles.button}><RRLink to="/" className={Styles.enlace} style={{ textDecoration: 'none' }}>HOME 🏠</RRLink></Button>
-        <Button variant="contained" className={Styles.button}><RRLink to="/plans" className={Styles.enlace} style={{ textDecoration: 'none' }}>PLANS 💲</RRLink></Button>
+        <Button variant="contained" className={Styles.button}><RRLink to="/home" className={Styles.enlace} style={{ textDecoration: 'none' }}>HOME 🏠</RRLink></Button>
+        <Button variant="contained" className={Styles.button}><RRLink to="/plans" className={Styles.enlace} style={{ textDecoration: 'none' }}>PLANES 💲</RRLink></Button>
         <Button variant="contained" className={Styles.button}><RRLink to="/gyms" className={Styles.enlace} style={{ textDecoration: 'none' }}>GYMS 🏋️‍♀️</RRLink></Button>
-        <Button variant="contained" className={Styles.button}><RRLink to="/" className={Styles.enlace} style={{ textDecoration: 'none' }}>CLASS 🗓️</RRLink></Button>
-        <Button variant="contained" className={Styles.button}><RRLink to="/" className={Styles.enlace} style={{ textDecoration: 'none' }}>TOURNAMENTS 🏆</RRLink></Button>
+        <Button variant="contained" className={Styles.button}><RRLink to="/" className={Styles.enlace} style={{ textDecoration: 'none' }}>CLASES 🗓️</RRLink></Button>
+        <Button variant="contained" className={Styles.button}><RRLink to="/" className={Styles.enlace} style={{ textDecoration: 'none' }}>TORNEOS 🏆</RRLink></Button>
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
@@ -82,20 +82,20 @@ export default function AccountMenu() {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem onClick={handleClose}>
-          <Avatar sx={{ bgcolor: 'darkcyan' }} /> My account
+          <Avatar sx={{ bgcolor: 'darkcyan' }} /> Mi perfil
         </MenuItem>
         <Divider />
         <MenuItem onClick={handleClose}>
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
-          Settings
+          Atención cliente
         </MenuItem>
         <MenuItem onClick={handleClose}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
-          Logout
+          Cerrar sesión
         </MenuItem>
       </Menu>
     </>
