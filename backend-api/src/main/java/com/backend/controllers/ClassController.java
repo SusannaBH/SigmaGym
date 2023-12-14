@@ -66,14 +66,10 @@ public class ClassController {
 				ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existe esta classe");
 	}
 	
-	@GetMapping("/test/{id}") // ResponseEntity<?>
-	public void incrementOneStudent(@PathVariable Integer id) {
-		classService.incrementAssistanceToClass(id);
-		/*
-		return result ?
-				ResponseEntity.status(HttpStatus.OK).body("Gym eliminado") :
-				ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existe ese gym");
-				*/
+	@GetMapping("/{id}/maximus") // ResponseEntity<?>
+	public Integer numberMaxOfStudents(@PathVariable Integer id) {
+		Integer result = classService.numberMaxOfStudentsById(id);
+		return classService.numberMaxOfStudentsById(id); //ResponseEntity.status(HttpStatus.OK).body(result);
 	}
 	
 }

@@ -25,18 +25,16 @@ import com.backend.services.UserService;
 @RequestMapping("/users")
 @CrossOrigin(origins = "http://localhost:5173")
 public class UserController {
-	private final UserService userService;
-	private final UserConversionService userConversionService;
+	private UserService userService;
 
-	public UserController(UserService userService, UserConversionService userConversionService) {
+	public UserController(UserService userService) {
 		this.userService = userService;
-		this.userConversionService = userConversionService;
 	}
 
 	// Obtenemos todos los usuarios
 	@GetMapping
-	public List<UserEntity> getAllUsers() {
-		return userService.findAllUsers();
+	public List<UserDto> getAllUsers() {
+		return userService.findAllUsersDto();
 	}
 
 	// Verifica el logging:
@@ -54,13 +52,12 @@ public class UserController {
 	}
 
 	// Inserta un user
-	@PutMapping
-	public ResponseEntity<String> insertUser(@RequestBody UserDto userDto) {
-		System.out.println(userDto.toString());
-		UserEntity userEntity = userConversionService.convertToEntity(userDto);
-		userService.addUser(userEntity);
-		return ResponseEntity.ok("Usuario insertado correctamente.");
+	@PostMapping
+	public ResponseEntity<String> insertUser(@RequestBody UserEntity user) {
+	    userService.addUser(user);
+	    return ResponseEntity.status(HttpStatus.CREATED).body("Usuario insertado correctamente.");
 	}
+
 
 	// Elimina un usuario
 	@DeleteMapping("/{id}")

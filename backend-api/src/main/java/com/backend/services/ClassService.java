@@ -68,13 +68,16 @@ public class ClassService {
 	// Creamos dos tres metodos para modificar el numero de personas is
 
 	// inscritas a una una classe y el numero maximo permitido
-	public ClassEntity incrementAssistanceToClass(Integer id) {
+	public Integer numberMaxOfStudentsById(Integer id) {
 		List<ClassEntity> classes = findAllClasses();
+		Integer max =0;
 
 		for (ClassEntity classe : classes) {
-			System.out.println(classe.getSport() + " tiene : " + classe.getNum_students_roll_in());
+			if(classe.getId() == id) {
+				max = classe.getMax_students();
+			}
+			
 		}
-		return null;
+		return max;
 	}
-
 }

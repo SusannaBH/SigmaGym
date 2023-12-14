@@ -6,7 +6,9 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.backend.dtos.UserDto;
 import com.backend.entities.UserEntity;
+import com.backend.repository.UserDtoRepository;
 import com.backend.repository.UserRepository;
 
 import jakarta.transaction.Transactional;
@@ -14,10 +16,12 @@ import jakarta.transaction.Transactional;
 @Service
 @Transactional
 public class UserService {
-	private final UserRepository userRepository;
+	private UserRepository userRepository;
+	private UserDtoRepository userDtoRepository;
 
-	public UserService(UserRepository userRepository) {
+	public UserService(UserRepository userRepository, UserDtoRepository userDtoRepository) {
 		this.userRepository = userRepository;
+		this.userDtoRepository = userDtoRepository;
 	}
 
 	/**
@@ -25,6 +29,10 @@ public class UserService {
 	 * @param none
 	 * @return list of userentity
 	 */
+	public List<UserDto> findAllUsersDto() {
+		return userDtoRepository.findAll();
+	}
+	
 	public List<UserEntity> findAllUsers() {
 		return userRepository.findAll();
 	}
