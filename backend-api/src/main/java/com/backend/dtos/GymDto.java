@@ -18,7 +18,7 @@ import jakarta.persistence.ManyToMany;
 @AllArgsConstructor
 public class GymDto implements Serializable {
     private static final long serialVersionUID = 1L;
-
+    
     private String name;
     private String address;
     private String phone;
@@ -27,10 +27,9 @@ public class GymDto implements Serializable {
     
     @ManyToMany
 	@JoinTable(
-	    name = "class_has_gym", // Nombre de la tabla intermedia
+	    name = "gym_has_class", // Nombre de la tabla intermedia
 	    joinColumns = @JoinColumn(name = "gym_id"), // Columna que hace referencia a UserEntity
 	    inverseJoinColumns = @JoinColumn(name = "class_id") // Columna que hace referencia a GymEntity
 	)
 	List<ClassEntity> lista_classes;
-    
 }
