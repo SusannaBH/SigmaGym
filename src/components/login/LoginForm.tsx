@@ -2,7 +2,6 @@ import { type ChangeEvent, useState } from "react";
 import styles from "./styles.module.css";
 import { ButtonsInicio } from "./index";
 import { ENDPOINTS } from "../../constants";
-import Home from "../../pages/Home"
 
 export default function LoginForm() {
   const [username, setUsername] = useState("");
