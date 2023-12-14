@@ -50,20 +50,6 @@ public class UserEntity implements Serializable{
 	private String birthday;
 	private String url_img;
 	
-	//private Integer plan_id; // Foreing Key hara falta hacer un join para obtener el id
-	
-	
-	@ManyToMany
-	@JoinTable(
-	    name = "gym_has_user", // Nombre de la tabla intermedia
-	    joinColumns = @JoinColumn(name = "user_id"), // Columna que hace referencia a UserEntity
-	    inverseJoinColumns = @JoinColumn(name = "gym_id") // Columna que hace referencia a GymEntity
-	)
-	List<GymEntity> lista_Gyms;
-	
-	@ManyToOne
-	@JoinColumn(name = "plan_id") // Nombre de la columna que contiene la clave foránea en la tabla GymEntity
-	private PlanEntity plan;
 	
 	
 }

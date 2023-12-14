@@ -29,6 +29,5 @@ public class ClassEntity implements Serializable {
 	String horary;
 	String sport;
 	Integer max_students;
-	Integer num_students_roll_in;
 	
 }
