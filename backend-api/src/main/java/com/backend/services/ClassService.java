@@ -16,69 +16,65 @@ import com.backend.repository.UserRepository;
 
 @Service
 public class ClassService {
-    private final ClassRepository classRepository;
+	private final ClassRepository classRepository;
 
-    public ClassService(ClassRepository classRepository) {
-        this.classRepository =classRepository;
-    }
-    
-    /**
-     * @author Fernando Alaejos
-     * @param  none 
-     * @return list of gymentity
-     */
-    public List<ClassEntity> findAllClasses() {
-        return classRepository.findAll();
-    }
-    
-    
-    public Optional<ClassEntity> findClassById(Integer id) {
-    	return  classRepository.findById(id);
-    }
-    
-    // Esta función hay que retocarla
-    public boolean addClass(@RequestBody ClassEntity classEntity) {
-    	// guardamos la lista de usuarios
-    	List<ClassEntity> listClasses = findAllClasses();
-    	boolean isValidClass = true;
-    	
-    	// Miramos si hay algun usuario con el mismo dni o username
-    	// en ese caso no es valido el usuario introducido 
-    	for (ClassEntity classe : listClasses) {
+	public ClassService(ClassRepository classRepository) {
+		this.classRepository = classRepository;
+	}
+
+	/**
+	 * @author Fernando Alaejos
+	 * @param none
+	 * @return list of gymentity
+	 */
+	public List<ClassEntity> findAllClasses() {
+		return classRepository.findAll();
+	}
+
+	public Optional<ClassEntity> findClassById(Integer id) {
+		return classRepository.findById(id);
+	}
+
+	// Esta función hay que retocarla
+	public boolean addClass(@RequestBody ClassEntity classEntity) {
+		// guardamos la lista de usuarios
+		List<ClassEntity> listClasses = findAllClasses();
+		boolean isValidClass = true;
+
+		// Miramos si hay algun usuario con el mismo dni o username
+		// en ese caso no es valido el usuario introducido
+		for (ClassEntity classe : listClasses) {
 			if (classEntity.getId() == classe.getId()) {
 				isValidClass = false;
 				return isValidClass;
 			}
 		}
-    	
-    	classRepository.save(classEntity);
-    	return isValidClass;
-    }
-  
-    
-    /**
-     * @author Fernando Alaejos Garcia
-     * @param id it's thSe primary key for the register
-     * @return true = deleted or false = not found
-     */
-    public boolean deleteClass(Integer id) {
-    	Optional<ClassEntity> checkIfExistClass = findClassById(id);
-    	classRepository.deleteById(id);
-    	return checkIfExistClass.isPresent();
-    }
-    
-    // Creamos dos tres metodos para modificar el numero de personas is
 
-    // inscritas a una una classe y el numero maximo permitido
-    public ClassEntity incrementAssistanceToClass(Integer id) {
-    	List<ClassEntity> classes =  findAllClasses();
-    	
-    	for (ClassEntity classe : classes) {
-    		System.out.print(classe.getSport() + "tiene : " +classe.getNum_students_roll_in());
+		classRepository.save(classEntity);
+		return isValidClass;
+	}
+
+	/**
+	 * @author Fernando Alaejos Garcia
+	 * @param id it's thSe primary key for the register
+	 * @return true = deleted or false = not found
+	 */
+	public boolean deleteClass(Integer id) {
+		Optional<ClassEntity> checkIfExistClass = findClassById(id);
+		classRepository.deleteById(id);
+		return checkIfExistClass.isPresent();
+	}
+
+	// Creamos dos tres metodos para modificar el numero de personas is
+
+	// inscritas a una una classe y el numero maximo permitido
+	public ClassEntity incrementAssistanceToClass(Integer id) {
+		List<ClassEntity> classes = findAllClasses();
+
+		for (ClassEntity classe : classes) {
+			System.out.println(classe.getSport() + " tiene : " + classe.getNum_students_roll_in());
 		}
-    	
-    	
-    	return null;
-    }
+		return null;
+	}
 
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,7 +55,7 @@ public class ClassController {
 
 		return result ?
 				ResponseEntity.ok("Gym insertado correctamente") :
-				ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Gym no válido");
+				ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Classe no válido");
 	}
 
 	@DeleteMapping("/{id}")
@@ -62,7 +63,18 @@ public class ClassController {
 		boolean result = classService.deleteClass(id);
 		return result ?
 				ResponseEntity.status(HttpStatus.OK).body("Gym eliminado") :
-				ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existe ese gym");
+				ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existe esta classe");
 	}
+	
+	@GetMapping("/test/{id}") // ResponseEntity<?>
+	public void incrementOneStudent(@PathVariable Integer id) {
+		classService.incrementAssistanceToClass(id);
+		/*
+		return result ?
+				ResponseEntity.status(HttpStatus.OK).body("Gym eliminado") :
+				ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existe ese gym");
+				*/
+	}
+	
 }
 
