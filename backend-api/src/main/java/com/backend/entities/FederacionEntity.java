@@ -35,6 +35,6 @@ public class FederacionEntity implements Serializable {
     //String gym_roll;
 
     // Foraing Key:
-    //Integer sports_id;
-    //Integer gym_id;
+    private Integer sports_id;
+    private Integer gym_id;
 }

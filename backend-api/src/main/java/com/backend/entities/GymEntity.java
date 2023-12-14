@@ -1,5 +1,5 @@
 package com.backend.entities;
-
+import jakarta.persistence.Column;
 import java.io.Serializable;
 
 import jakarta.persistence.Entity;

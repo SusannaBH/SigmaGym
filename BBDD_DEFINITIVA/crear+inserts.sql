@@ -68,6 +68,8 @@ CREATE TABLE class (
     coach VARCHAR(45),
     max_students INT,
     sports_id INT,
+    horary VARCHAR(100),
+    num_users INT,
     FOREIGN KEY (sports_id) REFERENCES sports(id)
 );
 
@@ -97,8 +99,13 @@ CREATE TABLE federation_rol (
 
 CREATE TABLE novedades (
     id INT AUTO_INCREMENT PRIMARY KEY,
+<<<<<<< HEAD
     titulo VARCHAR(80),
     gym_name VARCHAR(85),
+=======
+    titulo VARCHAR(90),
+    gym_name VARCHAR(90),
+>>>>>>> 6949cc055675c7164418f45dd52a2311b58ff541
     fecha DATE,
     informacion VARCHAR(200)
 );
@@ -125,6 +132,7 @@ INSERT INTO novedades (titulo, gym_name, fecha, informacion) VALUES
 ('Clases de natación', 'AquaFit', '2024-06-18', 'Refresca tu rutina con nuestras nuevas clases de natación.'),
 ('Desafío de pérdida de peso', 'WeightLossWarriors', '2024-07-05', 'Participa en nuestro desafío de pérdida de peso y alcanza tus metas fitness.');
 
+<<<<<<< HEAD
 
 
 INSERT INTO plan (title, price, info, image)
@@ -135,6 +143,15 @@ VALUES
 ('Gold', 49.99, 'Experimenta la grandeza con nuestro plan Gold con duración semestral. Funciones avanzadas y soporte prioritario. ¡Hazte Gold hoy mismo!', '/src/assets/image_gold.jpg'),
 ('Premium', 79.99, 'La cima de la experiencia. Nuestro plan Premium con duración anual te brinda acceso a todas las características. ¡Vive la excelencia con Premium!', '/src/assets/image_premium.jpgl');
 
+=======
+INSERT INTO plan (title, price, info)
+VALUES
+('Free', 00.00, "Este plan es simple para quien no quiere gastar"),
+('Bronce', 14.99, "Te da acceso al contenido con cobro mensual"),
+('Silver', 29.99, "Te da acceso al contenido con cobro trimestral"),
+('Gold', 49.99, "Te da acceso al contenido con cobro semestral"),
+('Premium', 79.99, "Te da acceso al contenido con cobro anual");
+>>>>>>> 6949cc055675c7164418f45dd52a2311b58ff541
 
 INSERT INTO gym (name, address, phone, email, horary)
 VALUES
@@ -143,9 +160,6 @@ VALUES
 ('FitHub', '789 Pine St', '555-8765', 'info@fithub.com', '7:00 AM - 8:00 PM'),
 ('Flex Fitness', '101 Cedar St', '555-4321', 'info@flexfitness.com', '9:00 AM - 7:00 PM'),
 ('Powerhouse Gym', '202 Elm St', '555-9876', 'info@powerhousegym.com', '5:00 AM - 11:00 PM');
-
-
-
 
 INSERT INTO sports (name, description)
 VALUES 
@@ -179,18 +193,18 @@ VALUES
 ('Ethan', 'King', 'ethan_king', 'ethanpass', '303 Birch St', 1, 0, 'Male', 'ethan.king@example.com', 108, '2233445566', 'Assistant', '555-9876', NULL, '7890-1234-5678-9012', '1997-12-12', 'http://example.com/ethanking.jpg', 3);
 
 
-INSERT INTO class (coach, max_students, sports_id)
+INSERT INTO class (coach, max_students, sports_id, horary, num_users)
 VALUES
-('Alex Smith', 20, 1),  
-('Emily Johnson', 15, 2),
-('Daniel Martinez', 10, 3),
-('Sophia Brown', 18, 4),
-('Matthew Taylor', 25, 5),
-('Olivia White', 12, 6),
-('David Anderson', 15, 7),
-('Emma Davis', 10, 8),
-('Christopher Wilson', 20, 9),
-('Ava Thompson', 15, 10);
+('Alex Smith', 20, 1, 'Lunes 10:00 AM - 12:00 PM', 0),  
+('Emily Johnson', 15, 2, 'Martes 2:00 PM - 4:00 PM', 0),
+('Daniel Martinez', 10, 3, 'Miércoles 4:30 PM - 6:30 PM', 0),
+('Sophia Brown', 18, 4, 'Jueves 9:00 AM - 11:00 AM', 0),
+('Matthew Taylor', 25, 5, 'Viernes 3:00 PM - 5:00 PM', 0),
+('Olivia White', 12, 6, 'Sábado 11:30 AM - 1:30 PM', 0),
+('David Anderson', 15, 7, 'Domingo 5:00 PM - 7:00 PM', 0),
+('Emma Davis', 10, 8, 'Lunes 6:30 PM - 8:30 PM', 0),
+('Christopher Wilson', 20, 9, 'Martes 11:00 AM - 1:00 PM', 0),
+('Ava Thompson', 15, 10, 'Miércoles 7:00 PM - 9:00 PM', 0);
 
 INSERT INTO federation (name, region, num_members, type_sport_federation)
 VALUES
@@ -244,6 +258,9 @@ VALUES
 (4, 9),
 (5, 10);
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 6949cc055675c7164418f45dd52a2311b58ff541
 

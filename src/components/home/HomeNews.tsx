@@ -1,17 +1,29 @@
 import { New } from "./index";
-import Styles from "./styles.module.css"
+import Styles from "./styles.module.css";
+import { useEffect, useState } from "react";
 
-type Props = {}
+export default function HomeNews() {
+  const [dataNews, setDataNews] = useState([]);
 
-export default function HomeNews({ }: Props) {
+  useEffect(() => {
+    fetch("http://localhost:8080/news", {
+      method: "GET",
+      redirect: "follow",
+    })
+      .then((response) => response.json())
+      .then((result) => setDataNews(result))
+      .catch((error) => console.log("Error fetching news:", error));
+    }, []); 
+
     return (
-        <div>
-            <h1 className={Styles.title}>- NOVEDADES -</h1>
-            <New/>
-            <New/>
-            <New/>
-            <New/>
-            <New/>
-        </div>
-    )
+      <div className={Styles.estructure}>
+        <h1 className={Styles.title}>- NOVEDADES -</h1>
+        {dataNews.map((novedad) => {
+          const { id, titulo, gym_name, fecha, informacion } = novedad;
+          return (
+            <New key={id} title={titulo} gym_name={gym_name} date={fecha} info={informacion}/>
+          );
+        })}
+      </div>
+    );
 }
