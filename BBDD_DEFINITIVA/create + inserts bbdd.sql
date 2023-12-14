@@ -150,7 +150,7 @@ VALUES
 
 INSERT INTO class (coach, max_students, sport, horary, num_students_roll_in)
 VALUES
-('Alex Smith', 20, 1, 'Lunes 10:00 AM - 12:00 PM', 0),  
+('Alex Smith', 20, 1, 'Lunes 10:00 AM - 12:00 PM', 2),  
 ('Emily Johnson', 15, 2, 'Martes 2:00 PM - 4:00 PM', 0),
 ('Daniel Martinez', 10, 3, 'Miércoles 4:30 PM - 6:30 PM', 0),
 ('Sophia Brown', 18, 4, 'Jueves 9:00 AM - 11:00 AM', 0),
