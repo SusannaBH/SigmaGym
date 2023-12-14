@@ -50,62 +50,26 @@ CREATE TABLE gym_has_user (
     FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
-CREATE TABLE sports (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(45),
-    description VARCHAR(150)
-);
-
-CREATE TABLE gym_has_sports (
-    gym_id INT,
-    sports_id INT,
-    PRIMARY KEY (gym_id, sports_id),
-    FOREIGN KEY (gym_id) REFERENCES gym(id),
-    FOREIGN KEY (sports_id) REFERENCES sports(id)
-);
 CREATE TABLE class (
     id INT AUTO_INCREMENT PRIMARY KEY,
     coach VARCHAR(45),
-    max_students INT,
-    sports_id INT,
     horary VARCHAR(100),
-    num_users INT,
-    FOREIGN KEY (sports_id) REFERENCES sports(id)
+    sport VARCHAR(50),
+    max_students INT,
+    num_students_roll_in INT
 );
 
-CREATE TABLE federation (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(65),
-    region VARCHAR(15),
-    num_members INT,
-    type_sport_federation VARCHAR(45)
+CREATE TABLE gym_has_class (
+    gym_id INT,
+    class_id INT,
+    PRIMARY KEY (gym_id, class_id),
+    FOREIGN KEY (gym_id) REFERENCES gym(id),
+    FOREIGN KEY (class_id) REFERENCES class(id)
 );
-
-CREATE TABLE sports_has_federation (
-    sports_id INT,
-    federation_id INT,
-    PRIMARY KEY (sports_id, federation_id),
-    FOREIGN KEY (sports_id) REFERENCES sports(id),
-    FOREIGN KEY (federation_id) REFERENCES federation(id)
-);
-
-CREATE TABLE federation_rol (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    rol VARCHAR(45),
-    federation_id INT,
-    FOREIGN KEY (federation_id) REFERENCES federation(id)
-);
-
-
 CREATE TABLE novedades (
     id INT AUTO_INCREMENT PRIMARY KEY,
-<<<<<<< HEAD
-    titulo VARCHAR(80),
-    gym_name VARCHAR(85),
-=======
     titulo VARCHAR(90),
     gym_name VARCHAR(90),
->>>>>>> 6949cc055675c7164418f45dd52a2311b58ff541
     fecha DATE,
     informacion VARCHAR(200)
 );
@@ -132,8 +96,6 @@ INSERT INTO novedades (titulo, gym_name, fecha, informacion) VALUES
 ('Clases de natación', 'AquaFit', '2024-06-18', 'Refresca tu rutina con nuestras nuevas clases de natación.'),
 ('Desafío de pérdida de peso', 'WeightLossWarriors', '2024-07-05', 'Participa en nuestro desafío de pérdida de peso y alcanza tus metas fitness.');
 
-<<<<<<< HEAD
-
 
 INSERT INTO plan (title, price, info, image)
 VALUES
@@ -143,15 +105,13 @@ VALUES
 ('Gold', 49.99, 'Experimenta la grandeza con nuestro plan Gold con duración semestral. Funciones avanzadas y soporte prioritario. ¡Hazte Gold hoy mismo!', '/src/assets/image_gold.jpg'),
 ('Premium', 79.99, 'La cima de la experiencia. Nuestro plan Premium con duración anual te brinda acceso a todas las características. ¡Vive la excelencia con Premium!', '/src/assets/image_premium.jpgl');
 
-=======
-INSERT INTO plan (title, price, info)
-VALUES
-('Free', 00.00, "Este plan es simple para quien no quiere gastar"),
-('Bronce', 14.99, "Te da acceso al contenido con cobro mensual"),
-('Silver', 29.99, "Te da acceso al contenido con cobro trimestral"),
-('Gold', 49.99, "Te da acceso al contenido con cobro semestral"),
-('Premium', 79.99, "Te da acceso al contenido con cobro anual");
->>>>>>> 6949cc055675c7164418f45dd52a2311b58ff541
+-- INSERT INTO plan (title, price, info)
+-- VALUES
+-- ('Free', 00.00, "Este plan es simple para quien no quiere gastar"),
+-- ('Bronce', 14.99, "Te da acceso al contenido con cobro mensual"),
+-- ('Silver', 29.99, "Te da acceso al contenido con cobro trimestral"),
+-- ('Gold', 49.99, "Te da acceso al contenido con cobro semestral"),
+-- ('Premium', 79.99, "Te da acceso al contenido con cobro anual");
 
 INSERT INTO gym (name, address, phone, email, horary)
 VALUES
@@ -160,19 +120,6 @@ VALUES
 ('FitHub', '789 Pine St', '555-8765', 'info@fithub.com', '7:00 AM - 8:00 PM'),
 ('Flex Fitness', '101 Cedar St', '555-4321', 'info@flexfitness.com', '9:00 AM - 7:00 PM'),
 ('Powerhouse Gym', '202 Elm St', '555-9876', 'info@powerhousegym.com', '5:00 AM - 11:00 PM');
-
-INSERT INTO sports (name, description)
-VALUES 
-('Boxing', 'Combat sport in which two people fight using only their fists.'),
-('Judo', 'Japanese combat sport based on throwing and grappling techniques.'),
-('Karate', 'Japanese martial art focusing on strikes with hands and feet.'),
-('Muay Thai', 'Thai martial art known as "the art of eight limbs" for its use of hands, legs, elbows, and knees.'),
-('Wrestling', 'Combat sport in which two wrestlers compete using grappling techniques.'),
-('Kickboxing', 'Combat sport that combines techniques from boxing with kicks from martial arts.'),
-('Taekwondo', 'Korean martial art characterized by its high kicks and leg techniques.'),
-('Mixed Martial Arts (MMA)', 'Combat sport allowing the use of techniques from various martial arts disciplines.'),
-('Sumo', 'Traditional Japanese wrestling sport where two wrestlers try to force each other out of a ring.'),
-('Wushu', 'Chinese term for martial arts and combat sports.');
 
 INSERT INTO user (name, surname, username, password, address, type, status, gender, email, worker_id, dni, job_title_worker, phone_num, client_id, credit_card, birthday, url_img, plan_id) 
 VALUES
@@ -193,7 +140,7 @@ VALUES
 ('Ethan', 'King', 'ethan_king', 'ethanpass', '303 Birch St', 1, 0, 'Male', 'ethan.king@example.com', 108, '2233445566', 'Assistant', '555-9876', NULL, '7890-1234-5678-9012', '1997-12-12', 'http://example.com/ethanking.jpg', 3);
 
 
-INSERT INTO class (coach, max_students, sports_id, horary, num_users)
+INSERT INTO class (coach, max_students, sport, horary, num_students_roll_in)
 VALUES
 ('Alex Smith', 20, 1, 'Lunes 10:00 AM - 12:00 PM', 0),  
 ('Emily Johnson', 15, 2, 'Martes 2:00 PM - 4:00 PM', 0),
@@ -206,44 +153,6 @@ VALUES
 ('Christopher Wilson', 20, 9, 'Martes 11:00 AM - 1:00 PM', 0),
 ('Ava Thompson', 15, 10, 'Miércoles 7:00 PM - 9:00 PM', 0);
 
-INSERT INTO federation (name, region, num_members, type_sport_federation)
-VALUES
-('World Boxing Federation', 'International', 100, 'Boxing'),
-('International Judo Federation', 'International', 500, 'Judo'),
-('World Karate Federation', 'International', 200, 'Karate'),
-('International Muay Thai Federation', 'International', 300, 'Muay Thai'),
-('International Wrestling Federation', 'International', 150, 'Wrestling'),
-('World Kickboxing Federation', 'International', 400, 'Kickboxing'),
-('World Taekwondo Federation', 'International', 2500, 'Taekwondo'),
-('International Mixed Martial Arts Federation (IMMAF)', 'International', 1800, 'Mixed Martial Arts (MMA)'),
-('International Sumo Federation', 'International', 1200, 'Sumo'),
-('World Wushu Federation', 'International', 800, 'Wushu');
-
-INSERT INTO sports_has_federation (sports_id, federation_id)
-VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5),
-(6, 6),
-(7, 7),
-(8, 8),
-(9, 9),
-(10, 10);
-
-INSERT INTO federation_rol (rol, federation_id) VALUES
-('President', 1),
-('Secretary', 1),
-('Treasurer', 1),
-('Coordinator', 2),
-('Supervisor', 2),
-('Event Organizer', 3),
-('Member Liaison', 3),
-('Public Relations Officer', 4),
-('Financial Manager', 4),
-('Head Coach', 5),
-('Sports Coordinator', 5);
 
 INSERT INTO gym_has_user (gym_id, user_id)
 VALUES
@@ -255,12 +164,19 @@ VALUES
 (1, 6),
 (2, 7),
 (3, 8),
-(4, 9),
-(5, 10);
+(4, 9);
 
-<<<<<<< HEAD
+INSERT INTO gym_has_class (gym_id, class_id)
+VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(1, 6),
+(2, 7),
+(3, 8),
+(4, 9);
 
 
-=======
->>>>>>> 6949cc055675c7164418f45dd52a2311b58ff541
 
