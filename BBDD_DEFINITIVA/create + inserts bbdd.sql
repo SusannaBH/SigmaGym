@@ -55,8 +55,7 @@ CREATE TABLE class (
     coach VARCHAR(45),
     horary VARCHAR(100),
     sport VARCHAR(50),
-    max_students INT,
-    num_students_roll_in INT
+    max_students INT
 );
 
 CREATE TABLE gym_has_class (
@@ -113,14 +112,6 @@ VALUES
 ('Gold', 49.99, 'Experimenta la grandeza con nuestro plan Gold con duración semestral. Funciones avanzadas y soporte prioritario. ¡Hazte Gold hoy mismo!', '/src/assets/image_gold.jpg'),
 ('Premium', 79.99, 'La cima de la experiencia. Nuestro plan Premium con duración anual te brinda acceso a todas las características. ¡Vive la excelencia con Premium!', '/src/assets/image_premium.jpgl');
 
--- INSERT INTO plan (title, price, info)
--- VALUES
--- ('Free', 00.00, "Este plan es simple para quien no quiere gastar"),
--- ('Bronce', 14.99, "Te da acceso al contenido con cobro mensual"),
--- ('Silver', 29.99, "Te da acceso al contenido con cobro trimestral"),
--- ('Gold', 49.99, "Te da acceso al contenido con cobro semestral"),
--- ('Premium', 79.99, "Te da acceso al contenido con cobro anual");
-
 INSERT INTO gym (name, address, phone, email, horary)
 VALUES
 ('Fitness Center A', '123 Main St', '555-1234', 'info@fitnesscentera.com', '8:00 AM - 9:00 PM'),
@@ -148,18 +139,18 @@ VALUES
 ('Ethan', 'King', 'ethan_king', 'ethanpass', '303 Birch St', 1, 0, 'Male', 'ethan.king@example.com', 108, '2233445566', 'Assistant', '555-9876', NULL, '7890-1234-5678-9012', '1997-12-12', 'http://example.com/ethanking.jpg', 3);
 
 
-INSERT INTO class (coach, max_students, sport, horary, num_students_roll_in)
+INSERT INTO class (coach, max_students, sport, horary)
 VALUES
-('Alex Smith', 20, 1, 'Lunes 10:00 AM - 12:00 PM', 0),  
-('Emily Johnson', 15, 2, 'Martes 2:00 PM - 4:00 PM', 0),
-('Daniel Martinez', 10, 3, 'Miércoles 4:30 PM - 6:30 PM', 0),
-('Sophia Brown', 18, 4, 'Jueves 9:00 AM - 11:00 AM', 0),
-('Matthew Taylor', 25, 5, 'Viernes 3:00 PM - 5:00 PM', 0),
-('Olivia White', 12, 6, 'Sábado 11:30 AM - 1:30 PM', 0),
-('David Anderson', 15, 7, 'Domingo 5:00 PM - 7:00 PM', 0),
-('Emma Davis', 10, 8, 'Lunes 6:30 PM - 8:30 PM', 0),
-('Christopher Wilson', 20, 9, 'Martes 11:00 AM - 1:00 PM', 0),
-('Ava Thompson', 15, 10, 'Miércoles 7:00 PM - 9:00 PM', 0);
+('Alex Smith', 20, 1, 'Lunes 10:00 AM - 12:00 PM'),  
+('Emily Johnson', 15, 2, 'Martes 2:00 PM - 4:00 PM'),
+('Daniel Martinez', 10, 3, 'Miércoles 4:30 PM - 6:30 PM'),
+('Sophia Brown', 18, 4, 'Jueves 9:00 AM - 11:00 AM'),
+('Matthew Taylor', 25, 5, 'Viernes 3:00 PM - 5:00 PM'),
+('Olivia White', 12, 6, 'Sábado 11:30 AM - 1:30 PM'),
+('David Anderson', 15, 7, 'Domingo 5:00 PM - 7:00 PM'),
+('Emma Davis', 10, 8, 'Lunes 6:30 PM - 8:30 PM'),
+('Christopher Wilson', 20, 9, 'Martes 11:00 AM - 1:00 PM'),
+('Ava Thompson', 15, 10, 'Miércoles 7:00 PM - 9:00 PM');
 
 
 INSERT INTO gym_has_user (gym_id, user_id)

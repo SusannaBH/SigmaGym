@@ -1,6 +1,5 @@
 package com.backend.services;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -65,8 +64,8 @@ public class UserService {
 	}
 
 	public Optional<UserEntity> login(String userParam, String passParam) {
-	    	return userRepository.findAll().stream().filter(user -> 
-	    		user.getUsername().equals(userParam)
-	    	).findFirst();
-	    			}
+		return userRepository.findAll().stream()
+				.filter(user -> user.getUsername().equals(userParam) && user.getPassword().equals(passParam))
+				.findFirst();
+	}
 }
