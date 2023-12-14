@@ -66,8 +66,6 @@ CREATE TABLE gym_has_class (
     FOREIGN KEY (gym_id) REFERENCES gym(id),
     FOREIGN KEY (class_id) REFERENCES class(id)
 );
-<<<<<<< HEAD
-=======
 
 CREATE TABLE class_has_user (
     class_id INT,
@@ -76,7 +74,6 @@ CREATE TABLE class_has_user (
     FOREIGN KEY (class_id) REFERENCES class(id),
     FOREIGN KEY (user_id) REFERENCES user(id)
 );
->>>>>>> 3605d6a4f55867b68b57b2e4bbac9c4c606bb387
 CREATE TABLE novedades (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(90),
@@ -175,7 +172,6 @@ VALUES
 (1, 6),
 (2, 7),
 (3, 8),
-<<<<<<< HEAD
 (4, 9);
 
 INSERT INTO gym_has_class (gym_id, class_id)
@@ -189,7 +185,6 @@ VALUES
 (2, 7),
 (3, 8),
 (4, 9);
-=======
 (4, 9),
 (4, 10),
 (4, 11),
@@ -210,7 +205,6 @@ VALUES
     (2, 6),
     (4, 9),
     (1, 7);
->>>>>>> 3605d6a4f55867b68b57b2e4bbac9c4c606bb387
 
 
 
