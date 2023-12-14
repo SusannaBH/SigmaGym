@@ -19,6 +19,7 @@
   border-radius: 10px;
 }
 
+
 @media screen and (max-width: 700px) {
   .inicio{
     flex-direction: column;

@@ -1,0 +1,34 @@
+.estructure{
+    
+}
+
+.titlePage {
+    color: aquamarine;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-weight: bold;
+}
+
+.date{
+    width: 70px;
+}
+
+.new{
+    width: 35%;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 20px;
+    background-color: aquamarine;
+    border: black 2px solid;
+}
+
+
+.heard{
+    background-color: darkcyan;
+    color: aquamarine;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}

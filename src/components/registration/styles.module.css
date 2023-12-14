@@ -29,6 +29,7 @@ input, select {
     background-color: darkcyan;
     border-radius: 40px;
     text-align: center;
+    margin: 20px;
 }
 
 .backColor {

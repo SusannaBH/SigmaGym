@@ -23,6 +23,11 @@ export default function AccountMenu() {
   const handleClose = () => {
     setAnchorEl(null)
   }
+  const handleOut = () => {
+    localStorage.removeItem('user');
+    setTimeout(function() { window.location.replace("/login"); }, 1000);
+  }
+
   return (
     <>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center', justifyContent: 'center' }} className={Styles.backgroundNav}>
@@ -91,7 +96,7 @@ export default function AccountMenu() {
           </ListItemIcon>
           Atención cliente
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleOut}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

@@ -1,7 +1,11 @@
 import { type ChangeEvent, useState } from "react";
-import styles from "./styles.module.css";
+import Style from "./styles.module.css";
 import { ButtonsInicio } from "./index";
 import { ENDPOINTS } from "../../constants";
+
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function LoginForm() {
   const [username, setUsername] = useState("");
@@ -18,33 +22,34 @@ export default function LoginForm() {
   function handleSubmit(e: any) {
     e.preventDefault();
 
-    fetch(`${ENDPOINTS.LOGIN}?username=${username}&password=${password}`, {
-      method: "POST",
-      redirect: "follow",
-    })
+    fetch(`${ENDPOINTS.LOGIN}?username=${username}&password=${password}`, { method: "POST", redirect: "follow" })
       .then((response) => response.json())
       .then((result) => {
         // console.log(result);
         if (result) {
           localStorage.user = username;
-          window.location.replace("/home");
+          toast.success("Usuario correcto!", {position: "top-center", autoClose: 2000, hideProgressBar: false, closeOnClick: true,
+                                              pauseOnHover: true, draggable: true, progress: undefined, theme: "dark",});
+          setTimeout(function() { window.location.replace("/home"); }, 2100);
         } else {
-          alert("❌Not logged!❌");
+          toast.error("Contraseña o usuario incorrecto!", {position: "top-center", autoClose: 2500, hideProgressBar: false, closeOnClick: true,
+                                                          pauseOnHover: true, draggable: true, progress: undefined, theme: "dark",});
         }
       })
-      .catch((error) => console.log("ERROR", error));
+      .catch((error) => console.log("- ERROR -", error));
   }
 
   return (
     <div>
       <h1>♾️ LOGIN ♾️</h1>
-      <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
-        <label>Username</label>
+      <form className={Style.form} onSubmit={(e) => handleSubmit(e)}>
+        <label>USUARIO</label>
         <input name="username" type="text" className="username" value={username} onChange={(e) => { handleUsername(e); }} required />
-        <label>Password</label>
+        <label>CONTRASEÑA</label>
         <input name="password" type="password" className="password" value={password} onChange={(e) => { handlePassword(e); }} required />
-        <ButtonsInicio text={"LOGIN"} type="submit"></ButtonsInicio>
+        <ButtonsInicio text={"ENVIAR"} type="submit"></ButtonsInicio>
       </form>
+      <ToastContainer />
     </div>
   );
 }
