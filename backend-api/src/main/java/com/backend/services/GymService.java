@@ -8,12 +8,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.backend.dtos.GymDto;
 import com.backend.entities.GymEntity;
+<<<<<<< HEAD
 import com.backend.repository.GymDtoRepository;
 import com.backend.repository.GymRepository;
+=======
+import com.backend.entities.UserEntity;
+import com.backend.repository.GymDtoRepository;
+import com.backend.repository.GymRepository;
+import com.backend.repository.UserDtoRepository;
+import com.backend.repository.UserRepository;
+>>>>>>> 2812271c72a0ceb7f71f2af752dc91b0f3ff76a1
 
 @Service
 public class GymService {
     private final GymRepository gymRepository;
+<<<<<<< HEAD
 	private GymDtoRepository gymDtoRepository;
 
 
@@ -21,6 +30,13 @@ public class GymService {
         this.gymRepository = gymRepository;
 		this.gymDtoRepository = gymDtoRepository;
 
+=======
+    private GymDtoRepository gymDtoRepository;
+
+    public GymService(GymRepository gymRepository, GymDtoRepository gymDtoRepository) {
+        this.gymRepository = gymRepository;
+        this.gymDtoRepository = gymDtoRepository;
+>>>>>>> 2812271c72a0ceb7f71f2af752dc91b0f3ff76a1
     }
     
     /**
@@ -28,6 +44,7 @@ public class GymService {
      * @param  none 
      * @return list of gymentity
      */
+<<<<<<< HEAD
     public List<GymDto> findAllGymsDto() {
         return gymDtoRepository.findAll();
     }
@@ -37,17 +54,26 @@ public class GymService {
     
     public Optional<GymEntity> findGymById(Integer id) {
     	return  gymRepository.findById(id);
+=======
+    public List<GymDto> findAllGyms() {
+        return gymDtoRepository.findAll();
+    }
+    
+    
+    public Optional<GymDto> findGymById(Integer id) {
+    	return  gymDtoRepository.findById(id);
+>>>>>>> 2812271c72a0ceb7f71f2af752dc91b0f3ff76a1
     }
     
     // Esta función hay que retocarla
     public boolean addGym(@RequestBody GymEntity gymEntity) {
     	// guardamos la lista de usuarios
-    	List<GymEntity> listGyms = findAllGyms();
+    	List<GymDto> listGyms = gymDtoRepository.findAll();
     	boolean isValidGym = true;
     	
     	// Miramos si hay algun usuario con el mismo dni o username
     	// en ese caso no es valido el usuario introducido 
-    	for (GymEntity gym : listGyms) {
+    	for (GymDto gym : listGyms) {
 			if (gymEntity.getName() == gym.getName()) {
 				isValidGym = false;
 				System.out.println(isValidGym);
@@ -66,7 +92,7 @@ public class GymService {
      * @return true = deleted or false = not found
      */
     public boolean deleteGym(Integer id) {
-    	Optional<GymEntity> checkIfExistGym = findGymById(id);
+    	Optional<GymEntity> checkIfExistGym = gymRepository.findById(id);;
     	gymRepository.deleteById(id);
     	return checkIfExistGym.isPresent();
     }

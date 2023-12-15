@@ -19,47 +19,7 @@ import com.backend.entities.GymEntity;
 import com.backend.entities.UserEntity;
 import com.backend.services.GymConversionService;
 import com.backend.services.GymService;
-/*
-@RestController
-@RequestMapping("gyms")
-public class GymController {
-	private GymService gymService;
 
-	GymController(GymService gymService) {
-		this.gymService = gymService;
-	}
-	
-	// Obtenemos todos los usuarios 
-	@GetMapping
-	public List<GymEntity> getAllGyms() {
-		return gymService.findAllGyms();
-	}
-	
-	// Retornamos un gym por id:
-	@GetMapping("/{id}")
-	public ResponseEntity<GymEntity> getGymById(@PathVariable Integer id) {
-	    Optional<GymEntity> result = gymService.findGymById(id);
-	    
-	    return result.map(gym -> ResponseEntity.ok().body(gym))
-	                 .orElse(ResponseEntity.notFound().build());
-	}
-	
-	// Inserta un gym
-	@PutMapping()
-	public ResponseEntity<String> insertGym(@RequestBody GymEntity gymEntity) {
-		System.out.println(gymEntity.toString()); //data
-		gymService.addGym(gymEntity);
-		return ResponseEntity.ok("Usuario insertado correctamente");
-	}
-
-	// Elimina un usuario
-	@DeleteMapping("/{id}")
-	public  ResponseEntity<?> deleteGym(@PathVariable Integer id) {
-		boolean result = gymService.deleteGym(id);
-		return (result) ? ResponseEntity.status(HttpStatus.OK).body("Gym eliminado") : 
-			ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existe ese gym") ;
-	}
-}*/
 
 @RestController
 @RequestMapping("gyms")
@@ -72,14 +32,39 @@ public class GymController {
 	}
 
 	@GetMapping
+<<<<<<< HEAD
 	public List<GymDto> getAllUsers() {
 		return gymService.findAllGymsDto();
+=======
+	public List<GymDto> getAllGyms() {
+		List<GymDto> gyms = gymService.findAllGyms();
+		return gyms.stream()
+				.collect(Collectors.toList());
+>>>>>>> 2812271c72a0ceb7f71f2af752dc91b0f3ff76a1
 	}
 	@GetMapping("/{id}")
+<<<<<<< HEAD
 	public ResponseEntity<?> getGymById(@PathVariable Integer id) {
 		Optional<GymEntity> result = gymService.findGymById(id);
 
 		return result.map(gym -> ResponseEntity.ok().body(gym)).orElse(ResponseEntity.notFound().build());
+=======
+	public ResponseEntity<GymDto> getGymById(@PathVariable Integer id) {
+		Optional<GymDto> result = gymService.findGymById(id);
+
+		return result.map(gym -> ResponseEntity.ok().body(gym))
+				.orElse(ResponseEntity.notFound().build());
+	}
+
+	@PutMapping
+	public ResponseEntity<String> insertGym(@RequestBody GymDto gymDto) {
+		GymEntity gymEntity = gymConversionService.convertToEntity(gymDto);
+		boolean result = gymService.addGym(gymEntity);
+
+		return result ?
+				ResponseEntity.ok("Gym insertado correctamente") :
+				ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Gym no válido");
+>>>>>>> 2812271c72a0ceb7f71f2af752dc91b0f3ff76a1
 	}
 
 	@DeleteMapping("/{id}")
