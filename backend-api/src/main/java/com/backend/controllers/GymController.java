@@ -1,8 +1,9 @@
 package com.backend.controllers;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
+import java.util.Optional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.backend.dtos.GymDto;
 import com.backend.entities.GymEntity;
-import com.backend.entities.UserEntity;
 import com.backend.services.GymConversionService;
 import com.backend.services.GymService;
 
@@ -26,26 +26,21 @@ import com.backend.services.GymService;
 @CrossOrigin(origins = "http://localhost:5173")
 public class GymController {
 	private final GymService gymService;
+	private final GymConversionService gymConversionService;
 
-	GymController(GymService gymService) {
+	GymController(GymService gymService, GymConversionService gymConversionService) {
 		this.gymService = gymService;
+		this.gymConversionService = gymConversionService;
 	}
 
 	@GetMapping
-
-	public List<GymDto> getAllUsers() {
-		return gymService.findAllGymsDto();
 	public List<GymDto> getAllGyms() {
 		List<GymDto> gyms = gymService.findAllGyms();
 		return gyms.stream()
 				.collect(Collectors.toList());
-
 	}
-	@GetMapping("/{id}")
-	public ResponseEntity<?> getGymById(@PathVariable Integer id) {
-		Optional<GymEntity> result = gymService.findGymById(id);
 
-		return result.map(gym -> ResponseEntity.ok().body(gym)).orElse(ResponseEntity.notFound().build());
+	@GetMapping("/{id}")
 	public ResponseEntity<GymDto> getGymById(@PathVariable Integer id) {
 		Optional<GymDto> result = gymService.findGymById(id);
 
@@ -66,9 +61,8 @@ public class GymController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteGym(@PathVariable Integer id) {
 		boolean result = gymService.deleteGym(id);
-		return (result) ?
+		return result ?
 				ResponseEntity.status(HttpStatus.OK).body("Gym eliminado") :
 				ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existe ese gym");
 	}
 }
-
