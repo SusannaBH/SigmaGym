@@ -13,6 +13,7 @@ import com.backend.entities.ClassEntity;
 import com.backend.entities.GymEntity;
 import com.backend.entities.PlanEntity;
 
+import jakarta.persistence.AssociationOverride;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -43,10 +44,19 @@ public class GymDto implements Serializable {
     private String horary;
     
     @ManyToMany
-	@JoinTable(
-	    name = "gym_has_class", // Nombre de la tabla intermedia
-	    joinColumns = @JoinColumn(name = "class_id"), // Columna que hace referencia a UserEntity
-	    inverseJoinColumns = @JoinColumn(name = "gym_id") // Columna que hace referencia a GymEntity
-	)
-	List<ClassEntity> lista_classes;
+    @JoinTable(
+        name = "gym_has_class", // Nombre de la primera tabla intermedia
+        joinColumns = @JoinColumn(name = "gym_id"), // Columna que hace referencia a UserEntity
+        inverseJoinColumns = @JoinColumn(name = "class_id") // Columna que hace referencia a ClassEntity
+    )
+    List<ClassEntity> lista_classes;
+
+    @ManyToMany
+    @JoinTable(
+        name = "class_has_user", // Nombre de la segunda tabla intermedia
+        joinColumns = @JoinColumn(name = "class_id"), // Columna que hace referencia a ClassEntity
+        inverseJoinColumns = @JoinColumn(name = "user_id") // Columna que hace referencia a UserEntity
+    )
+    List<ClassEntity> lista_usuarios_por_clase;
+
 }
