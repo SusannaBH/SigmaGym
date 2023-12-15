@@ -44,14 +44,14 @@ public class GymDto implements Serializable {
     private String horary;
     
     @ManyToMany
-<<<<<<< HEAD
+
 	@JoinTable(
 	    name = "gym_has_class", // Nombre de la tabla intermedia
 	    joinColumns = @JoinColumn(name = "class_id"), // Columna que hace referencia a UserEntity
 	    inverseJoinColumns = @JoinColumn(name = "gym_id") // Columna que hace referencia a GymEntity
 	)
 	List<ClassEntity> lista_classes;
-=======
+
     @JoinTable(
         name = "gym_has_class", // Nombre de la primera tabla intermedia
         joinColumns = @JoinColumn(name = "gym_id"), // Columna que hace referencia a UserEntity
@@ -67,5 +67,4 @@ public class GymDto implements Serializable {
     )
     List<ClassEntity> lista_usuarios_por_clase;
 
->>>>>>> 2812271c72a0ceb7f71f2af752dc91b0f3ff76a1
 }

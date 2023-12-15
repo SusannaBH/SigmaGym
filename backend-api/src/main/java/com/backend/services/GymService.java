@@ -1,6 +1,7 @@
 package com.backend.services;
 
 import java.util.List;
+
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -8,21 +9,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.backend.dtos.GymDto;
 import com.backend.entities.GymEntity;
-<<<<<<< HEAD
 import com.backend.repository.GymDtoRepository;
 import com.backend.repository.GymRepository;
-=======
 import com.backend.entities.UserEntity;
 import com.backend.repository.GymDtoRepository;
 import com.backend.repository.GymRepository;
 import com.backend.repository.UserDtoRepository;
 import com.backend.repository.UserRepository;
->>>>>>> 2812271c72a0ceb7f71f2af752dc91b0f3ff76a1
 
 @Service
 public class GymService {
     private final GymRepository gymRepository;
-<<<<<<< HEAD
 	private GymDtoRepository gymDtoRepository;
 
 
@@ -30,21 +27,17 @@ public class GymService {
         this.gymRepository = gymRepository;
 		this.gymDtoRepository = gymDtoRepository;
 
-=======
     private GymDtoRepository gymDtoRepository;
 
     public GymService(GymRepository gymRepository, GymDtoRepository gymDtoRepository) {
         this.gymRepository = gymRepository;
         this.gymDtoRepository = gymDtoRepository;
->>>>>>> 2812271c72a0ceb7f71f2af752dc91b0f3ff76a1
     }
-    
     /**
      * @author Fernando Alaejos
      * @param  none 
      * @return list of gymentity
      */
-<<<<<<< HEAD
     public List<GymDto> findAllGymsDto() {
         return gymDtoRepository.findAll();
     }
@@ -54,7 +47,6 @@ public class GymService {
     
     public Optional<GymEntity> findGymById(Integer id) {
     	return  gymRepository.findById(id);
-=======
     public List<GymDto> findAllGyms() {
         return gymDtoRepository.findAll();
     }
@@ -62,7 +54,6 @@ public class GymService {
     
     public Optional<GymDto> findGymById(Integer id) {
     	return  gymDtoRepository.findById(id);
->>>>>>> 2812271c72a0ceb7f71f2af752dc91b0f3ff76a1
     }
     
     // Esta función hay que retocarla

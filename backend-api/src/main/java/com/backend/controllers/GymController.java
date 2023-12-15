@@ -32,23 +32,20 @@ public class GymController {
 	}
 
 	@GetMapping
-<<<<<<< HEAD
+
 	public List<GymDto> getAllUsers() {
 		return gymService.findAllGymsDto();
-=======
 	public List<GymDto> getAllGyms() {
 		List<GymDto> gyms = gymService.findAllGyms();
 		return gyms.stream()
 				.collect(Collectors.toList());
->>>>>>> 2812271c72a0ceb7f71f2af752dc91b0f3ff76a1
+
 	}
 	@GetMapping("/{id}")
-<<<<<<< HEAD
 	public ResponseEntity<?> getGymById(@PathVariable Integer id) {
 		Optional<GymEntity> result = gymService.findGymById(id);
 
 		return result.map(gym -> ResponseEntity.ok().body(gym)).orElse(ResponseEntity.notFound().build());
-=======
 	public ResponseEntity<GymDto> getGymById(@PathVariable Integer id) {
 		Optional<GymDto> result = gymService.findGymById(id);
 
@@ -64,7 +61,6 @@ public class GymController {
 		return result ?
 				ResponseEntity.ok("Gym insertado correctamente") :
 				ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Gym no válido");
->>>>>>> 2812271c72a0ceb7f71f2af752dc91b0f3ff76a1
 	}
 
 	@DeleteMapping("/{id}")
