@@ -2,6 +2,7 @@ import { type ChangeEvent, useState } from "react";
 import Style from "./styles.module.css";
 import { ButtonsInicio } from "./index";
 import { ENDPOINTS } from "../../constants";
+import { useNavigate } from "react-router-dom";
 
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -10,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   function handleUsername(e: ChangeEvent<HTMLInputElement>) {
     setUsername(e.target.value);
@@ -28,12 +30,16 @@ export default function LoginForm() {
         // console.log(result);
         if (result) {
           localStorage.user = username;
-          toast.success("Usuario correcto!", {position: "top-center", autoClose: 2000, hideProgressBar: false, closeOnClick: true,
-                                              pauseOnHover: true, draggable: true, progress: undefined, theme: "dark",});
-          setTimeout(function() { window.location.replace("/home"); }, 2100);
+          toast.success("Usuario correcto!", {
+            position: "top-center", autoClose: 2000, hideProgressBar: false, closeOnClick: true,
+            pauseOnHover: true, draggable: true, progress: undefined, theme: "dark",
+          });
+          setTimeout(function () { navigate("/home"); }, 2100);
         } else {
-          toast.error("Contraseña o usuario incorrecto!", {position: "top-center", autoClose: 2500, hideProgressBar: false, closeOnClick: true,
-                                                          pauseOnHover: true, draggable: true, progress: undefined, theme: "dark",});
+          toast.error("Contraseña o usuario incorrecto!", {
+            position: "top-center", autoClose: 2500, hideProgressBar: false, closeOnClick: true,
+            pauseOnHover: true, draggable: true, progress: undefined, theme: "dark",
+          });
         }
       })
       .catch((error) => console.log("- ERROR -", error));

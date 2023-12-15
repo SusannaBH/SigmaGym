@@ -1,7 +1,7 @@
-.estructure {
+.structure {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   padding: 30px;
 }
@@ -71,36 +71,43 @@
   margin-top: 20px;
 }
 
-/* Estilos específicos para dispositivos medianos */
+/* Estilos dispositivos medianos */
 @media screen and (max-width: 768px) {
-  .estructure {
+  .structure {
+    display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 40px;
+    width: 80%;
+  }
+  
+  .card {
+    margin: 30px auto;
   }
 
-  .card {
-    margin: 70px;
+  .title{
+    font-size: 1rem;
   }
+
+  .price{
+    font-size: 1rem;
+  }
+}
+
+/* Estilos dispositivos pequeños */
+@media screen and (max-width: 576px) {
 
   .container {
-    width: 90%;
+    max-width: 90%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     flex-direction: row;
   }
 
-  .title{
-    font-size: 2rem;
-  }
-
-  .price{
-    font-size: 2rem;
-  }
-}
-
-/* Estilos específicos para dispositivos pequeños */
-@media screen and (max-width: 576px) {
   .card {
-    margin: 5px;
+    margin: 30px auto;
+    max-width: 80%;
   }
 }

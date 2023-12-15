@@ -16,7 +16,7 @@ export default function HomePlans() {
   }, []); // El segundo argumento del useEffect como un array vacío para ejecutar la solicitud solo una vez al montar el componente
 
   return (
-    <div className={Style.estructure}>
+    <div className={Style.structure}>
       {dataPlans.map((plan) => {
         const { id, title, info, price, image } = plan;
         return (

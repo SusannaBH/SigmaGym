@@ -1,6 +1,6 @@
 import Styles from './styles.module.css';
-
-import * as React from 'react'
+import { logOut } from '../../services/localStorage'
+import { useState } from 'react';
 import Avatar from '@mui/material/Avatar'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
@@ -10,13 +10,14 @@ import IconButton from '@mui/material/IconButton'
 import Tooltip from '@mui/material/Tooltip'
 import Settings from '@mui/icons-material/Settings'
 import Logout from '@mui/icons-material/Logout'
-import { Link as RRLink } from 'react-router-dom'
+import { Link as RRLink, useNavigate } from 'react-router-dom'
 import { Button } from '@mui/material'
 import Box from '@mui/material/Box'
 
 export default function AccountMenu() {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
+  const navigate = useNavigate()
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
   }
@@ -24,8 +25,8 @@ export default function AccountMenu() {
     setAnchorEl(null)
   }
   const handleOut = () => {
-    localStorage.removeItem('user');
-    setTimeout(function() { window.location.replace("/login"); }, 1000);
+    logOut()
+    navigate("/login")
   }
 
   return (
