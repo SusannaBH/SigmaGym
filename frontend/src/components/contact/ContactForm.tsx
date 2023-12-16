@@ -27,10 +27,10 @@ const ContactForm: React.FC = () => {
 
     try {
       await emailjs.sendForm(
-        'service_sigmagym',
-        'template_9im097o',
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         e.target as HTMLFormElement,
-        'Z7NJSVGwY--jEhMfA'
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
       console.log('Correo electrónico enviado con éxito');
       toast.success("Mensaje enviado con éxito!", {
