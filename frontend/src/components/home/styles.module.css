@@ -1,0 +1,38 @@
+
+.titlePage {
+  color: aquamarine;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  font-weight: bold;
+}
+
+.date{
+	margin: 4px;
+  flex: 0.3;
+}
+
+.title{
+	margin: 4px;
+	border-right: 3px solid aquamarine;
+  flex: 0.7;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+}
+
+.new{
+	height: 250px;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: aquamarine;
+  border: black 2px solid;
+}
+
+.heard{
+  background-color: darkcyan;
+  color: aquamarine;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}

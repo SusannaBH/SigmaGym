@@ -1,0 +1,55 @@
+.formReg {
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+    background-color: darkcyan;
+    backdrop-filter: blur(10px);
+}
+
+h1{
+    text-align: center;
+}
+
+input, select {
+    margin-bottom: 10px;
+}
+
+.containerReg{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 40%;
+    color: aquamarine;
+    flex-grow: 0;
+    padding: 20px;
+    background-color: darkcyan;
+    border-radius: 40px;
+    text-align: center;
+    margin: 20px;
+}
+
+.backColor {
+    background: linear-gradient(to bottom right, rgb(1, 59, 59), aquamarine, #236e79);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.worker{
+    display: flex;
+    flex-direction: column;
+}
+
+.gender{
+    display: flex;
+    flex-direction: row;
+}
+
+.female{
+    margin-left: 20px; /* Ajusta el valor según sea necesario */
+}

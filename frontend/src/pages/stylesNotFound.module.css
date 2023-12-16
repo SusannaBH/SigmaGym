@@ -1,0 +1,32 @@
+.container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.container h1 {
+    font-size: 4em;
+    color: #333;
+}
+
+.container p {
+    font-size: 1.5em;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.buttonInicio {
+    background-color: darkcyan;
+    color: aquamarine;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: black 4px solid;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.buttonInicio:hover {
+    background-color: black;
+    border: darkcyan 4px solid;
+    font-size: 1.3em;
+}
