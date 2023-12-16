@@ -1,12 +1,20 @@
 import { Plan } from "./index";
 import Style from './styles.module.css'
 import { useEffect, useState } from 'react';
+import { PlansImages, ENDPOINTS } from "@/constants";
+
+interface dataPlan {
+  id: number
+  title: string
+  info: string
+  price: number
+}
 
 export default function HomePlans() {
-  const [dataPlans, setDataPlans] = useState([]);
+  const [dataPlans, setDataPlans] = useState<dataPlan[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/plans", {
+    fetch(ENDPOINTS.PLANS, {
       method: 'GET',
       redirect: 'follow'
     })
@@ -18,7 +26,8 @@ export default function HomePlans() {
   return (
     <div className={Style.structure}>
       {dataPlans.map((plan) => {
-        const { id, title, info, price, image } = plan;
+        const { id, title, info, price } = plan;
+        const image: string = PlansImages[title.toUpperCase() as keyof typeof PlansImages]
         return (
           <Plan key={id} title={title} info={info} price={Number(price)} imageSrc={image} />
         );

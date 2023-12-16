@@ -2,10 +2,10 @@ import Style from './styles.module.css'
 import { Image } from './index'
 
 interface Props {
-  title?: string
-  price?: number
-  info?: string
-  imageSrc?: string
+  title: string
+  price: number
+  info: string
+  imageSrc: string | undefined
 }
 
 export default function Plan({ title, price, info, imageSrc }: Props) {

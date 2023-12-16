@@ -35,11 +35,21 @@ export default function AccountMenu() {
   return (
     <>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center', justifyContent: 'center' }} className={Styles.backgroundNav}>
-        <Button variant="contained" className={Styles.button}><RRLink to="/home" className={Styles.enlace} style={{ textDecoration: 'none' }}>HOME 🏠</RRLink></Button>
-        <Button variant="contained" className={Styles.button}><RRLink to="/plans" className={Styles.enlace} style={{ textDecoration: 'none' }}>PLANES 💲</RRLink></Button>
-        <Button variant="contained" className={Styles.button}><RRLink to="/gyms" className={Styles.enlace} style={{ textDecoration: 'none' }}>GYMS 🏋️‍♀️</RRLink></Button>
-        <Button variant="contained" className={Styles.button}><RRLink to="/" className={Styles.enlace} style={{ textDecoration: 'none' }}>CLASES 🗓️</RRLink></Button>
-        <Button variant="contained" className={Styles.button}><RRLink to="/" className={Styles.enlace} style={{ textDecoration: 'none' }}>TORNEOS 🏆</RRLink></Button>
+        <Button variant="contained" className={Styles.button}>
+          <RRLink to="/home" className={Styles.enlace} style={{ textDecoration: 'none' }}>HOME 🏠</RRLink>
+        </Button>
+        <Button variant="contained" className={Styles.button}>
+          <RRLink to="/plans" className={Styles.enlace} style={{ textDecoration: 'none' }}>PLANES 💲</RRLink>
+        </Button>
+        <Button variant="contained" className={Styles.button}>
+          <RRLink to="/gyms" className={Styles.enlace} style={{ textDecoration: 'none' }}>GYMS 🏋️‍♀️</RRLink>
+        </Button>
+        <Button variant="contained" className={Styles.button}>
+          <RRLink to="/" className={Styles.enlace} style={{ textDecoration: 'none' }}>CLASES 🗓️</RRLink>
+        </Button>
+        <Button variant="contained" className={Styles.button}>
+          <RRLink to="/" className={Styles.enlace} style={{ textDecoration: 'none' }}>TORNEOS 🏆</RRLink>
+        </Button>
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}

@@ -1,11 +1,11 @@
 import Style from './styles.module.css'
 
 interface Props {
-  imageSrc?: string
+  imageSrc: string | undefined
 }
 
-export default function Image({imageSrc} : Props) {
+export default function Image({ imageSrc }: Props) {
   return (
-    <img src={imageSrc} alt="inicio" className={Style.image} />
+    <img src={imageSrc as string} alt="inicio" className={Style.image} />
   )
 }

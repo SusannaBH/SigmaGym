@@ -32,7 +32,6 @@ const ContactForm: React.FC = () => {
         e.target as HTMLFormElement,
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
-      console.log('Correo electrónico enviado con éxito');
       toast.success("Mensaje enviado con éxito!", {
         position: "top-right", autoClose: 2500, hideProgressBar: false, closeOnClick: true,
         pauseOnHover: true, draggable: true, progress: undefined, theme: "light",
@@ -42,7 +41,6 @@ const ContactForm: React.FC = () => {
         position: "top-right", autoClose: 2500, hideProgressBar: false, closeOnClick: true,
         pauseOnHover: true, draggable: true, progress: undefined, theme: "light",
       });
-      console.error('Error al enviar el correo electrónico:', error);
     }
   };
 
