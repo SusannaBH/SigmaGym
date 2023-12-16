@@ -28,6 +28,9 @@ export default function AccountMenu() {
     logOut()
     navigate("/login")
   }
+  const handleContact = () => {
+    navigate("/contact")
+  }
 
   return (
     <>
@@ -91,7 +94,7 @@ export default function AccountMenu() {
           <Avatar sx={{ bgcolor: 'darkcyan' }} /> Mi perfil
         </MenuItem>
         <Divider />
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleContact}>
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>

@@ -1,8 +1,16 @@
-type Props = {}
-const NotFound = (props: Props) => {
+import Styles from './stylesNotFound.module.css'
+import { Link } from 'react-router-dom';
+
+const NotFound = () => {
   return (
-    <div>NotFound</div>
-    //PONER UN LINK PARA ACCEDER A LOGIN DE NUEVO
-  )
-}
-export default NotFound
+    <div className={Styles.container}>
+      <h1>404 - Not Found</h1>
+      <p>La página que estás buscando no existe.</p>
+      <Link to="/login">
+        <button className={Styles.buttonInicio}>Ir a "Iniciar Sesión"</button>
+      </Link>
+    </div>
+  );
+};
+
+export default NotFound;
