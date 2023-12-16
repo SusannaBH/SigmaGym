@@ -26,6 +26,7 @@ import com.backend.services.UserService;
 @CrossOrigin(origins = "http://localhost:5173")
 public class UserController {
 	private UserService userService;
+	private UserConversionService userConversionService;
 
 	public UserController(UserService userService) {
 		this.userService = userService;
@@ -46,9 +47,10 @@ public class UserController {
 	// Retornamos un user por id:
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getUserById(@PathVariable Integer id) {
-		Optional<UserEntity> result = userService.findUserById(id);
+	    Optional<UserDto> result = userService.findUserById(id);
 
-		return result.map(user -> ResponseEntity.ok().body(user)).orElse(ResponseEntity.notFound().build());
+	    return result.map( user -> ResponseEntity.ok().body(user))
+	                 .orElse(ResponseEntity.notFound().build());
 	}
 
 	// Inserta un user

@@ -38,8 +38,8 @@ public class UserService {
 		return userRepository.findAll();
 	}
 
-	public Optional<UserEntity> findUserById(Integer id) {
-		return userRepository.findById(id);
+	public Optional<UserDto> findUserById(Integer id) {
+		return userDtoRepository.findById(id);
 	}
 
 	public boolean addUser(@RequestBody UserEntity userEntity) {

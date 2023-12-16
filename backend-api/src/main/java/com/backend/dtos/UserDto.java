@@ -58,7 +58,7 @@ public class UserDto implements Serializable {
 	    joinColumns = @JoinColumn(name = "user_id"), // Columna que hace referencia a UserEntity
 	    inverseJoinColumns = @JoinColumn(name = "gym_id") // Columna que hace referencia a GymEntity
 	)
-	List<GymEntity> lista_Gyms;
+	List<GymDto> lista_Gyms;
 	
 	@ManyToOne
 	@JoinColumn(name = "plan_id") // Nombre de la columna que contiene la clave foránea en la tabla GymEntity

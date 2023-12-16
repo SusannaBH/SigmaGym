@@ -2,6 +2,9 @@ package com.backend.services;
 
 import com.backend.dtos.UserDto;
 import com.backend.entities.UserEntity;
+
+import java.util.Optional;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -17,10 +20,10 @@ public class UserConversionService {
     }
 
     // Método que convierte una UserEntity a un UserDTO utilizando ModelMapper
-    public UserDto convertToDTO(UserEntity userEntity) {
+    public UserDto convertToDTO(Optional<UserEntity> optional) {
         // Utiliza el modelMapper para mapear los campos de userEntity a UserDTO
         // y devuelve el objeto UserDTO resultante
-        return modelMapper.map(userEntity, UserDto.class);
+        return modelMapper.map(optional, UserDto.class);
     }
 
     // Método que convierte un UserDTO a una UserEntity utilizando ModelMapper
