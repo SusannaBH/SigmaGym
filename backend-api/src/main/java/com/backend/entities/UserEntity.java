@@ -37,7 +37,7 @@ public class UserEntity implements Serializable{
 	private String username;
 	private String password;
 	private String address;
-	private Boolean type;
+	private Integer type;
 	private Boolean status;
 	private String gender;
 	private String email;

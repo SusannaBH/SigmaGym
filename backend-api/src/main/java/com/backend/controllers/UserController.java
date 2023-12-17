@@ -56,8 +56,11 @@ public class UserController {
 	// Inserta un user
 	@PostMapping
 	public ResponseEntity<String> insertUser(@RequestBody UserEntity user) {
-	    userService.addUser(user);
-	    return ResponseEntity.status(HttpStatus.CREATED).body("Usuario insertado correctamente.");
+	    boolean response = userService.addUser(user);
+			if(response){
+	    	return ResponseEntity.status(HttpStatus.CREATED).body("Usuario insertado correctamente.");
+			}
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error al crear el usuario.");
 	}
 
 
