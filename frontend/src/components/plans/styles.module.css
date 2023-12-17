@@ -4,6 +4,7 @@
   align-items: flex-start;
   justify-content: center;
   padding: 30px;
+  margin-top: 20px;
 }
 
 .card {
@@ -27,23 +28,24 @@
   border: black 1px solid;
   border-radius: 10px;
   text-align: center;
-  padding: 20px;
   margin-top: -50px;
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.3); /* Ajusta el valor de la segunda propiedad (20px) para controlar la profundidad del efecto */
 }
 
 .title {
-  font-size: 1rem;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  font-size: 1.3rem;
   font-weight: bold;
-  color: black;
+  color: aquamarine;
 }
 
 .price {
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   color: darkcyan;
 }
 
 .information {
-  padding: 15px;
+  padding: 5px;
   color: black;
 }
 
@@ -68,7 +70,7 @@
   height: 100%;
   object-fit: cover;
   opacity: 0.65;
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 /* Estilos dispositivos medianos */

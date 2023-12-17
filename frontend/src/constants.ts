@@ -20,11 +20,20 @@ const PlansImages: IPlansImages = {
   PREMIUM: premium
 }
 
+enum USERS_TITLES {
+  Client = 2,
+  Worker = 1
+}
 
 enum ENDPOINTS{
   BASE_URL = "http://localhost:8080/",
   LOGIN = "http://localhost:8080/users/login",
-  PLANS = "http://localhost:8080/plans"
+  PLANS = "http://localhost:8080/plans",
+  USERS = "http://localhost:8080/users",
+  NEWS = "http://localhost:8080/news",
+  GYMS = "http://localhost:8080/gyms"
 }
 
-export { PlansImages, ENDPOINTS }
+
+
+export { PlansImages, ENDPOINTS, USERS_TITLES }

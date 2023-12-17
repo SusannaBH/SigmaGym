@@ -1,13 +1,31 @@
+import { useState } from 'react';
+import { InfoGym } from './index.tsx'
+import Style from './styles.module.css'
+
 interface Props {
-  title?: string;
-  sport?: string;
+  name?: string;
+  horary?: string;
+  address?: string;
+  phone?: string;
+  email?: string;
 }
 
-export default function New({ title, sport }: Props) {
+export default function Gym({ name, address, phone, email, horary }: Props) {
+
+  const [gymInfo, setGymInfo] = useState(false);
+
+  const handleButtonClick = () => {
+    setGymInfo(!gymInfo); //Mostrar y ocultar la info
+  };
+
   return (
-    <div>
-      <h4>{title}</h4>
-      <p>{sport}</p>
+    <div className={Style.gym}>
+      <h1 className={Style.name}>--- {name} ---</h1>
+      <h6 className={Style.horary}>HORARIO =={'>'} {horary}</h6>
+      <button onClick={handleButtonClick} className={Style.buttonInfo}>⬇️ Más información ⬇️</button>
+      {
+        gymInfo && <InfoGym address={address} phone={phone} email={email} />
+      }
     </div>
   );
 }

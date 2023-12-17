@@ -47,9 +47,10 @@ export default function AccountMenu() {
         <Button variant="contained" className={Styles.button}>
           <RRLink to="/" className={Styles.enlace} style={{ textDecoration: 'none' }}>CLASES 🗓️</RRLink>
         </Button>
-        <Button variant="contained" className={Styles.button}>
+        {/* BOTON PARA CUANDO SE REALICE LA SECCION TORNEOS */}
+        {/*<Button variant="contained" className={Styles.button}>
           <RRLink to="/" className={Styles.enlace} style={{ textDecoration: 'none' }}>TORNEOS 🏆</RRLink>
-        </Button>
+          </Button>*/}
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
