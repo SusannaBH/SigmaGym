@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 
+import com.backend.entities.PlanEntity;
 import com.backend.entities.UserEntity;
 
 import jakarta.persistence.Entity;
@@ -23,36 +24,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "class")
+@Table(name = "user")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ClassDto implements Serializable{
+public class LogginDto implements Serializable{
     private static final long serialVersionUID = 1L;
 
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Boolean isLogginSuccessfull = false;
     private Integer id;
-    private String coach;
-    private String horary;
-    private String sport;
-    private Integer num_students_on_class = getNumStudentsOnClass();
-    private Integer max_students;
 
-    @ManyToMany
-    @JoinTable(
-        name = "class_has_user",
-        joinColumns = @JoinColumn(name = "class_id"),
-        inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
-    
-    List<UserEntity> lista_usuarios_por_clase;
-    
-    // Contamos el numero de alumnos en una classe
-    public Integer getNumStudentsOnClass() {
-        return lista_usuarios_por_clase != null ? lista_usuarios_por_clase.size() : 0;
-    }
-
-
+    @ManyToOne
+	@JoinColumn(name = "plan_id") // Nombre de la columna que contiene la clave foránea en la tabla GymEntity
+	private PlanEntity plan;
 }
-
