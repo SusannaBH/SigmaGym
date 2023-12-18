@@ -31,7 +31,8 @@ enum ENDPOINTS{
   PLANS = "http://localhost:8080/plans",
   USERS = "http://localhost:8080/users",
   NEWS = "http://localhost:8080/news",
-  GYMS = "http://localhost:8080/gyms"
+  GYMS = "http://localhost:8080/gyms",
+  PROFILE = ""
 }
 
 
