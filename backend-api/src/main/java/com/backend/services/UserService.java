@@ -41,6 +41,9 @@ public class UserService {
 	public Optional<UserDto> findUserById(Integer id) {
 		return userDtoRepository.findById(id);
 	}
+	public boolean existsUser(Integer id) {
+	    return userRepository.existsById(id);
+	}
 
 	public boolean addUser(@RequestBody UserEntity userEntity) {
 		// guardamos la lista de usuarios
@@ -76,5 +79,20 @@ public class UserService {
 		return userRepository.findAll().stream()
 				.filter(user -> user.getUsername().equals(userParam) && user.getPassword().equals(passParam))
 				.findFirst();
+	}
+	
+	public boolean updateUser(Integer id, UserDto updatedUserData) {
+	    Optional<UserEntity> existingUserOptional = userRepository.findById(id);
+	    if (existingUserOptional.isPresent()) {
+	        UserEntity existingUser = existingUserOptional.get();
+	        existingUser.setName(updatedUserData.getName());
+	        existingUser.setSurname(updatedUserData.getSurname());
+	        existingUser.setEmail(updatedUserData.getEmail());
+	        userRepository.save(existingUser);
+	        
+	        return true;
+	    }
+
+	    return false;
 	}
 }

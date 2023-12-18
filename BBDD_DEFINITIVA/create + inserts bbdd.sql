@@ -5,7 +5,7 @@ USE db_gym_app;
 CREATE TABLE Plan (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(20),
-    info VARCHAR(150),
+    info VARCHAR(200),
     price DECIMAL(10, 2),
     image VARCHAR(150)
 );
@@ -21,11 +21,9 @@ CREATE TABLE User (
     status TINYINT,
     gender VARCHAR(15),
     email VARCHAR(50),
-    worker_id INT,
     dni VARCHAR(15),
     job_title_worker VARCHAR(45),
     phone_num VARCHAR(15),
-    client_id INT,
     credit_card VARCHAR(19),
     birthday DATE,
     url_img VARCHAR(250),
@@ -55,6 +53,7 @@ CREATE TABLE class (
     coach VARCHAR(45),
     horary VARCHAR(100),
     sport VARCHAR(50),
+    num_students_on_class INT,
     max_students INT
 );
 
@@ -110,7 +109,7 @@ VALUES
 ('Bronze', 14.99, 'Plan Bronze con duración mensual. Nuevas funciones cada mes. ¡Mejora ahora!', '/src/assets/image_bronze.jpg'),
 ('Silver', 29.99, 'Plan Silver con duración trimestral. Más tiempo, más ventajas. ¡Únete a la exclusividad!', '/src/assets/image_silver.jpg'),
 ('Gold', 49.99, 'Experimenta la grandeza con nuestro plan Gold con duración semestral. Funciones avanzadas y soporte prioritario. ¡Hazte Gold hoy mismo!', '/src/assets/image_gold.jpg'),
-('Premium', 79.99, 'La cima de la experiencia. Nuestro plan Premium con duración anual te brinda acceso a todas las características. ¡Vive la excelencia con Premium!', '/src/assets/image_premium.jpgl');
+('Premium', 79.99, 'La cima de la experiencia. Nuestro plan Premium con duración anual te brinda acceso a todas las características. ¡Vive la excelencia con Premium!', '/src/assets/image_premium.jpg');
 
 INSERT INTO gym (name, address, phone, email, horary)
 VALUES
@@ -120,37 +119,37 @@ VALUES
 ('Flex Fitness', '101 Cedar St', '555-4321', 'info@flexfitness.com', '9:00 AM - 7:00 PM'),
 ('Powerhouse Gym', '202 Elm St', '555-9876', 'info@powerhousegym.com', '5:00 AM - 11:00 PM');
 
-INSERT INTO user (name, surname, username, password, address, type, status, gender, email, worker_id, dni, job_title_worker, phone_num, client_id, credit_card, birthday, url_img, plan_id) 
+INSERT INTO user (name, surname, username, password, address, type, status, gender, email, dni, job_title_worker, phone_num, credit_card, birthday, url_img, plan_id) 
 VALUES
-('John', 'Doe', 'john_doe', 'password123', '123 Main St', 1, 1, 'Male', 'john.doe@example.com', 101, '123456789', 'Manager', '555-1234', NULL, '1234-5678-9012-3456', '1990-01-15', 'http://example.com/johndoe.jpg', 1),
-('Alice', 'Smith', 'alice_smith', 'pass123', '456 Oak St', 2, 1, 'Female', 'alice.smith@example.com', NULL, '987654321', NULL, '555-5678', 201, '9876-5432-1098-7654', '1985-05-20', 'http://example.com/alicesmith.jpg', 2),
-('Bob', 'Johnson', 'bob_johnson', 'securepass', '789 Pine St', 1, 0, 'Male', 'bob.johnson@example.com', 102, '112233445', 'Supervisor', '555-8765', NULL, '6543-2109-8765-4321', '1978-11-03', 'http://example.com/bobjohnson.jpg', 3),
-('Eva', 'Williams', 'eva_williams', 'eva_pass', '101 Cedar St', 2, 1, 'Female', 'eva.williams@example.com', NULL, '334455667', NULL, '555-4321', 203, '8765-4321-0987-5678', '1993-08-08', 'http://example.com/evawilliams.jpg', 1),
-('Michael', 'Lee', 'michael_lee', 'pass4321', '202 Elm St', 1, 1, 'Male', 'michael.lee@example.com', 103, '889900011', 'Analyst', '555-9876', NULL, '4321-0987-7654-3210', '1982-04-25', 'http://example.com/michaellee.jpg', 2),
-('Laura', 'Anderson', 'laura_anderson', 'laura_pass', '303 Maple St', 2, 1, 'Female', 'laura.anderson@example.com', NULL, '556677889', NULL, '555-3456', 204, '7654-3210-9876-5432', '1995-02-12', 'http://example.com/lauraanderson.jpg', 3),
-('Daniel', 'Brown', 'daniel_brown', 'passDaniel', '404 Birch St', 1, 0, 'Male', 'daniel.brown@example.com', 104, '1122334455', 'Technician', '555-6543', NULL, '8765-4321-2345-6789', '1989-07-30', 'http://example.com/danielbrown.jpg', 1),
-('Sophie', 'Clark', 'sophie_clark', 'sophie123', '505 Oak St', 2, 1, 'Female', 'sophie.clark@example.com', NULL, '223344556', NULL, '555-7654', 205, '2345-6789-0123-4567', '1998-09-18', 'http://example.com/sophieclark.jpg', 2),
-('Ryan', 'Evans', 'ryan_evans', 'ryan_pass', '606 Pine St', 1, 1, 'Male', 'ryan.evans@example.com', 105, '778899001', 'Assistant', '555-8765', NULL, '5678-9012-3456-7890', '1984-12-05', 'http://example.com/ryanevans.jpg', 3),
-('Emma', 'Fisher', 'emma_fisher', 'emma_pass', '707 Cedar St', 2, 1, 'Female', 'emma.fisher@example.com', NULL, '1122334455', NULL, '555-9876', 206, '8901-2345-6789-0123', '1990-06-23', 'http://example.com/emmafisher.jpg', 1),
-('David', 'Garcia', 'david_garcia', 'davidpass', '808 Elm St', 1, 1, 'Male', 'david.garcia@example.com', 106, '3344556677', 'Coordinator', '555-5432', NULL, '3456-7890-1234-5678', '1987-03-15', 'http://example.com/davidgarcia.jpg', 2),
-('Olivia', 'Hall', 'olivia_hall', 'passolivia', '909 Maple St', 2, 1, 'Female', 'olivia.hall@example.com', NULL, '8899001122', NULL, '555-6543', 207, '6789-0123-4567-8901', '1992-10-08', 'http://example.com/oliviahall.jpg', 3),
-('Henry', 'Irwin', 'henry_irwin', 'henrypass', '101 Pine St', 1, 1, 'Male', 'henry.irwin@example.com', 107, '3344556677', 'Trainer', '555-7654', NULL, '1234-5678-9012-3456', '1986-06-20', 'http://example.com/henryirwin.jpg', 1),
-('Sophia', 'Johnson', 'sophia_johnson', 'sophiapass', '202 Oak St', 2, 1, 'Female', 'sophia.johnson@example.com', NULL, '1122334455', NULL, '555-8765', 208, '4567-8901-2345-6789', '1994-04-02', 'http://example.com/sophiajohnson.jpg', 2),
-('Ethan', 'King', 'ethan_king', 'ethanpass', '303 Birch St', 1, 0, 'Male', 'ethan.king@example.com', 108, '2233445566', 'Assistant', '555-9876', NULL, '7890-1234-5678-9012', '1997-12-12', 'http://example.com/ethanking.jpg', 3);
+('John', 'Doe', 'john_doe', 'password123', '123 Main St', 1, 1, 'Male', 'john.doe@example.com', '123456789', 'Manager', '555-1234', '1234-5678-9012-3456', '1990-01-15', 'http://example.com/johndoe.jpg', 1),
+('Alice', 'Smith', 'alice_smith', 'pass123', '456 Oak St', 2, 1, 'Female', 'alice.smith@example.com', '987654321', NULL, '555-5678', '9876-5432-1098-7654', '1985-05-20', 'http://example.com/alicesmith.jpg', 2),
+('Bob', 'Johnson', 'bob_johnson', 'securepass', '789 Pine St', 1, 0, 'Male', 'bob.johnson@example.com', '112233445', 'Supervisor', '555-8765', '6543-2109-8765-4321', '1978-11-03', 'http://example.com/bobjohnson.jpg', 3),
+('Eva', 'Williams', 'eva_williams', 'eva_pass', '101 Cedar St', 2, 1, 'Female', 'eva.williams@example.com', '334455667', NULL, '555-4321', '8765-4321-0987-5678', '1993-08-08', 'http://example.com/evawilliams.jpg', 1),
+('Michael', 'Lee', 'michael_lee', 'pass4321', '202 Elm St', 1, 1, 'Male', 'michael.lee@example.com', '889900011', 'Analyst', '555-9876', '4321-0987-7654-3210', '1982-04-25', 'http://example.com/michaellee.jpg', 2),
+('Laura', 'Anderson', 'laura_anderson', 'laura_pass', '303 Maple St', 2, 1, 'Female', 'laura.anderson@example.com', '556677889', NULL, '555-3456', '7654-3210-9876-5432', '1995-02-12', 'http://example.com/lauraanderson.jpg', 3),
+('Daniel', 'Brown', 'daniel_brown', 'passDaniel', '404 Birch St', 1, 0, 'Male', 'daniel.brown@example.com', '1122334455', 'Technician', '555-6543', '8765-4321-2345-6789', '1989-07-30', 'http://example.com/danielbrown.jpg', 1),
+('Sophie', 'Clark', 'sophie_clark', 'sophie123', '505 Oak St', 2, 1, 'Female', 'sophie.clark@example.com', '223344556', NULL, '555-7654', '2345-6789-0123-4567', '1998-09-18', 'http://example.com/sophieclark.jpg', 2),
+('Ryan', 'Evans', 'ryan_evans', 'ryan_pass', '606 Pine St', 1, 1, 'Male', 'ryan.evans@example.com', '778899001', 'Assistant', '555-8765', '5678-9012-3456-7890', '1984-12-05', 'http://example.com/ryanevans.jpg', 3),
+('Emma', 'Fisher', 'emma_fisher', 'emma_pass', '707 Cedar St', 2, 1, 'Female', 'emma.fisher@example.com', '1122334455', NULL, '555-9876', '8901-2345-6789-0123', '1990-06-23', 'http://example.com/emmafisher.jpg', 1),
+('David', 'Garcia', 'david_garcia', 'davidpass', '808 Elm St', 1, 1, 'Male', 'david.garcia@example.com', '3344556677', 'Coordinator', '555-5432', '3456-7890-1234-5678', '1987-03-15', 'http://example.com/davidgarcia.jpg', 2),
+('Olivia', 'Hall', 'olivia_hall', 'passolivia', '909 Maple St', 2, 1, 'Female', 'olivia.hall@example.com', '8899001122', NULL, '555-6543', '6789-0123-4567-8901', '1992-10-08', 'http://example.com/oliviahall.jpg', 3),
+('Henry', 'Irwin', 'henry_irwin', 'henrypass', '101 Pine St', 1, 1, 'Male', 'henry.irwin@example.com', '3344556677', 'Trainer', '555-7654', '1234-5678-9012-3456', '1986-06-20', 'http://example.com/henryirwin.jpg', 1),
+('Sophia', 'Johnson', 'sophia_johnson', 'sophiapass', '202 Oak St', 2, 1, 'Female', 'sophia.johnson@example.com', '1122334455', NULL, '555-8765', '4567-8901-2345-6789', '1994-04-02', 'http://example.com/sophiajohnson.jpg', 2),
+('Ethan', 'King', 'ethan_king', 'ethanpass', '303 Birch St', 1, 0, 'Male', 'ethan.king@example.com', '2233445566', 'Assistant', '555-9876', '7890-1234-5678-9012', '1997-12-12', 'http://example.com/ethanking.jpg', 3);
 
 
-INSERT INTO class (coach, max_students, sport, horary)
+INSERT INTO class (coach, max_students, sport, horary, num_students_on_class)
 VALUES
-('Alex Smith', 20, 1, 'Lunes 10:00 AM - 12:00 PM'),  
-('Emily Johnson', 15, 2, 'Martes 2:00 PM - 4:00 PM'),
-('Daniel Martinez', 10, 3, 'Miércoles 4:30 PM - 6:30 PM'),
-('Sophia Brown', 18, 4, 'Jueves 9:00 AM - 11:00 AM'),
-('Matthew Taylor', 25, 5, 'Viernes 3:00 PM - 5:00 PM'),
-('Olivia White', 12, 6, 'Sábado 11:30 AM - 1:30 PM'),
-('David Anderson', 15, 7, 'Domingo 5:00 PM - 7:00 PM'),
-('Emma Davis', 10, 8, 'Lunes 6:30 PM - 8:30 PM'),
-('Christopher Wilson', 20, 9, 'Martes 11:00 AM - 1:00 PM'),
-('Ava Thompson', 15, 10, 'Miércoles 7:00 PM - 9:00 PM');
+('Alex Smith', 20, 1, 'Lunes 10:00 AM - 12:00 PM',0),  
+('Emily Johnson', 15, 2, 'Martes 2:00 PM - 4:00 PM',0),
+('Daniel Martinez', 10, 3, 'Miércoles 4:30 PM - 6:30 PM',0),
+('Sophia Brown', 18, 4, 'Jueves 9:00 AM - 11:00 AM',0),
+('Matthew Taylor', 25, 5, 'Viernes 3:00 PM - 5:00 PM',0),
+('Olivia White', 12, 6, 'Sábado 11:30 AM - 1:30 PM',0),
+('David Anderson', 15, 7, 'Domingo 5:00 PM - 7:00 PM',0),
+('Emma Davis', 10, 8, 'Lunes 6:30 PM - 8:30 PM',0),
+('Christopher Wilson', 20, 9, 'Martes 11:00 AM - 1:00 PM',0),
+('Ava Thompson', 15, 10, 'Miércoles 7:00 PM - 9:00 PM',0);
 
 
 INSERT INTO gym_has_user (gym_id, user_id)
@@ -173,32 +172,31 @@ VALUES
 
 INSERT INTO gym_has_class (gym_id, class_id)
 VALUES
-    (1, 1),
-    (2, 3),
-    (4, 5),
-    (1, 8),
-    (2, 10),
-    (3, 2),
-    (1, 2),
-    (2, 2),
-    (4, 2),
-    (1, 3);
+(1, 1),
+(2, 3),
+(4, 5),
+(1, 8),
+(2, 10),
+(3, 2),
+(1, 2),
+(2, 2),
+(4, 2),
+(1, 3);
     
 INSERT INTO class_has_user (class_id, user_id)
 VALUES
-    (1, 1),
-    (1, 2),
-    (2, 3),
-    (1, 4),
-    (1, 5),
-    (1, 6),
-    (1, 7),
-    (1, 8),
-    (1, 9),
-    (4, 10),
-    (5, 11),
-    (6, 12),
-    (7, 13),
-    (7, 14),
-    (7, 15);
-
+(1, 1),
+(1, 2),
+(2, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(1, 9),
+(4, 10),
+(5, 11),
+(6, 12),
+(7, 13),
+(7, 14),
+(7, 15);

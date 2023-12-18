@@ -35,6 +35,7 @@ public class ClassDto implements Serializable{
     private String coach;
     private String horary;
     private String sport;
+    private Integer num_students_on_class = getNumStudentsOnClass();
     private Integer max_students;
 
     @ManyToMany
@@ -45,6 +46,13 @@ public class ClassDto implements Serializable{
     )
     
     List<UserEntity> lista_usuarios_por_clase;
+    
+    // Contamos el numero de alumnos en una classe
+    public Integer getNumStudentsOnClass() {
+        return lista_usuarios_por_clase != null ? lista_usuarios_por_clase.size() : 0;
+    }
+
+
 
 //    @Query("SELECT NEW com.backend.dtos.CombinedDto(u.id, u.name, g.id, g.name, c.id, c.name) " +
 //            "FROM UserEntity u " +
