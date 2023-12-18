@@ -24,6 +24,9 @@ export default function AccountMenu() {
   const handleClose = () => {
     setAnchorEl(null)
   }
+  const handleProfile = () => {
+    navigate("/profile")
+  }
   const handleOut = () => {
     logOut()
     navigate("/login")
@@ -101,7 +104,7 @@ export default function AccountMenu() {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleProfile}>
           <Avatar sx={{ bgcolor: 'darkcyan' }} /> Mi perfil
         </MenuItem>
         <Divider />
