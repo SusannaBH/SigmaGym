@@ -37,13 +37,28 @@ public class UserController {
 	public List<UserDto> getAllUsers() {
 		return userService.findAllUsersDto();
 	}
+	
+	// Obtenemos todos los usuarios (retornando una entidad)
+	@GetMapping("/entities")
+	public List<UserEntity> getAllUsersEntity() {
+		return userService.findAllUsers();
+	}
 
 	// Verifica el logging:
 	@PostMapping("/login")
 	public Boolean login(@RequestParam String username, @RequestParam String password) {
 		return userService.login(username, password).isPresent() ? true : false;
 	}
+	
+	// Retornamos un user por id:
+		@GetMapping("/entities/{id}")
+		public ResponseEntity<?> getUserByIdEntity(@PathVariable Integer id) {
+		    Optional<UserEntity> result = userService.findUserByIdEntity(id);
 
+		    return result.map( user -> ResponseEntity.ok().body(user))
+		                 .orElse(ResponseEntity.notFound().build());
+	}
+		
 	// Retornamos un user por id:
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getUserById(@PathVariable Integer id) {

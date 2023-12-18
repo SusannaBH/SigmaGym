@@ -41,6 +41,11 @@ public class UserService {
 	public Optional<UserDto> findUserById(Integer id) {
 		return userDtoRepository.findById(id);
 	}
+	
+	public Optional<UserEntity> findUserByIdEntity(Integer id) {
+		return userRepository.findById(id);
+	}
+	
 	public boolean existsUser(Integer id) {
 	    return userRepository.existsById(id);
 	}
