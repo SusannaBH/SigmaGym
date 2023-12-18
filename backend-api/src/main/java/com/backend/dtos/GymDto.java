@@ -52,12 +52,5 @@ public class GymDto implements Serializable {
     )
     List<ClassDto> lista_classes_usuario;
 
-//    @ManyToMany
-//    @JoinTable(
-//        name = "class_has_user", // Nombre de la segunda tabla intermedia
-//        joinColumns = @JoinColumn(name = "class_id"), // Columna que hace referencia a ClassEntity
-//        inverseJoinColumns = @JoinColumn(name = "user_id") // Columna que hace referencia a UserEntity
-//    )
-//    List<ClassEntity> lista_usuarios_por_clase;
-
+   
 }

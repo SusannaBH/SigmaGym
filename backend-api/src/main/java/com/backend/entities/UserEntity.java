@@ -38,14 +38,12 @@ public class UserEntity implements Serializable{
 	private String password;
 	private String address;
 	private Integer type;
-	private Boolean status;
+	private Boolean status = true;
 	private String gender;
 	private String email;
-	private Integer worker_id;
 	private String dni;
 	private String job_title_worker;
 	private String phone_num;
-	private Integer client_id;
 	private String credit_card;
 	private String birthday;
 	private String url_img;
