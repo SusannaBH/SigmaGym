@@ -6,7 +6,7 @@ const NotFound = () => {
     <div className={Styles.container}>
       <h1>404 - Not Found</h1>
       <p>La página que estás buscando no existe.</p>
-      <Link to="/login">
+      <Link to="/home">
         <button className={Styles.buttonInicio}>Ir a "Iniciar Sesión"</button>
       </Link>
     </div>

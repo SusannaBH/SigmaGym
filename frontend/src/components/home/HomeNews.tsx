@@ -2,12 +2,13 @@ import { New } from "./index";
 import Styles from "./styles.module.css";
 import { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid"
+import { ENDPOINTS } from "@/constants";
 
 export default function HomeNews() {
   const [dataNews, setDataNews] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/news", { method: "GET", redirect: "follow" })
+    fetch(ENDPOINTS.NEWS, { method: "GET", redirect: "follow" })
       .then((response) => response.json())
       .then((result) => setDataNews(result))
       .catch((error) => console.log("Error fetching news:", error));

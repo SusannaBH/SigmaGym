@@ -1,5 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+
+
 .title {
     color: aquamarine;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     font-weight: bold;
+}
+
+.gym{
+    background-color: darkcyan;
+    padding: 10px;
+    border-radius: 20px;
+    border: 5px black double;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.name{
+    color: aquamarine;
+}
+
+.horary{
+    color: aquamarine;
+    font-size: 1.3rem;
+}
+
+.buttonInfo {
+    min-width: 60%;
+    margin-bottom: 15px;
+    font-family: 'Nunito', sans-serif;
+    background-color: black;
+    color: aquamarine;
+    border: 2px solid aquamarine;
+    padding: 5px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+}
+
+.buttonInfo:hover {
+    background-color: aquamarine;
+    color: black;
+    transform: scale(1.05);
+}
+
+.buttonInfo:active {
+    transform: scale(0.95);
+}
+
+.infoGym{
+    width: 60%;
+    background-color: aquamarine;
+    color: darkcyan;
+    border-radius: 20px;
 }

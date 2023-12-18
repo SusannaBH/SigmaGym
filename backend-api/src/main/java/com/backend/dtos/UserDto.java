@@ -41,7 +41,7 @@ public class UserDto implements Serializable {
 	private String surname;
 	private String username;
 	private String address;
-	private Boolean type;
+	private Integer type;
 	private Boolean status;
 	private String gender;
 	private String email;

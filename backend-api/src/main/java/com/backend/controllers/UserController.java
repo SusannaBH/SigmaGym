@@ -56,8 +56,11 @@ public class UserController {
 	// Inserta un user
 	@PostMapping
 	public ResponseEntity<String> insertUser(@RequestBody UserEntity user) {
-	    userService.addUser(user);
-	    return ResponseEntity.status(HttpStatus.CREATED).body("Usuario insertado correctamente.");
+	    boolean response = userService.addUser(user);
+			if(response){
+	    	return ResponseEntity.status(HttpStatus.CREATED).body("Usuario insertado correctamente.");
+			}
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error al crear el usuario.");
 	}
 
 
@@ -69,4 +72,17 @@ public class UserController {
 		return (result) ? ResponseEntity.status(HttpStatus.OK).body("Usuario eliminado")
 				: ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existe ese usuario");
 	}
+	
+	// Modifica un usuario
+	@PutMapping("/{id}")
+	public ResponseEntity<?> updateUser(@PathVariable Integer id, @RequestBody UserDto updatedUserData) {
+	    if (!userService.existsUser(id)) {
+	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existe ese usuario");
+	    }
+	    boolean result = userService.updateUser(id, updatedUserData);
+
+	    return (result) ? ResponseEntity.status(HttpStatus.OK).body("Usuario modificado exitosamente")
+	            : ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al modificar el usuario");
+	}
+
 }
