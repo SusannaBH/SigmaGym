@@ -91,13 +91,12 @@ public class ClassService {
 	        ClassDto classDto = optionalClass.get();
 	        UserEntity userEntity = optionalUser.get();
 	        
-	        if( classDto.getLista_usuarios_por_clase().stream().anyMatch(user -> user.getId().equals(idUser)) == false) {
-		        classDto.getLista_usuarios_por_clase().remove(userEntity);
-		        classDtoRepository.save(classDto);
-		        return true;
+	        if (classDto.getLista_usuarios_por_clase().stream().anyMatch(user -> user.getId().equals(idUser))) {
+	            classDto.getLista_usuarios_por_clase().remove(userEntity);
+	            classDtoRepository.save(classDto);
+	            return true;
 	        }
 	}
-	    
 	    return false;
 	}
 
