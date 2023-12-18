@@ -53,11 +53,5 @@ public class ClassDto implements Serializable{
     }
 
 
-
-//    @Query("SELECT NEW com.backend.dtos.CombinedDto(u.id, u.name, g.id, g.name, c.id, c.name) " +
-//            "FROM UserEntity u " +
-//            "JOIN u.listaGyms g " +
-//            "JOIN g.listaClasses c")
-//    List<UserEntity> lista_test;
 }
 
