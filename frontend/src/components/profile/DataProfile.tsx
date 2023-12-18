@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 
 interface User {
@@ -33,7 +32,7 @@ const DataProfile: React.FC = () => {
     Imagen: "",
   });
 
-  const userId = useState("");
+  const userId = localStorage.userId;
 
   useEffect(() => { cargarDatosIniciales() }, []);
 
@@ -60,8 +59,6 @@ const DataProfile: React.FC = () => {
         });
       })
       .catch(error => console.log('error', error));
-    
-    
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -72,26 +69,8 @@ const DataProfile: React.FC = () => {
     }));
   };
 
-  const updateUser = () => {
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    const requestOptions: RequestInit = {
-      method: "PUT",
-      headers: myHeaders,
-      body: JSON.stringify(datosUsuario),
-      redirect: "follow",
-    };
-
-    fetch(`http://localhost:8080/users/${userId}`, requestOptions)
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.error("Error:", error));
-  };
-
   return (
     <div>
-      <h2>Editar Usuario</h2>
       <form>
         {Object.entries(datosUsuario).map(([key, value]) => (
           <div key={key}>
@@ -99,7 +78,7 @@ const DataProfile: React.FC = () => {
             <input type="text" name={key} value={value} onChange={handleInputChange} style={{ maxWidth: 300 }}/>
           </div>
         ))}
-        <button type="button" onClick={updateUser}>Actualizar datos usuario</button>
+        
       </form>
     </div>
   );

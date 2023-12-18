@@ -27,9 +27,11 @@ export default function LoginForm() {
       .then((response) => response.json())
       .then((result) => {
         // console.log(result);
-        if (result) {
+        if (result.isLogginSuccessfull == true) {
+          localStorage.userId = result.id;
+          localStorage.planId = result.plan.id;
           localStorage.user = username;
-          //localStorage.userId = userId;
+          
           toast.success("Usuario correcto!", {
             position: "top-center", autoClose: 2000, hideProgressBar: false, closeOnClick: true,
             pauseOnHover: true, draggable: true, progress: undefined, theme: "dark",

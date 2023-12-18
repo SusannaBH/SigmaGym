@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+
+.title{
+    color: darkcyan;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-size: 2rem;
+}
+
+.structure{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: aquamarine;
+}
+
+.deleteContainer {
+    text-align: center;
+    margin: 20px;
+}
+
+.buttonDelete {
+    background-color: darkcyan;
+    color: aquamarine;
+    padding: 10px 20px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.5rem;
+    border: 4px black groove;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.buttonDelete:hover {
+    font-size: 2rem;
+    background-color: aquamarine;
+    color: darkcyan;
+    font-style: bold;
+}
+
+.buttonUpdate {
+    background-color: #001f33;
+    font-family: 'Nunito', sans-serif;
+    color: darkcyan;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 5px solid darkcyan;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.buttonUpdate:hover {
+    color: aquamarine;
+    background-color: darkcyan;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}

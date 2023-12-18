@@ -1,2 +1,5 @@
-export const logOut = () => localStorage.removeItem('user');
-
+export const logOut = () => {
+    localStorage.removeItem('user');
+    localStorage.removeItem('planId');
+    localStorage.removeItem('userId');
+  };
