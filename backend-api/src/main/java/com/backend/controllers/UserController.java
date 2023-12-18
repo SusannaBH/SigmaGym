@@ -49,10 +49,15 @@ public class UserController {
 	@PostMapping("/login")
 	public ResponseEntity<?> login(@RequestParam String username, @RequestParam String password) {
 	    Optional<LogginDto> loginResult = userService.login(username, password);
-
-	    return loginResult
-	            .map(logginDto -> ResponseEntity.ok().body(logginDto))
-	            .orElse(ResponseEntity.notFound().build());
+	    
+	    if(loginResult.isEmpty()){
+	    	return ResponseEntity.notFound().build();
+	    }else {
+	    	return ResponseEntity.ok(loginResult);
+	    }
+//	    return loginResult
+//	            .map(logginD -> ResponseEntity.ok().body(logginDto))
+//	            .orElse(ResponseEntity.notFound().build());
 	}
 
 	
