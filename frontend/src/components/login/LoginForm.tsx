@@ -29,6 +29,7 @@ export default function LoginForm() {
         // console.log(result);
         if (result) {
           localStorage.user = username;
+          //localStorage.userId = userId;
           toast.success("Usuario correcto!", {
             position: "top-center", autoClose: 2000, hideProgressBar: false, closeOnClick: true,
             pauseOnHover: true, draggable: true, progress: undefined, theme: "dark",

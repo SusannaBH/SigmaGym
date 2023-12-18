@@ -18,7 +18,6 @@ export default function RegistrerForm() {
   const [passwordError, setPasswordError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [dniError, setDNIError] = useState('');
-  const [status, setStatus] = useState(true);
 
   function handleOptions(e: any) {
     setOptions(e.target.value)

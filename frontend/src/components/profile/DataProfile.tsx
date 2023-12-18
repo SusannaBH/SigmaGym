@@ -1,65 +1,67 @@
-// type Props = {}
-
-// export default function DataProfile({}: Props) {
-//   return (
-//     <div>
-//         <h2>PERFIL DE USUARIO</h2>
-
-//     </div>
-//   )
-// }
 
 import React, { useState, useEffect } from "react";
 
+interface User {
+  id:               number;
+  name:             string;
+  surname:          string;
+  username:         string;
+  password:         string;
+  address:          string;
+  status:           boolean;
+  gender:           string;
+  email:            string;
+  dni:              string;
+  job_title_worker: string;
+  phone_num:        string;
+  credit_card:      string;
+  birthday:         string;
+  url_img:          string;
+}
+
 const DataProfile: React.FC = () => {
   const [datosUsuario, setDatosUsuario] = useState({
-    id: "",
-    name: "",
-    surname: "",
-    username: "",
-    address: "",
-    type: 1,
-    gender: "",
-    email: "",
-    jobTitleWorker: "",
-    phoneNum: "",
-    birthday: "",
-    url_img: "",
+    Nombre: "",
+    Apellidos: "",
+    Usuario: "",
+    Direccion: "",
+    Genero: "",
+    Email: "",
+    Puesto_trabajo: "",
+    Telefono: "",
+    Fecha_Nacimiento: "",
+    Imagen: "",
   });
 
-  useEffect(() => {
-    // Simulación de carga de datos iniciales del usuario
-    cargarDatosIniciales();
-  }, []);
+  const userId = useState("");
+
+  useEffect(() => { cargarDatosIniciales() }, []);
 
   const cargarDatosIniciales = () => {
     var requestOptions: RequestInit = {
       method: 'GET',
-      body: raw,
       redirect: 'follow'
     };
     
-    fetch("http://localhost:8080/users/1", requestOptions)
-      .then(response => response.text())
+    fetch(`http://localhost:8080/users/${userId}`, requestOptions)
+    .then(response => response.json() as Promise<User>)
       .then(result => {
-        
+        setDatosUsuario({
+          Nombre: result.name,
+          Apellidos: result.surname,
+          Usuario: result.username,
+          Direccion: result.address,
+          Genero: result.gender,
+          Email: result.email,
+          Puesto_trabajo: result.job_title_worker,
+          Telefono: result.phone_num,
+          Fecha_Nacimiento: result.birthday,
+          Imagen: result.url_img,
+        });
       })
       .catch(error => console.log('error', error));
-    // Aquí debemos llamar a la API traer la data del JSON y presentarla en cada uno de los campos correspondiente
-    setDatosUsuario({
-      id: "",
-      name: "David",
-      surname: "Bernal",
-      username: "davidbernal",
-      address: "123 Main St",
-      type: 1,
-      gender: "Male",
-      email: "davidbernal@example.com",
-      jobTitleWorker: "Manager",
-      phoneNum: "555-1234",
-      birthday: "1990-01-15",
-      url_img: "http://example.com/johndoe.jpg",
-    });
+    
+    
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,7 +72,7 @@ const DataProfile: React.FC = () => {
     }));
   };
 
-  const actualizarUsuario = () => {
+  const updateUser = () => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -81,8 +83,7 @@ const DataProfile: React.FC = () => {
       redirect: "follow",
     };
 
-    // Reemplaza la URL con la correcta para tu backend y el ID del usuario
-    fetch("http://localhost:8080/users/1", requestOptions)
+    fetch(`http://localhost:8080/users/${userId}`, requestOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.error("Error:", error));
@@ -94,11 +95,11 @@ const DataProfile: React.FC = () => {
       <form>
         {Object.entries(datosUsuario).map(([key, value]) => (
           <div key={key}>
-            <label>{key}:</label>
-            <input type="text" name={key} value={value} onChange={handleInputChange}/>
+            <label>{key}:  </label>
+            <input type="text" name={key} value={value} onChange={handleInputChange} style={{ maxWidth: 300 }}/>
           </div>
         ))}
-        <button type="button" onClick={actualizarUsuario}>Actualizar datos usuario</button>
+        <button type="button" onClick={updateUser}>Actualizar datos usuario</button>
       </form>
     </div>
   );
