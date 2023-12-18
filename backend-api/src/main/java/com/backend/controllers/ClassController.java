@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.backend.dtos.ClassDto;
 import com.backend.dtos.GymDto;
 import com.backend.entities.ClassEntity;
 import com.backend.entities.GymEntity;
@@ -47,7 +48,23 @@ public class ClassController {
 	    return result.map(resulta -> ResponseEntity.ok(resulta))
 	                 .orElse(ResponseEntity.notFound().build());
 	}
-
+	
+	
+	@PostMapping("/UserIntoClass/{id_user}/{id_class}")
+	public  ResponseEntity<?> insertUserIntoClass(@PathVariable Integer id_user, @PathVariable Integer id_class) {
+		boolean result = classService.insertUserIntoClass(id_user, id_class);
+		return result ?
+				ResponseEntity.status(HttpStatus.OK).body("Usuario añadido a la classe") :
+				ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se ha añadido el usuario correctamente");
+	}
+	
+	@DeleteMapping("/UserIntoClass/{id_user}/{id_class}")
+	public  ResponseEntity<?> deleteUserIntoClass(@PathVariable Integer id_user, @PathVariable Integer id_class) {
+		boolean result = classService.deleteUserIntoClass(id_user, id_class);
+		return result ?
+				ResponseEntity.status(HttpStatus.OK).body("Usuario eliminado a la classe") :
+				ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se ha eliminado el usuario de la clase correctamente");
+	}
 
 	@PutMapping
 	public ResponseEntity<String> insertClass(@RequestBody ClassEntity classe) {

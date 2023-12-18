@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.backend.dtos.LogginDto;
 import com.backend.dtos.UserDto;
 import com.backend.entities.UserEntity;
 import com.backend.services.UserConversionService;
@@ -46,9 +47,20 @@ public class UserController {
 
 	// Verifica el logging:
 	@PostMapping("/login")
-	public Boolean login(@RequestParam String username, @RequestParam String password) {
-		return userService.login(username, password).isPresent() ? true : false;
+	public ResponseEntity<?> login(@RequestParam String username, @RequestParam String password) {
+	    Optional<LogginDto> loginResult = userService.login(username, password);
+	    
+	    if(loginResult.isEmpty()){
+	    	return ResponseEntity.notFound().build();
+	    }else {
+	    	return ResponseEntity.ok(loginResult);
+	    }
+//	    return loginResult
+//	            .map(logginD -> ResponseEntity.ok().body(logginDto))
+//	            .orElse(ResponseEntity.notFound().build());
 	}
+
+	
 	
 	// Retornamos un user por id:
 		@GetMapping("/entities/{id}")
@@ -57,6 +69,7 @@ public class UserController {
 
 		    return result.map( user -> ResponseEntity.ok().body(user))
 		                 .orElse(ResponseEntity.notFound().build());
+		    
 	}
 		
 	// Retornamos un user por id:

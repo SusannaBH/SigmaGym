@@ -1,12 +1,12 @@
 package com.backend.services;
 
 import java.util.List;
-
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.backend.dtos.LogginDto;
 import com.backend.dtos.UserDto;
 import com.backend.entities.UserEntity;
 import com.backend.repository.UserDtoRepository;
@@ -33,7 +33,7 @@ public class UserService {
 	public List<UserDto> findAllUsersDto() {
 		return userDtoRepository.findAll();
 	}
-	
+
 	public List<UserEntity> findAllUsers() {
 		return userRepository.findAll();
 	}
@@ -41,13 +41,13 @@ public class UserService {
 	public Optional<UserDto> findUserById(Integer id) {
 		return userDtoRepository.findById(id);
 	}
-	
+
 	public Optional<UserEntity> findUserByIdEntity(Integer id) {
 		return userRepository.findById(id);
 	}
-	
+
 	public boolean existsUser(Integer id) {
-	    return userRepository.existsById(id);
+		return userRepository.existsById(id);
 	}
 
 	public boolean addUser(@RequestBody UserEntity userEntity) {
@@ -80,24 +80,48 @@ public class UserService {
 		return checkIfExistUser.isPresent();
 	}
 
-	public Optional<UserEntity> login(String userParam, String passParam) {
-		return userRepository.findAll().stream()
-				.filter(user -> user.getUsername().equals(userParam) && user.getPassword().equals(passParam))
+	public Optional<LogginDto> login(String userParam, String passParam) {
+		Optional<UserEntity> userOptionalEntity = userRepository.findAll().stream()
+				.filter(user -> user.getUsername().equals(userParam) 
+						&& user.getPassword().equals(passParam))
 				.findFirst();
+		
+		
+		Optional<LogginDto> logginDto = Optional.ofNullable(new LogginDto());
+		if(userOptionalEntity.isPresent()) {
+			Optional<UserDto> userDto = userDtoRepository.findById(userOptionalEntity.get().getId());
+			logginDto.get().setIsLogginSuccessfull(true);
+			logginDto.get().setId(userOptionalEntity.get().getId());
+			logginDto.get().setPlan(userDto.get().getPlan());
+		}
+		return logginDto;
+//		UserDto userDto = userDtoRepository.getById(userOptionalEntity.get().getId());
+//
+//		Optional<LogginDto> returnLogginDto = Optional.of(new LogginDto());
+//
+//		if (userOptionalEntity.isPresent()) {
+//			UserEntity userEntity = userOptionalEntity.get();
+//
+//			returnLogginDto.get().setId(userEntity.getId());
+//			returnLogginDto.get().setPlan(userDto.getPlan());
+//			returnLogginDto.get().setIsLogginSuccessfull(true);
+//		}
+//
+//		return returnLogginDto;
 	}
-	
-	public boolean updateUser(Integer id, UserDto updatedUserData) {
-	    Optional<UserEntity> existingUserOptional = userRepository.findById(id);
-	    if (existingUserOptional.isPresent()) {
-	        UserEntity existingUser = existingUserOptional.get();
-	        existingUser.setName(updatedUserData.getName());
-	        existingUser.setSurname(updatedUserData.getSurname());
-	        existingUser.setEmail(updatedUserData.getEmail());
-	        userRepository.save(existingUser);
-	        
-	        return true;
-	    }
 
-	    return false;
+	public boolean updateUser(Integer id, UserDto updatedUserData) {
+		Optional<UserEntity> existingUserOptional = userRepository.findById(id);
+		if (existingUserOptional.isPresent()) {
+			UserEntity existingUser = existingUserOptional.get();
+			existingUser.setName(updatedUserData.getName());
+			existingUser.setSurname(updatedUserData.getSurname());
+			existingUser.setEmail(updatedUserData.getEmail());
+			userRepository.save(existingUser);
+
+			return true;
+		}
+
+		return false;
 	}
 }
