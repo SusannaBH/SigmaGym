@@ -96,19 +96,7 @@ public class UserService {
 			logginDto.get().setPlan(userDto.get().getPlan());
 		} 
 		return logginDto;
-//		UserDto userDto = userDtoRepository.getById(userOptionalEntity.get().getId());
-//
-//		Optional<LogginDto> returnLogginDto = Optional.of(new LogginDto());
-//
-//		if (userOptionalEntity.isPresent()) {
-//			UserEntity userEntity = userOptionalEntity.get();
-//
-//			returnLogginDto.get().setId(userEntity.getId());
-//			returnLogginDto.get().setPlan(userDto.getPlan());
-//			returnLogginDto.get().setIsLogginSuccessfull(true);
-//		}
-//
-//		return returnLogginDto;
+
 	}
 
 	public boolean updateUser(Integer id, UserEntity updatedUserData) {
