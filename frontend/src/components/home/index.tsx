@@ -1,4 +1,5 @@
-import HomeNews from "./HomeNews";
+import News from "./News";
 import New from "./New"
+import HomeNews from "./HomeNews";
 
-export { HomeNews, New }
+export { News, New, HomeNews }

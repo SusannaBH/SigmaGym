@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+
+.container {
+    color: darkcyan;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: -40px;
+}
+
+.message {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.buttonPlanFree {
+    font-family: 'Nunito', sans-serif;
+    background-color: aquamarine;
+    color: black;
+    padding: 15px 30px;
+    font-size: 16px;
+    border: black 10px double;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.buttonPlanFree:hover {
+    background-color: rgb(5, 111, 111);
+    color: aquamarine;
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.iconGym{
+    width: 20%;
+}

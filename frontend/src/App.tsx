@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { PrivateRoute } from "./components/componentsGeneric/PrivateRoute";
 import Layout from "./Layout";
-import { Login, Registration, Home, Plans, Gyms, NotFound, Contact } from "./pages/index";
+import { Login, Registration, Home, Plans, Gyms, NotFound, Contact, Profile } from "./pages/index";
 
 
 const App: React.FC = () => (
@@ -12,6 +12,7 @@ const App: React.FC = () => (
         <Route path="/plans" element={<PrivateRoute element={<Plans />} />} />
         <Route path="/gyms" element={<PrivateRoute element={<Gyms />} />} />
         <Route path="/contact" element={<PrivateRoute element={<Contact />} />} />
+        <Route path="/profile" element={<PrivateRoute element={<Profile />} />} />
       </Route>
       <Route path="/login" element={<Login />} />
       <Route path="/registration" element={<Registration />} />
