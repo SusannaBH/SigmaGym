@@ -26,7 +26,7 @@ CREATE TABLE User (
     phone_num VARCHAR(15),
     credit_card VARCHAR(19),
     birthday DATE,
-    url_img VARCHAR(250) DEFAULT 'ruta_url', -- Valor por defecto que debe ser la ruta a la carpeta de las imagenes
+    url_img VARCHAR(250) DEFAULT 'SigmaGym/frontend/src/assets/users/', -- Valor por defecto que debe ser la ruta a la carpeta de las imagenes
     plan_id INT,
     FOREIGN KEY (plan_id) REFERENCES Plan(id) ON DELETE CASCADE
 );
