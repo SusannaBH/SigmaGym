@@ -103,7 +103,7 @@ public class UserController {
 	
 	// Modifica un usuario
 	@PutMapping("/{id}")
-	public ResponseEntity<?> updateUser(@PathVariable Integer id, @RequestBody UserDto updatedUserData) {
+	public ResponseEntity<?> updateUser(@PathVariable Integer id, @RequestBody UserEntity updatedUserData) {
 	    if (!userService.existsUser(id)) {
 	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existe ese usuario");
 	    }

@@ -35,7 +35,7 @@ export default function UpdateProfile({ }: Props) {
     fetch(`http://localhost:8080/users/${userId}`, requestOptions)
       .then((response) => response.text())
       .then((result) => {
-        // console.log(result);
+        // zconsole.log(result);
         if (result) {
           toast.success("Datos modificados correctamente!", {
             position: "top-right", autoClose: 2000, hideProgressBar: false, closeOnClick: true,

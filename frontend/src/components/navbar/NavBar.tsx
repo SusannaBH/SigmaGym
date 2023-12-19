@@ -48,7 +48,7 @@ export default function AccountMenu() {
           <RRLink to="/gyms" className={Styles.enlace} style={{ textDecoration: 'none' }}>GYMS 🏋️‍♀️</RRLink>
         </Button>
         <Button variant="contained" className={Styles.button}>
-          <RRLink to="/" className={Styles.enlace} style={{ textDecoration: 'none' }}>CLASES 🗓️</RRLink>
+          <RRLink to="/classes" className={Styles.enlace} style={{ textDecoration: 'none' }}>CLASES 🗓️</RRLink>
         </Button>
         {/* BOTON PARA CUANDO SE REALICE LA SECCION TORNEOS */}
         {/*<Button variant="contained" className={Styles.button}>

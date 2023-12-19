@@ -111,7 +111,7 @@ public class UserService {
 //		return returnLogginDto;
 	}
 
-	public boolean updateUser(Integer id, UserDto updatedUserData) {
+	public boolean updateUser(Integer id, UserEntity updatedUserData) {
 		Optional<UserEntity> existingUserOptional = userRepository.findById(id);
 		if (existingUserOptional.isPresent()) {
 			UserEntity existingUser = existingUserOptional.get();
