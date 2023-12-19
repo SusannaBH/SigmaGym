@@ -76,6 +76,7 @@ public class UserService {
 	 */
 	public boolean deleteUser(Integer id) {
 		Optional<UserEntity> checkIfExistUser = userRepository.findById(id);
+		System.out.print(checkIfExistUser);
 		userRepository.deleteById(id);
 		return checkIfExistUser.isPresent();
 	}
@@ -93,7 +94,7 @@ public class UserService {
 			logginDto.get().setIsLogginSuccessfull(true);
 			logginDto.get().setId(userOptionalEntity.get().getId());
 			logginDto.get().setPlan(userDto.get().getPlan());
-		}
+		} 
 		return logginDto;
 //		UserDto userDto = userDtoRepository.getById(userOptionalEntity.get().getId());
 //

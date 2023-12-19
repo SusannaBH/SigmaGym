@@ -28,7 +28,7 @@ CREATE TABLE User (
     birthday DATE,
     url_img VARCHAR(250),
     plan_id INT,
-    FOREIGN KEY (plan_id) REFERENCES Plan(id)
+    FOREIGN KEY (plan_id) REFERENCES Plan(id)  ON DELETE CASCADE
 );
 
 CREATE TABLE gym (
@@ -44,8 +44,8 @@ CREATE TABLE gym_has_user (
     gym_id INT,
     user_id INT,
     PRIMARY KEY (gym_id, user_id),
-    FOREIGN KEY (gym_id) REFERENCES gym(id),
-    FOREIGN KEY (user_id) REFERENCES user(id)
+    FOREIGN KEY (gym_id) REFERENCES gym(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
 );
 
 CREATE TABLE class (
@@ -61,16 +61,16 @@ CREATE TABLE gym_has_class (
     gym_id INT,
     class_id INT,
     PRIMARY KEY (gym_id, class_id),
-    FOREIGN KEY (gym_id) REFERENCES gym(id),
-    FOREIGN KEY (class_id) REFERENCES class(id)
+    FOREIGN KEY (gym_id) REFERENCES gym(id) ON DELETE CASCADE,
+    FOREIGN KEY (class_id) REFERENCES class(id) ON DELETE CASCADE
 );
 
 CREATE TABLE class_has_user (
     class_id INT,
     user_id INT,
     PRIMARY KEY (class_id, user_id),
-    FOREIGN KEY (class_id) REFERENCES class(id),
-    FOREIGN KEY (user_id) REFERENCES user(id)
+    FOREIGN KEY (class_id) REFERENCES class(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
 );
 CREATE TABLE novedades (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -194,7 +194,6 @@ VALUES
 (1, 7),
 (1, 8),
 (1, 9),
-(4, 10),
 (5, 11),
 (6, 12),
 (7, 13),
