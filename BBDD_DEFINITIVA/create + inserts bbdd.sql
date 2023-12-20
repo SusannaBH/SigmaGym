@@ -6,8 +6,7 @@ CREATE TABLE Plan (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(20),
     info VARCHAR(200),
-    price DECIMAL(10, 2),
-    image VARCHAR(150)
+    price DECIMAL(10, 2)
 );
 
 CREATE TABLE User (
@@ -104,13 +103,13 @@ INSERT INTO novedades (titulo, gym_name, fecha, informacion) VALUES
 ('Desafío de pérdida de peso', 'WeightLossWarriors', '2024-07-05', 'Participa en nuestro desafío de pérdida de peso y alcanza tus metas fitness.');
 
 
-INSERT INTO plan (title, price, info, image)
+INSERT INTO plan (title, price, info)
 VALUES
-('Free', 0.00, 'Acceso básico de forma gratuita para siempre. ¡Descubre las funciones esenciales de nuestro servicio hoy!', '/src/assets/image_free.jpg'),
-('Bronze', 14.99, 'Plan Bronze con duración mensual. Nuevas funciones cada mes. ¡Mejora ahora!', '/src/assets/image_bronze.jpg'),
-('Silver', 29.99, 'Plan Silver con duración trimestral. Más tiempo, más ventajas. ¡Únete a la exclusividad!', '/src/assets/image_silver.jpg'),
-('Gold', 49.99, 'Experimenta la grandeza con nuestro plan Gold con duración semestral. Funciones avanzadas y soporte prioritario. ¡Hazte Gold hoy mismo!', '/src/assets/image_gold.jpg'),
-('Premium', 79.99, 'La cima de la experiencia. Nuestro plan Premium con duración anual te brinda acceso a todas las características. ¡Vive la excelencia con Premium!', '/src/assets/image_premium.jpg');
+('Free', 0.00, 'Acceso básico de forma gratuita para siempre. ¡Descubre las funciones esenciales de nuestro servicio hoy!'),
+('Bronze', 14.99, 'Plan Bronze con duración mensual. Nuevas funciones cada mes. ¡Mejora ahora!'),
+('Silver', 29.99, 'Plan Silver con duración trimestral. Más tiempo, más ventajas. ¡Únete a la exclusividad!'),
+('Gold', 49.99, 'Experimenta la grandeza con nuestro plan Gold con duración semestral. Funciones avanzadas y soporte prioritario. ¡Hazte Gold hoy mismo!'),
+('Premium', 79.99, 'La cima de la experiencia. Nuestro plan Premium con duración anual te brinda acceso a todas las características. ¡Vive la excelencia con Premium!');
 
 INSERT INTO gym (name, address, phone, email, horary)
 VALUES
@@ -141,16 +140,17 @@ VALUES
 
 INSERT INTO class (coach, max_students, sport, horary, num_students_on_class)
 VALUES
-('Alex Smith', 20, 1, 'Lunes 10:00 AM - 12:00 PM',0),  
-('Emily Johnson', 15, 2, 'Martes 2:00 PM - 4:00 PM',0),
-('Daniel Martinez', 10, 3, 'Miércoles 4:30 PM - 6:30 PM',0),
-('Sophia Brown', 18, 4, 'Jueves 9:00 AM - 11:00 AM',0),
-('Matthew Taylor', 25, 5, 'Viernes 3:00 PM - 5:00 PM',0),
-('Olivia White', 12, 6, 'Sábado 11:30 AM - 1:30 PM',0),
-('David Anderson', 15, 7, 'Domingo 5:00 PM - 7:00 PM',0),
-('Emma Davis', 10, 8, 'Lunes 6:30 PM - 8:30 PM',0),
-('Christopher Wilson', 20, 9, 'Martes 11:00 AM - 1:00 PM',0),
-('Ava Thompson', 15, 10, 'Miércoles 7:00 PM - 9:00 PM',0);
+('Alex Smith', 20, 'Karate', 'Lunes 10:00 AM - 12:00 PM', 0),  
+('Emily Johnson', 15, 'Football', 'Martes 2:00 PM - 4:00 PM', 0),
+('Daniel Martinez', 10, 'Basketball', 'Miércoles 4:30 PM - 6:30 PM', 0),
+('Sophia Brown', 18, 'Swimming', 'Jueves 9:00 AM - 11:00 AM', 0),
+('Matthew Taylor', 25, 'Volleyball', 'Viernes 3:00 PM - 5:00 PM', 0),
+('Olivia White', 12, 'Gymnastics', 'Sábado 11:30 AM - 1:30 PM', 0),
+('David Anderson', 15, 'Tennis', 'Domingo 5:00 PM - 7:00 PM', 0),
+('Emma Davis', 10, 'skating', 'Lunes 6:30 PM - 8:30 PM', 0),
+('Christopher Wilson', 20, 'Baseball', 'Martes 11:00 AM - 1:00 PM', 0),
+('Ava Thompson', 15, 'Handball', 'Miércoles 7:00 PM - 9:00 PM', 0);
+
 
 
 INSERT INTO gym_has_user (gym_id, user_id)

@@ -72,4 +72,5 @@ public class UserDto implements Serializable {
 	    inverseJoinColumns = @JoinColumn(name = "class_id") // Columna que hace referencia a GymEntity
 	)
 	List<ClassEntity> lista_classes;
+	
 }

@@ -48,6 +48,6 @@ public class UserEntity implements Serializable{
 	private String birthday;
 	private String url_img;
 	
-	
+
 	
 }
