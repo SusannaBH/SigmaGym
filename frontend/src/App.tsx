@@ -1,8 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { PrivateRoute } from "./components/componentsGeneric/PrivateRoute";
 import Layout from "./Layout";
-import { Login, Registration, Home, Plans, Gyms, NotFound, Contact, Profile } from "./pages/index";
-import Classes from "./components/class/Classes";
+import { Login, Registration, Home, Plans, Gyms, NotFound, Contact, Profile, Classes } from "./pages/index";
 
 
 const App: React.FC = () => (

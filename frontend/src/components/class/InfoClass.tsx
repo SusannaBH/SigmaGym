@@ -1,18 +1,11 @@
-import Style from './styles.module.css'
 
-interface Props {
-	address?: string;
-	phone?: string;
-	email?: string;
-}
+interface Props { }
 
-export default function InfoClass({ address, phone, email }: Props) {
+export default function InfoClass({ }: Props) {
 
 	return (
-		<div className={Style.infoGym}>
-			<h4>Dirección: </h4><div>{address}</div>
-			<h4>Número de teléfono: </h4><div>{phone}</div>
-			<h4>Correo electrónico: </h4><div>{email}</div>
+		<div>
+
 		</div>
 	)
 }

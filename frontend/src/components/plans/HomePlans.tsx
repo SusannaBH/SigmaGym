@@ -18,18 +18,22 @@ export default function HomePlans() {
       method: 'GET',
       redirect: 'follow'
     })
-      .then(response => response.json()) // Cambiado a json() para parsear el resultado como JSON
+      .then(response => response.json())
       .then(result => setDataPlans(result))
       .catch(error => console.error('Error fetching plans:', error));
-  }, []); // El segundo argumento del useEffect como un array vacío para ejecutar la solicitud solo una vez al montar el componente
+  }, []); 
 
   return (
     <div className={Style.structure}>
       {dataPlans.map((plan) => {
         const { id, title, info, price } = plan;
         const image: string = PlansImages[title.toUpperCase() as keyof typeof PlansImages]
+
+        const planId = localStorage.getItem("planId") || null
+
+        const textoBtn = Number(planId) === id ? "TU PLAN" : "CAMBIAR DE PLAN"
         return (
-          <Plan key={id} title={title} info={info} price={Number(price)} imageSrc={image} />
+          <Plan key={id} idPlan={id} title={title} info={info} price={Number(price)} imageSrc={image} textoBtn={textoBtn} />
         );
       })}
     </div>

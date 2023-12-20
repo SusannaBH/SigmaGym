@@ -1,6 +1,5 @@
-import DataProfile from './DataProfile'
+import UserProfile from './UserProfile'
 import HomeProfile from './HomeProfile'
 import DeleteProfile from './DeleteProfile'
-import UpdateProfile from './UpdateProfile'
 
-export { DataProfile, HomeProfile, DeleteProfile, UpdateProfile }
+export { UserProfile, HomeProfile, DeleteProfile }
