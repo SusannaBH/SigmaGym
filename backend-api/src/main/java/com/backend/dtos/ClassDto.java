@@ -36,7 +36,7 @@ public class ClassDto implements Serializable{
     private String coach;
     private String horary;
     private String sport;
-    private Integer num_students_on_class = getNumStudentsOnClass();
+    //private Integer num_students_on_class = getNumStudentsOnClass();
     private Integer max_students;
 
     @ManyToMany

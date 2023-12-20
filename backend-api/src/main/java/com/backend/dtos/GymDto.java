@@ -50,7 +50,7 @@ public class GymDto implements Serializable {
         joinColumns = @JoinColumn(name = "gym_id"), // Columna que hace referencia a UserEntity
         inverseJoinColumns = @JoinColumn(name = "class_id") // Columna que hace referencia a ClassEntity
     )
-    List<ClassDto> lista_classes_usuario;
+    List<ClassDto> lista_classes_gym;
 
    
 }
