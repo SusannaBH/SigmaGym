@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.backend.dtos.LogginDto;
 import com.backend.dtos.UserDto;
+import com.backend.entities.PlanEntity;
 import com.backend.entities.UserEntity;
+import com.backend.repository.PlanRepository;
 import com.backend.repository.UserDtoRepository;
 import com.backend.repository.UserRepository;
 
@@ -19,10 +21,13 @@ import jakarta.transaction.Transactional;
 public class UserService {
 	private UserRepository userRepository;
 	private UserDtoRepository userDtoRepository;
+    private final PlanRepository planRepository; // Agregado
 
-	public UserService(UserRepository userRepository, UserDtoRepository userDtoRepository) {
+
+	public UserService(UserRepository userRepository, UserDtoRepository userDtoRepository, PlanRepository planRepository) {
 		this.userRepository = userRepository;
 		this.userDtoRepository = userDtoRepository;
+		this.planRepository = planRepository;
 	}
 
 	/**
@@ -64,7 +69,6 @@ public class UserService {
 				return isValidUser;
 			}
 		}
-
 		userRepository.save(userEntity);
 		return isValidUser;
 	}
@@ -96,7 +100,6 @@ public class UserService {
 			logginDto.get().setPlan(userDto.get().getPlan());
 		} 
 		return logginDto;
-
 	}
 
 	public boolean updateUser(Integer id, UserEntity updatedUserData) {
@@ -114,7 +117,22 @@ public class UserService {
 
 			return true;
 		}
-
 		return false;
 	}
+	
+	@Transactional
+    public boolean changeUserPlan(Integer userId, Integer newPlanId) {
+        Optional<UserDto> optionalUser = userDtoRepository.findById(userId);
+        Optional<PlanEntity> optionalNewPlan = planRepository.findById(newPlanId);
+
+        if (optionalUser.isPresent() && optionalNewPlan.isPresent()) {
+            UserDto user = optionalUser.get();
+            PlanEntity newPlan = optionalNewPlan.get();
+
+            user.setPlan(newPlan); 
+            userDtoRepository.save(user);
+            return true;
+        }
+        return false;
+    }
 }

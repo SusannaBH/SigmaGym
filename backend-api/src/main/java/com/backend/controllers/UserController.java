@@ -112,5 +112,18 @@ public class UserController {
 	    return (result) ? ResponseEntity.status(HttpStatus.OK).body("Usuario modificado exitosamente")
 	            : ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al modificar el usuario");
 	}
+	// Cambia el plan de un usuario
+	@PostMapping("/{id}/changeplan")
+	public ResponseEntity<?> changeUserPlan(@PathVariable Integer id, @RequestParam Integer newPlan) {
+	    if (!userService.existsUser(id)) {
+	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existe ese usuario");
+	    }
+
+	    boolean result = userService.changeUserPlan(id, newPlan);
+
+	    return (result) ? ResponseEntity.status(HttpStatus.OK).body("Plan de usuario modificado exitosamente")
+	            : ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al modificar el plan de usuario");
+	}
+
 
 }
