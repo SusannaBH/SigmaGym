@@ -106,6 +106,10 @@ public class UserService {
 			existingUser.setName(updatedUserData.getName());
 			existingUser.setSurname(updatedUserData.getSurname());
 			existingUser.setEmail(updatedUserData.getEmail());
+			existingUser.setUsername(updatedUserData.getUsername());
+			existingUser.setPassword(updatedUserData.getPassword());
+			existingUser.setAddress(updatedUserData.getAddress());
+			existingUser.setPhone_num(updatedUserData.getPhone_num());
 			userRepository.save(existingUser);
 
 			return true;
