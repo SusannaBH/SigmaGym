@@ -24,7 +24,7 @@ import com.backend.services.UserService;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 public class UserController {
 	private UserService userService;
 	private UserConversionService userConversionService;

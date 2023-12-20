@@ -1,7 +1,7 @@
 
 interface Props { }
 
-export default function InfoClass({ }: Props) {
+export default function buttonRegistrer({ }: Props) {
 
 	return (
 		<div>

@@ -58,13 +58,6 @@ export default function HomeClasses() {
     <div>
       <h1 className={Styles.titlePage}>- CLASES -</h1>
       <ListGyms setGymId={handleGymId}/>
-      <div>
-        {classes.map((classEl) => {
-          return <div key={classEl.id}>
-              <p>{classEl.coach}</p>
-            </div>
-        })}
-      </div>
     </div>
   )
 }
