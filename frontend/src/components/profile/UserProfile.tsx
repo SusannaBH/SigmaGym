@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import Style from './styles.module.css';
 
+interface Props {
+  key: string;
+  value: string;
+}
+
 interface User {
   id: number;
   name: string;
@@ -55,12 +60,39 @@ const DataProfile: React.FC<DataProfileProps> = ({ datosUsuario, setDatosUsuario
     }));
   };
 
+    const traducirClaveAlCastellano = (key: string): string => {
+      switch (key) {
+        case 'name':
+          return 'Nombre';
+        case 'surname':
+          return 'Apellido';
+        case 'username':
+          return 'Nombre de usuario';
+        case 'password':
+          return 'Contraseña';
+        case 'address':
+          return 'Dirección';
+        case 'gender':
+          return 'Género';
+        case 'email':
+          return 'Correo electrónico';
+        case 'job_title_worker':
+          return 'Puesto de trabajo';
+        case 'phone_num':
+          return 'Número de teléfono';
+        case 'birthday':
+          return 'Fecha de nacimiento';
+        default:
+          return key;
+      }
+    };
+
   return (
     <div>
       <form>
         {Object.entries(datosUsuario).map(([key, value]) => (
           <div key={key}>
-            <label>{key}: </label>
+            <label>{traducirClaveAlCastellano(key)}</label>
             <input type="text" name={key} value={value} onChange={handleInputChange} style={{ maxWidth: 300 }} />
           </div>
         ))}
