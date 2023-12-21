@@ -28,11 +28,11 @@
 
 .buttonDelete {
     background-color: darkcyan;
-    color: aquamarine;
+    color: red;
     padding: 10px 20px;
     font-family: 'Nunito', sans-serif;
     font-size: 1.5rem;
-    border: 4px black groove;
+    border: 4px red groove;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -41,7 +41,6 @@
 .buttonDelete:hover {
     font-size: 2rem;
     background-color: aquamarine;
-    color: darkcyan;
     font-style: bold;
 }
 

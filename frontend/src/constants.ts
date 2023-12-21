@@ -20,6 +20,15 @@ const PlansImages: IPlansImages = {
   PREMIUM: premium
 }
 
+// TODO: Finish colors
+const PlansColors: IPlansImages = {
+  FREE: "white",
+  BRONZE: "yellow",
+  SILVER: "silver",
+  GOLD: "gold",
+  PREMIUM: "premium"
+}
+
 enum USERS_TITLES {
   Client = 2,
   Worker = 1

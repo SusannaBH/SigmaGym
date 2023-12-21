@@ -54,7 +54,7 @@ public class ClassController {
 	public  ResponseEntity<?> insertUserIntoClass(@PathVariable Integer id_user, @PathVariable Integer id_class) {
 		boolean result = classService.insertUserIntoClass(id_user, id_class);
 		return result ?
-				ResponseEntity.status(HttpStatus.OK).body("Usuario añadido a la classe") :
+				ResponseEntity.status(HttpStatus.OK).body("Usuario añadido a la clase") :
 				ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se ha añadido el usuario correctamente");
 	}
 	
@@ -62,7 +62,7 @@ public class ClassController {
 	public  ResponseEntity<?> deleteUserIntoClass(@PathVariable Integer id_user, @PathVariable Integer id_class) {
 		boolean result = classService.deleteUserIntoClass(id_user, id_class);
 		return result ?
-				ResponseEntity.status(HttpStatus.OK).body("Usuario eliminado a la classe") :
+				ResponseEntity.status(HttpStatus.OK).body("Usuario eliminado de la clase") :
 				ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se ha eliminado el usuario de la clase correctamente");
 	}
 

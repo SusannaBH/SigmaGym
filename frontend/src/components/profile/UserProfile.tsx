@@ -2,11 +2,6 @@ import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import Style from './styles.module.css';
 
-interface Props {
-  key: string;
-  value: string;
-}
-
 interface User {
   id: number;
   name: string;
@@ -18,8 +13,8 @@ interface User {
   gender: string;
   email: string;
   dni: string;
-  job_title_worker: string;
-  phone_num: string;
+  jobTitleWorker: string;
+  phoneNum: string;
   credit_card: string;
   birthday: string;
 }
@@ -33,8 +28,8 @@ interface DataProfileProps {
     address: string;
     gender: string;
     email: string;
-    job_title_worker: string;
-    phone_num: string;
+    jobTitleWorker: string;
+    phoneNum: string;
     birthday: string;
   };
   setDatosUsuario: React.Dispatch<React.SetStateAction<{
@@ -45,8 +40,8 @@ interface DataProfileProps {
     address: string;
     gender: string;
     email: string;
-    job_title_worker: string;
-    phone_num: string;
+    jobTitleWorker: string;
+    phoneNum: string;
     birthday: string;
   }>>;
 }
@@ -76,9 +71,9 @@ const DataProfile: React.FC<DataProfileProps> = ({ datosUsuario, setDatosUsuario
           return 'Género';
         case 'email':
           return 'Correo electrónico';
-        case 'job_title_worker':
+        case 'jobTitleWorker':
           return 'Puesto de trabajo';
-        case 'phone_num':
+        case 'phoneNum':
           return 'Número de teléfono';
         case 'birthday':
           return 'Fecha de nacimiento';
@@ -93,7 +88,7 @@ const DataProfile: React.FC<DataProfileProps> = ({ datosUsuario, setDatosUsuario
         {Object.entries(datosUsuario).map(([key, value]) => (
           <div key={key}>
             <label>{traducirClaveAlCastellano(key)}</label>
-            <input type="text" name={key} value={value} onChange={handleInputChange} style={{ maxWidth: 300 }} />
+            <input type="text" name={key} value={value ?? ""} onChange={handleInputChange} style={{ maxWidth: 300 }} />
           </div>
         ))}
       </form>
@@ -111,8 +106,8 @@ const UserProfile: React.FC = () => {
     address: "",
     gender: "",
     email: "",
-    job_title_worker: "",
-    phone_num: "",
+    jobTitleWorker: "",
+    phoneNum: "",
     birthday: ""
   });
 
@@ -137,8 +132,8 @@ const UserProfile: React.FC = () => {
           address: result.address,
           gender: result.gender,
           email: result.email,
-          job_title_worker: result.job_title_worker,
-          phone_num: result.phone_num,
+          jobTitleWorker: result.jobTitleWorker,
+          phoneNum: result.phoneNum,
           birthday: result.birthday
         });
       })
