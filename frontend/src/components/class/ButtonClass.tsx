@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import Styles from "@/components/class/styles.module.css"
 
 interface Props {
   classId: number
@@ -44,7 +45,7 @@ export default function ButtonClass({ classId, userIsInClass }: Props) {
 
   return (
     <div>
-      <button type="button" onClick={subscribeToClass}>{text}</button>
+      <button className={Styles.buttonSubscribeClass} type="button" onClick={subscribeToClass}>{text}</button>
       <ToastContainer />
     </div>
   )

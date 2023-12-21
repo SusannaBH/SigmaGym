@@ -1,4 +1,4 @@
-
+import Styles from './styles.module.css'
 import { Gym } from "./index";
 
 interface User {
@@ -65,7 +65,7 @@ export default function GymsContainer({ data }: { data: User }) {
   const gyms = data.lista_Gyms;
 
   return (
-    <div>
+    <div className={Styles.gymsContainer}>
       {
         gyms.map((gym) => {
           const { name, lista_classes_gym, id } = gym;

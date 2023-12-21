@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+
 .titlePage {
     color: aquamarine;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
@@ -8,4 +10,46 @@
     margin: 15px;
     background-color: aquamarine;
     padding: 5px;
+}
+
+
+.flex {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.gymsContainer {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.classBox {
+    min-width: fit-content;
+}
+
+.buttonSubscribeClass {
+    margin: 0 auto;
+    padding: 7px;
+    outline: none;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    background-color: #ffffff86;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transform: scale(1);
+}
+
+.buttonSubscribeClass:hover {
+    background-color: #ffffffd2;
+    transform: scale(1.05);
+}
+
+@media (max-width: 640px){
+    .classBox {
+        margin: 0 auto;
+    }
 }
